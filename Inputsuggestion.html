@@ -1,0 +1,173 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Course Search</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body class="bg-[#f5fdf7] min-h-screen flex items-center justify-center  ">
+  <div onclick="history.back()" class="flex items-center space-x-2 cursor-pointer group mb-4 absolute top-4 left-6">
+  <img src="https://img.icons8.com/ios-filled/24/1e40af/left.png" alt="Back Arrow"
+       class="w-5 h-5 group-hover:brightness-125 transition duration-200" />
+  <h2 class="text-xl font-semibold text-[#1a1a1a] group-hover:underline">
+    Back
+  </h2>
+</div>
+
+ <form id="search-form" class="w-full absolute top-16 left-0 max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
+    <label class="sr-only" for="search">Search courses by name</label>
+    <div class="flex items-center border-2 border-[#1a1a1a] rounded-xl py-2 px-3 relative bg-[#f5fdf7]">
+      <i class="fas fa-search text-[#1a1a1a] text-lg"></i>
+      <input
+        class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]"
+        id="search"
+        name="search"
+        placeholder="Search Courses By Name"
+        type="search"
+        autocomplete="on"
+        aria-autocomplete="list"
+        aria-controls="suggestions-list"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        role="combobox"
+        aria-activedescendant=""
+        oninput="filterSuggestions()"
+        onkeydown="handleKeyDown(event)"
+      />
+      <button aria-label="Voice search" class="text-[#0f6f61] text-xl ml-3" type="button">
+        <i class="fas fa-microphone"></i>
+      </button>
+      <ul
+        id="suggestions-list"
+        role="listbox"
+        class="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-b-xl max-h-48 overflow-auto z-50 hidden shadow-lg"
+      ></ul>
+    </div>
+  </form>
+  <script>
+    const courses = [
+      "English Speaking",
+      "Telly",
+      "DCA",
+      "PGDCA",
+      "11th",
+      "12th"
+    ];
+    const input = document.getElementById("search");
+    const suggestionsList = document.getElementById("suggestions-list");
+    const form = document.getElementById("search-form");
+
+    function filterSuggestions() {
+      const value = input.value.toLowerCase();
+      suggestionsList.innerHTML = "";
+      if (!value) {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        input.setAttribute("aria-activedescendant", "");
+        return;
+      }
+      const filtered = courses.filter(course => course.toLowerCase().includes(value));
+      if (filtered.length === 0) {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        input.setAttribute("aria-activedescendant", "");
+        return;
+      }
+      filtered.forEach((course, index) => {
+        const li = document.createElement("li");
+        li.setAttribute("role", "option");
+        li.id = `suggestion-${index}`;
+        li.tabIndex = -1;
+        li.className = "border-b-2 px-4 py-4 bg-[#f5fdf7] cursor-pointer hover:bg-[#e6f4f1] focus:bg-[#cde9e4] focus:outline-none";
+        li.textContent = course;
+        li.addEventListener("click", () => {
+          input.value = course;
+          suggestionsList.classList.add("hidden");
+          input.setAttribute("aria-expanded", "false");
+          input.setAttribute("aria-activedescendant", "");
+          input.focus();
+        });
+        li.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            li.click();
+          }
+        });
+        suggestionsList.appendChild(li);
+      });
+      suggestionsList.classList.remove("hidden");
+      input.setAttribute("aria-expanded", "true");
+      input.setAttribute("aria-activedescendant", "");
+    }
+
+    function handleKeyDown(e) {
+      const options = Array.from(suggestionsList.querySelectorAll("li"));
+      if (suggestionsList.classList.contains("hidden")) return;
+
+      let currentIndex = options.findIndex(option => option === document.activeElement);
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (currentIndex < options.length - 1) {
+          options[currentIndex + 1].focus();
+          input.setAttribute("aria-activedescendant", options[currentIndex + 1].id);
+        } else if (currentIndex === -1 && options.length > 0) {
+          options[0].focus();
+          input.setAttribute("aria-activedescendant", options[0].id);
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (currentIndex > 0) {
+          options[currentIndex - 1].focus();
+          input.setAttribute("aria-activedescendant", options[currentIndex - 1].id);
+        } else if (currentIndex === 0) {
+          input.focus();
+          input.setAttribute("aria-activedescendant", "");
+        }
+      } else if (e.key === "Enter") {
+        if (currentIndex >= 0) {
+          e.preventDefault();
+          input.value = options[currentIndex].textContent;
+          suggestionsList.classList.add("hidden");
+          input.setAttribute("aria-expanded", "false");
+          input.setAttribute("aria-activedescendant", "");
+          input.focus();
+          submitForm();
+        }
+      } else if (e.key === "Escape") {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        input.setAttribute("aria-activedescendant", "");
+        input.focus();
+      }
+    }
+
+    function submitForm() {
+      const query = input.value.trim();
+      if (!query) return;
+      // Create a URL-friendly slug from the query
+      const slug = encodeURIComponent(query.toLowerCase().replace(/\s+/g, '-'));
+      // Example URL pattern: /courses/<slug>
+      const url = `/courses/${slug}`;
+      window.location.href = url;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      suggestionsList.classList.add("hidden");
+      input.setAttribute("aria-expanded", "false");
+      input.setAttribute("aria-activedescendant", "");
+      submitForm();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("#search") && !e.target.closest("#suggestions-list")) {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        input.setAttribute("aria-activedescendant", "");
+      }
+    });
+  </script>
+</body>
+</html>

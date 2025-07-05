@@ -1,0 +1,239 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>apnaJobs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+ 
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+       
+    }
+  </style>
+</head>
+
+<body class="bg-[#f5fdf7] min-h-screen flex flex-col text-sm">
+  <div id="header"></div>
+  <script>
+    document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
+    window.addEventListener("DOMContentLoaded", () =>
+      fetch("Header.html").then(r => r.text()).then(h => {
+        header.innerHTML = h;
+        document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
+      })
+    );
+  </script>
+   <a href="Inputsuggestion.html">
+ <form id="search-form" class="w-full max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
+    <label class="sr-only" for="search">Search courses by name</label>
+    <div class="flex items-center border-2 border-[#1a1a1a] rounded-xl py-2 px-3 relative bg-[#f5fdf7]">
+      <i class="fas fa-search text-[#1a1a1a] text-lg"></i>
+      <input
+        class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]"
+        id="search"
+        name="search"
+        placeholder="Search Courses By Name"
+        type="search"
+        autocomplete="on"
+        aria-autocomplete="list"
+        aria-controls="suggestions-list"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        role="combobox"
+        aria-activedescendant=""
+        oninput="filterSuggestions()"
+        onkeydown="handleKeyDown(event)"
+      />
+      <button aria-label="Voice search" class="text-[#0f6f61] text-xl ml-3" type="button">
+        <i class="fas fa-microphone"></i>
+      </button>
+      <ul
+        id="suggestions-list"
+        role="listbox"
+        class="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-b-xl max-h-48 overflow-auto z-50 hidden shadow-lg"
+      ></ul>
+    </div>
+  </form></a>
+
+
+  <section class="px-3 mt-4">
+    <div class="flex items-center space-x-2">
+      <img alt="Profile picture of a man with black hair and beard wearing a white shirt with yellow background"
+        class="w-8 h-8 rounded-full" height="32"
+        src="https://storage.googleapis.com/a1aa/image/352bd288-25e3-4a57-3c11-e5886f6ca2e4.jpg" width="32" />
+      <div>
+        <p class="text-[#1a1a1a] font-semibold leading-tight">
+          Complete your pending tasks
+        </p>
+        <p class="text-[#8a8a9f] leading-tight">
+          Increase your chances of getting calls from HRs
+        </p>
+      </div>
+    </div>
+    <div class="mt-3 flex space-x-3 overflow-x-auto pb-1">
+      <div class="flex-shrink-0 bg-[#ffe9d9] rounded-xl p-3 flex items-center space-x-3 min-w-[220px]">
+        <img alt="Icon of a briefcase in orange color with a plus sign on bottom right" class="w-14 h-14 rounded-lg"
+          height="56" src="https://storage.googleapis.com/a1aa/image/84a2e4bb-5dbc-4dc9-25a1-d2e61e20fb97.jpg"
+          width="56" />
+        <div>
+          <p class="text-[#1a1a1a] mb-0.5 leading-tight">
+            Recently started a new job? Add it!
+          </p>
+          <button class="bg-[#0f6f61] text-white font-semibold rounded-md px-3 py-1.5 text-sm" type="button">
+            Add experience
+          </button>
+        </div>
+      </div>
+      <div class="flex-shrink-0 bg-[#fff1cc] rounded-xl p-3 flex items-center space-x-3 min-w-[220px]">
+        <img alt="Icon of a briefcase in yellow color with a plus sign on bottom right" class="w-14 h-14 rounded-lg"
+          height="56" src="https://storage.googleapis.com/a1aa/image/51b67bfd-7fc8-401b-9ffa-33f88f06d16a.jpg"
+          width="56" />
+        <div>
+          <p class="text-[#1a1a1a] mb-0.5 leading-tight">New details for your resume</p>
+          <button class="bg-[#0f6f61] text-white font-semibold rounded-md px-3 py-1.5 text-sm" type="button">
+            Add details
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+   <div id="courselist"></div>
+  <script>
+    document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
+    window.addEventListener("DOMContentLoaded", () =>
+      fetch("Courselist.html").then(r => r.text()).then(h => {
+        courselist.innerHTML = h;
+        document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
+      })
+    );
+  </script>
+<nav aria-label="Bottom navigation"
+  class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-around items-center py-2 text-xs font-semibold text-[#8a8a9f] z-50"
+  role="navigation">
+
+  <!-- Home -->
+  <a href="index.html" class="flex flex-col items-center  ">
+    <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home Icon" class="w-6 h-6" />
+    Home
+    <div class="w-12 border-b-2 border-[#0f6f61] mt-1"></div>
+  </a>
+
+  <!-- Course -->
+  <a href="Courselist.html" class="flex flex-col items-center relative text-[#8a8a9f]">
+    <img src="https://img.icons8.com/ios-filled/50/000000/open-book--v1.png" alt="Course Icon" class="w-5 h-5 mb-1" />
+    Course
+    <span
+      class="absolute -top-1 hidden right-3 bg-[#e11d48] text-white rounded-full text-[8px] font-bold w-4 h-4 flex items-center justify-center leading-none">1</span>
+  </a>
+
+  <!-- Job -->
+  <a href="Job.html" class="flex flex-col items-center text-[#8a8a9f]">
+    <img src="https://img.icons8.com/ios-filled/50/000000/job.png" alt="Job Icon" class="w-5 h-5 mb-1" />
+    Job
+  </a>
+
+  <!-- My -->
+  <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
+    <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="My Profile Icon" class="w-5 h-5 mb-1" />
+    Me
+  </a>
+
+</nav>
+  <script>
+    const courses = [
+      "English Speaking",
+      "Telly",
+      "DCA",
+      "PGDCA",
+      "11th",
+      "12th"
+    ];
+
+    const input = document.getElementById("search");
+    const suggestionsList = document.getElementById("suggestions-list");
+
+    function filterSuggestions() {
+      const value = input.value.toLowerCase();
+      suggestionsList.innerHTML = "";
+      if (!value) {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        return;
+      }
+      const filtered = courses.filter(course => course.toLowerCase().startsWith(value));
+      if (filtered.length === 0) {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        return;
+      }
+      filtered.forEach((course, index) => {
+        const li = document.createElement("li");
+        li.setAttribute("role", "option");
+        li.id = `suggestion-${index}`;
+        li.className = "px-3 py-1 cursor-pointer hover:bg-[#e6f4f1]";
+        li.textContent = course;
+        li.addEventListener("click", () => {
+          input.value = course;
+          suggestionsList.classList.add("hidden");
+          input.setAttribute("aria-expanded", "false");
+          input.focus();
+        });
+        suggestionsList.appendChild(li);
+      });
+      suggestionsList.classList.remove("hidden");
+      input.setAttribute("aria-expanded", "true");
+    }
+
+    function handleKeyDown(e) {
+      const active = document.activeElement;
+      const options = Array.from(suggestionsList.querySelectorAll("li"));
+      if (suggestionsList.classList.contains("hidden")) return;
+
+      let currentIndex = options.findIndex(option => option === active);
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (currentIndex < options.length - 1) {
+          options[currentIndex + 1].focus();
+          input.setAttribute("aria-activedescendant", options[currentIndex + 1].id);
+        } else if (currentIndex === -1 && options.length > 0) {
+          options[0].focus();
+          input.setAttribute("aria-activedescendant", options[0].id);
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (currentIndex > 0) {
+          options[currentIndex - 1].focus();
+          input.setAttribute("aria-activedescendant", options[currentIndex - 1].id);
+        }
+      } else if (e.key === "Enter") {
+        if (currentIndex >= 0) {
+          e.preventDefault();
+          input.value = options[currentIndex].textContent;
+          suggestionsList.classList.add("hidden");
+          input.setAttribute("aria-expanded", "false");
+          input.setAttribute("aria-activedescendant", "");
+          input.focus();
+        }
+      } else if (e.key === "Escape") {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        input.setAttribute("aria-activedescendant", "");
+      }
+    }
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("#search") && !e.target.closest("#suggestions-list")) {
+        suggestionsList.classList.add("hidden");
+        input.setAttribute("aria-expanded", "false");
+        input.setAttribute("aria-activedescendant", "");
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<style>
+        /* Smooth slide bottom to up transition */
+        #loginFormContainer {
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            will-change: transform, opacity;
+        }
+    </style>
+<body class="bg-[#f5fdf7] mb-20">
+  <main class=" w-full mx-auto ">
+    <div onclick="history.back()" class="flex items-center space-x-2 cursor-pointer group p-4">
+      <img src="https://img.icons8.com/ios-filled/24/1e40af/left.png" alt="Back Arrow"
+        class="w-5 h-5 group-hover:brightness-125 transition duration-200" />
+      <h2 class="text-xl font-semibold text-[#1a1a1a] group-hover:underline">
+        Back
+      </h2>
+    </div>
+    <section id="course-detail" class="bg-white rounded-lg shadow p-1 space-y-6 p-4"></section>
+
+    <br>
+    <center class="p-2">
+      <button id="openLoginBtn"
+        class="w-full py-3 bg-green-700 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition">
+        Booking
+      </button>
+    </center>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+    <div id="loginFormContainer"
+      class="fixed bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg p-6 max-w-md mx-auto z-[99999] opacity-0 opacity-0 translate-y-full pointer-events-none">
+      <form class="space-y-4">
+        <h2 class="text-2xl font-semibold text-gray-800 text-center">Buy Course</h2>
+        <div>
+          <label for="Full Name" class="block text-gray-700 font-medium mb-1">Full Name</label>
+          <input type="email" id="email" name="email" required
+            class="w-full px-6 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Mr. Ankit Kadere" />
+        </div>
+        <div>
+          <label for="Mobile Number" class="block text-gray-700 font-medium mb-1">Mobile Number</label>
+          <input type="tel" id="Number" name="Number" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="+91 123 456 7890" />
+        </div>
+        <div>
+          <label for="course" class="block text-gray-700 font-medium mb-1">Select Course</label>
+          <select id="course" name="course" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="" disabled selected>Select a course</option>
+            <option value="English">English</option>
+            <option value="DCA">DCA</option>
+            <option value="PGDCA">PGDCA</option>
+            <option value="Telly">Telly</option>
+          </select>
+        </div>
+        <br>
+        <div class="mt-4 flex">
+          <button type="button" id="closeLoginBtn"
+            class="w-40 mt-2 text-left text-gray-600 hover:text-gray-900 transition">
+            Cancel
+          </button>
+          <button type="submit" class="w-full bg-green-700 text-white py-2 rounded-md hover:bg-blue-700 transition">
+            Book
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <script>
+    const courses = {
+      "english-speaking": {
+        title: "English Speaking Course",
+        icon: "https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg",
+        iconAlt: "English Speaking course icon in blue",
+        description: "Improve your communication skills and fluency in English.Improve your communication skills and fluency in English.Improve your communication  ",
+        location: "Pune",
+        fees: "Affordable Fees",
+        timings: "Flexible Timings",
+        level: "Beginner Friendly",
+        features: [
+          { icon: "fas fa-chalkboard-teacher", text: "Online & Offline" },
+          { badge: "B", text: "Beginner Friendly" },
+          { icon: "fas fa-clock", text: "Flexible Timings" }
+        ],
+        syllabus: [
+          "Introduction to English grammar",
+          "Basic conversation skills",
+          "Pronunciation and accent training",
+          "Vocabulary building exercises",
+          "Listening and comprehension practice",
+          "Public speaking and presentation skills"
+        ],
+        instructors: [
+          { name: "Sarah Johnson", photo: "https://placehold.co/64x64/png?text=Sarah+J", alt: "Sarah Johnson" },
+          { name: "Michael Lee", photo: "https://placehold.co/64x64/png?text=Michael+L", alt: "Michael Lee" }
+        ],
+        reviews: [
+          { name: "Anita Sharma", rating: 5, comment: "Helped me gain confidence in speaking English!" },
+          { name: "Ravi Patel", rating: 4, comment: "Good course with practical exercises." }
+        ]
+      },
+      "telly": {
+        title: "Telly Course",
+        icon: "https://storage.googleapis.com/a1aa/image/8561ea4b-93eb-4e3f-1347-549169d41344.jpg",
+        iconAlt: "Telly course icon",
+        description: "Accounting and financial management training.",
+        location: "Pune",
+        fees: "Affordable Fees",
+        timings: "Flexible Timings",
+        level: "Intermediate Level",
+        features: [
+          { icon: "fas fa-calculator", text: "Practical Training" },
+          { badge: "I", text: "Intermediate Level" },
+          { icon: "fas fa-clock", text: "Flexible Timings" }
+        ],
+        syllabus: [
+          "Accounting principles",
+          "Financial statements",
+          "Budgeting",
+          "Taxation",
+          "Accounting software",
+          "Case studies"
+        ],
+        instructors: [
+          { name: "Rajesh Kumar", photo: "https://placehold.co/64x64/png?text=Rajesh+K", alt: "Rajesh Kumar" }
+        ],
+        reviews: [
+          { name: "Sneha Desai", rating: 5, comment: "Excellent training!" },
+          { name: "Karan Mehta", rating: 4, comment: "Well structured course." }
+        ]
+      }
+      // Add more courses as needed...
+    };
+
+    function getCourseIdFromURL() {
+      return new URLSearchParams(location.search).get("id");
+    }
+
+    function renderStars(rating) {
+      let stars = "";
+      for (let i = 1; i <= 5; i++) {
+        stars += i <= rating
+          ? '<i class="fas fa-star text-yellow-400"></i>'
+          : '<i class="far fa-star text-yellow-400"></i>';
+      }
+      return stars;
+    }
+
+    function renderCourse(course) {
+      const section = document.getElementById("course-detail");
+
+      section.innerHTML = `
+ 
+        <div class="flex items-center gap-4 ">
+          <img src="${course.icon}" alt="${course.iconAlt}" class="w-16 h-16 rounded-md">
+          <div>
+            <h1 class="text-lg font-bold text-gray-800">${course.title}</h1>
+            <p class="text-sm text-gray-500">${course.location} &middot; ${course.fees}</p>
+          </div>
+        </div>
+
+        <p class="text-gray-700 text-justify">${course.description}</p>
+
+        <div class="flex flex-wrap gap-2">
+          ${course.features.map(f => {
+        if (f.icon) {
+          return `<span class="bg-gray-100 text-xs px-2 py-1 rounded flex items-center gap-1">
+                <i class="${f.icon} text-xs"></i> <span>${f.text}</span>
+              </span>`;
+        } else {
+          return `<span class="bg-gray-100 text-xs px-2 py-1 rounded flex items-center gap-1">
+                <span class="border border-gray-500 w-4 h-4 flex justify-center items-center rounded-full text-[10px] font-bold">${f.badge}</span> <span>${f.text}</span>
+              </span>`;
+        }
+      }).join("")}
+        </div>
+ <hr class="border-2 ">
+        <div>
+          <h2 class="text-lg font-semibold mt-4 mb-2">Syllabus</h2>
+          <ul class="list-disc list-inside space-y-1 text-gray-700">
+            ${course.syllabus.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </div>
+ <hr class="border-2 ">
+        <div>
+          <h2 class="text-lg font-semibold mt-4 mb-2">Instructors</h2>
+          <ul class="space-y-3">
+            ${course.instructors.map(inst => `
+              <li class="flex items-center gap-4">
+                <img src="${inst.photo}" alt="${inst.alt}" class="w-12 h-12 rounded-full object-cover">
+                <span class="font-medium text-gray-800">${inst.name}</span>
+              </li>
+            `).join("")}
+          </ul>
+        </div>
+ <hr class="border-2 ">
+        <div>
+          <h2 class="text-lg font-semibold mt-4 mb-2">Reviews</h2>
+          <ul class="space-y-3">
+            ${course.reviews.map(r => `
+              <li class="border rounded p-3 bg-gray-50">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-semibold text-gray-800">${r.name}</span>
+                  <span class="flex gap-0.5">${renderStars(r.rating)}</span>
+                </div>
+                <p class="text-sm text-gray-600">${r.comment}</p>
+              </li>
+            `).join("")}
+          </ul>
+        </div>
+      `;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const courseId = getCourseIdFromURL();
+      const course = courses[courseId];
+
+      if (course) {
+        renderCourse(course);
+      } else {
+        document.getElementById("course-detail").innerHTML = `<p class="text-red-600">Course not found.</p>`;
+      }
+    });
+  </script>
+
+  <script>
+    const openBtn = document.getElementById("openLoginBtn");
+    const closeBtn = document.getElementById("closeLoginBtn");
+    const loginFormContainer = document.getElementById("loginFormContainer");
+    const overlay = document.getElementById("overlay");
+
+    function openLogin() {
+      overlay.classList.remove("hidden");
+      loginFormContainer.style.opacity = "1";
+      loginFormContainer.style.transform = "translateY(0)";
+      loginFormContainer.style.pointerEvents = "auto";
+    }
+
+    function closeLogin() {
+      loginFormContainer.style.opacity = "0";
+      loginFormContainer.style.transform = "translateY(100%)";
+      loginFormContainer.style.pointerEvents = "none";
+      overlay.classList.add("hidden");
+    }
+
+    openBtn.addEventListener("click", openLogin);
+    closeBtn.addEventListener("click", closeLogin);
+    overlay.addEventListener("click", closeLogin);
+  </script>
+  <nav aria-label="Bottom navigation"
+    class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-around items-center py-2 text-xs font-semibold text-[#8a8a9f] z-50"
+    role="navigation">
+
+    <a href="index.html" class="flex flex-col items-center  ">
+      <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home Icon" class="w-6 h-6" />
+      Home
+    </a>
+    <a href="Courselist.html" class="flex flex-col items-center relative text-[#8a8a9f]">
+      <img src="https://img.icons8.com/ios-filled/50/000000/open-book--v1.png" alt="Course Icon" class="w-5 h-5 mb-1" />
+      Course
+      <span
+        class="hidden absolute -top-1 right-3 bg-[#e11d48] text-white rounded-full text-[8px] font-bold w-4 h-4 flex items-center justify-center leading-none">1</span>
+      <div class="w-12 border-b-2 border-[#0f6f61] mt-1"></div>
+    </a>
+
+    <a href="Job.html" class="flex flex-col items-center text-[#8a8a9f]">
+      <img src="https://img.icons8.com/ios-filled/50/000000/job.png" alt="Job Icon" class="w-5 h-5 mb-1" />
+      Job
+    </a>
+
+    <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
+      <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="My Profile Icon" class="w-5 h-5 mb-1" />
+      Me
+    </a>
+
+  </nav>
+</body>
+
+</html>
