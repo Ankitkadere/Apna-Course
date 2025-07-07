@@ -25,14 +25,7 @@
       </h2>
     </div>
     <section id="course-detail" class="bg-white rounded-lg shadow p-1 space-y-6 p-4"></section>
-
     <br>
-    <center class="p-2">
-      <button id="openLoginBtn"
-        class="w-full py-3 bg-green-700 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition">
-        Booking
-      </button>
-    </center>
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
     <div id="loginFormContainer"
       class="fixed bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg p-6 max-w-md mx-auto z-[99999] opacity-0 opacity-0 translate-y-full pointer-events-none">
@@ -73,8 +66,14 @@
         </div>
       </form>
     </div>
-
   </main>
+<nav aria-label="Bottom navigation"
+  class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-center items-center py-0 z-50">
+  <button id="openLoginBtn"
+    class="w-full m-2 py-3 bg-green-700 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition text-sm font-semibold">
+    Booking
+  </button>
+</nav>
 
   <script>
     const courses = {
@@ -257,33 +256,7 @@
     closeBtn.addEventListener("click", closeLogin);
     overlay.addEventListener("click", closeLogin);
   </script>
-  <nav aria-label="Bottom navigation"
-    class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-around items-center py-2 text-xs font-semibold text-[#8a8a9f] z-50"
-    role="navigation">
 
-    <a href="index.html" class="flex flex-col items-center  ">
-      <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home Icon" class="w-6 h-6" />
-      Home
-    </a>
-    <a href="Courselist.html" class="flex flex-col items-center relative text-[#8a8a9f]">
-      <img src="https://img.icons8.com/ios-filled/50/000000/open-book--v1.png" alt="Course Icon" class="w-5 h-5 mb-1" />
-      Course
-      <span
-        class="hidden absolute -top-1 right-3 bg-[#e11d48] text-white rounded-full text-[8px] font-bold w-4 h-4 flex items-center justify-center leading-none">1</span>
-      <div class="w-12 border-b-2 border-[#0f6f61] mt-1"></div>
-    </a>
-
-    <a href="Job.html" class="flex flex-col items-center text-[#8a8a9f]">
-      <img src="https://img.icons8.com/ios-filled/50/000000/job.png" alt="Job Icon" class="w-5 h-5 mb-1" />
-      Job
-    </a>
-
-    <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
-      <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="My Profile Icon" class="w-5 h-5 mb-1" />
-      Me
-    </a>
-
-  </nav>
 </body>
 
 </html>
