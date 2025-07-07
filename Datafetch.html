@@ -229,7 +229,7 @@
               class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
               >B</span
             >
-            <span  onclick="editEntry(row)">Edit</span> <span  onclick= deleteEntry(row)">Delete
+            <span  onclick="editEntry()">Edit</span> <span  onclick="deleteEntry(${row.Id})">Delete
         </div>
       </div>
     </a>
@@ -272,7 +272,7 @@
 
 
         function deleteEntry(row) {
-            document.getElementById("entryForm").style.display = "block";
+         form.display = "block";
             for (const key in row) {
                 if (form.elements[key]) {
                     form.elements[key].value = row[key] ?? "";
