@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Google Sheet CRUD</title> <link rel="icon" href="logo.jpg" type="image/jpeg" />
- 
+    <title>Google Sheet CRUD</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
@@ -141,7 +142,7 @@
     </form>
 
 
-    <h1 class="text-am font-semibold text-center mb-4">Student;s Booking Details</h1>
+    <h1 class="text-am font-semibold text-center mb-4">Student's Booking Details</h1>
 
     <div id="dataContainer" class="grid grid-cols-1 md:grid-cols-2 ">
         <center>
@@ -184,7 +185,16 @@
                     container.innerHTML = `<p class="text-center text-gray-600 text-lg">No data found for Passcode: <strong>${passcode}</strong></p>`;
                     return;
                 }
-
+                function formatDate(dateStr) {
+                    if (!dateStr) return "N/A";
+                    const date = new Date(dateStr);
+                    const options = {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    };
+                    return date.toLocaleDateString("en-IN", options);
+                }
                 filtered.forEach(row => {
                     const card = document.createElement("div");
                     card.className = "  shadow-lg rounded-lg p-1";
@@ -202,7 +212,8 @@
         role="button"
         tabindex="0"
       >
-        <div class="flex items-center space-x-1 mb-1">
+        <div class="flex justify-between items-center space-x-1 mb-1">
+             <div class="flex items-center space-x-1 mb-1">
           <img
             alt="English Speaking course icon in blue"
             class="w-5 h-5"
@@ -211,51 +222,38 @@
             width="20"
           />
           <h2
-            class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
+            class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-2x1 leading-tight"
           >
          ${row.Name}
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
-          <p class=" text-right text-am">${row.Price || "0"}</p>
+          </div>
+           <div>
+          <p class=" text-right text-am">${row.Price || "0"} .Rs</p>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
        
         </p>
         <div class="flex justify-between space-y-1 text-[#8a8a9f] text-xs mb-1">
           <div class="flex items-center space-x-1">
-            <i class="fas fa-phone text-xs"></i>
-            <span><b> Phone :</b>${row.Number || "N/A"}</span>
+            <i class="fas fa-mobile text-xs"></i>
+            <span><b> Phone : </b> ${row.Number || "N/A"}</span>
           </div>
           <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+            <i class="fas fa-book text-xs"></i>
             <span><b> Course : </b>${row.Course || "N/A"}</span>
           </div>
         </div>
           <div class="flex justify-between space-y-1 text-[#8a8a9f] text-xs mb-1">
           <div class="flex items-center space-x-1">
-            <i class="fas fa-phone text-xs"></i>
-            <span><b> Start :</b>${row.Start || "N/A"}</span>
+            <i class="fas fa-clock text-xs"></i>
+          <span><b>Start:</b> ${formatDate(row.Start) || "N/A"}</span>
           </div>
           <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
-            <span><b> End : </b>${row.End || "N/A"}</span>
+            <i class="fas fa-clock text-xs"></i>
+            <span><b> End : </b>${formatDate(row.End) || "N/A"}</span>
           </div>
-        </div>
-        <div class="flex justify-between space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-          <span
-            class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-          >
-            <i class="fas fa-chalkboard-teacher text-xs"></i>
-            <span <b> Price :<b/>${row.Time || "N/A"}+ ${row.Time}</span>
-          </span>
-          <span
-            class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-          >
-            <span
-              class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-              >B</span
-            >
-            <span  onclick="editEntry(row)">Edit</span> <span  onclick="deleteEntry(row)">Delete
         </div>
       </div>
     </a>

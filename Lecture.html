@@ -27,272 +27,369 @@
 </head>
 
 <body class="bg-[#f5fdf7] text-black font-sans">
-    <div id="header"></div>
-    <script>
-        document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-        window.addEventListener("DOMContentLoaded", () =>
-            fetch("Header.html").then(r => r.text()).then(h => {
-                header.innerHTML = h;
-                document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-            })
-        );
-    </script>
-    <main class="max-w-md mx-auto p-3 space-y-4">
-        <!-- Video 1 -->
-        <article class="flex space-x-3">
-            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
-                <video aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API"
-                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        type="video/webm" />
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div
-                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
-                    12:31
-                </div>
-                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
-                </div>
-            </div>
-            <div class="flex flex-col justify-start">
-                <h3 class="text-sm font-bold leading-tight">
-                    Fetch Google Sheet Data into Website | PHP + API
-                </h3>
-                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
-                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
-                    </i>
-                    <span>
-                        Programming with Vishal
-                    </span>
-                </p>
-                <p class="text-xs text-gray-700 mt-0.5">
-                    29K views · 4 years ago
-                </p>
-            </div>
-            <button class="ml-auto self-start text-gray-700 hover:text-black">
-                <i class="fas fa-ellipsis-v">
-                </i>
-            </button>
-        </article>
-        <!-- Video 2 -->
-        <article class="flex space-x-3">
-            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
-                <video
-                    aria-label="Video thumbnail with tailwind css full course text and code snippet on black background"
-                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        type="video/webm" />
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div
-                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
-                    2:43:34
-                </div>
-                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
-                </div>
-            </div>
-            <div class="flex flex-col justify-start">
-                <h3 class="text-sm font-normal leading-tight">
-                    Tailwind CSS (v4.0) Full Course | Build &amp; Deploy Portfolio Website | Learn ...
-                </h3>
-                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
-                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
-                    </i>
-                    <span>
-                        Learn Coding
-                    </span>
-                </p>
-                <p class="text-xs text-gray-700 mt-0.5">
-                    12K views · 4 months ago
-                </p>
-            </div>
-            <button class="ml-auto self-start text-gray-700 hover:text-black">
-                <i class="fas fa-ellipsis-v">
-                </i>
-            </button>
-        </article>
-        <!-- Video 3 -->
-        <article class="flex space-x-3">
-            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
-                <video
-                    aria-label="Video thumbnail with TAILWIND CSS Full Course text and blue icon on dark blue background"
-                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        type="video/webm" />
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div
-                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
-                    54:21
-                </div>
-                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
-                </div>
-            </div>
-            <div class="flex flex-col justify-start">
-                <h3 class="text-sm font-normal leading-tight">
-                    Tailwind CSS v4 Full Course 2025 | Master Tailwind in One Hour
-                </h3>
-                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
-                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
-                    </i>
-                    <span>
-                        JavaScript Mastery
-                    </span>
-                </p>
-                <p class="text-xs text-gray-700 mt-0.5">
-                    1M views · 4 months ago
-                </p>
-            </div>
-            <button class="ml-auto self-start text-gray-700 hover:text-black">
-                <i class="fas fa-ellipsis-v">
-                </i>
-            </button>
-        </article>
-        <!-- Video 4 (paused) -->
-        <article class="flex space-x-3 opacity-50">
-            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
-                <video
-                    aria-label="Video thumbnail with Tailwind CSS 4 Complete Tutorial text and man portrait on blue background"
-                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        type="video/webm" />
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div
-                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
-                    6:32:54
-                </div>
-                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
-                </div>
-            </div>
-            <div class="flex flex-col justify-start">
-                <h3 class="text-sm font-normal leading-tight">
-                    Tailwind CSS 4 Full Course with Project in Hindi | Complete Beginner to Ad...
-                </h3>
-                <p class="text-xs text-gray-500 mt-1">
-                    Code Step By Step
-                </p>
-                <p class="text-xs text-gray-500 mt-0.5">
-                    Download paused
-                </p>
-            </div>
-            <button class="ml-auto self-start text-gray-700 hover:text-black">
-                <i class="fas fa-ellipsis-v">
-                </i>
-            </button>
-        </article>
-        <!-- Video 5 -->
-        <article class="flex space-x-3">
-            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
-                <video
-                    aria-label="Video thumbnail showing Baalveer Enter in Bhayanal Lok with superhero character in costume"
-                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        type="video/webm" />
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div
-                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
-                    1:00:44
-                </div>
-                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
-                </div>
-            </div>
-            <div class="flex flex-col justify-start">
-                <h3 class="text-sm font-normal leading-tight">
-                    Baalveer Enter in Bhayanal Lok | Baalveer S6 | Ep - 12
-                </h3>
-                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
-                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
-                    </i>
-                    <span>
-                        Kalyan Films
-                    </span>
-                </p>
-                <p class="text-xs text-gray-700 mt-0.5">
-                    2.2M views · 7 months ago
-                </p>
-            </div>
-            <button class="ml-auto self-start text-gray-700 hover:text-black">
-                <i class="fas fa-ellipsis-v">
-                </i>
-            </button>
-        </article>
-        <!-- Video 6 -->
-        <article class="flex space-x-3">
-            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
-                <video
-                    aria-label="Video thumbnail showing Baalveer proposing to Ananya with two people sitting and talking"
-                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        type="video/webm" />
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div
-                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
-                    21:57
-                </div>
-                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
-                </div>
-            </div>
-            <div class="flex flex-col justify-start">
-                <h3 class="text-sm font-normal leading-tight">
-                    Baalveer ने Ananya को अंगूठी पहना कर किया Propose , मस्ती परी के उड़े हो...
-                </h3>
-                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
-                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
-                    </i>
-                    <span>
-                        Bachpan Ke Superheroes
-                    </span>
-                </p>
-                <p class="text-xs text-gray-700 mt-0.5">
-                    186K views · 1 month ago
-                </p>
-            </div>
-            <button class="ml-auto self-start text-gray-700 hover:text-black">
-                <i class="fas fa-ellipsis-v">
-                </i>
-            </button>
-        </article>
-        <!-- Video 7 -->
-        <article class="flex space-x-3">
-            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
-                <video
-                    aria-label="Video thumbnail showing Baalveer की दुल्हन बनी with a woman in white dress and HD label"
-                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                        type="video/webm" />
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
-                </div>
-            </div>
-            <div class="flex flex-col justify-start">
-                <h3 class="text-sm font-normal leading-tight">
-                    "Baalveer की दुल्हन बनी
-                </h3>
-            </div>
-            <button class="ml-auto self-start text-gray-700 hover:text-black">
-                <i class="fas fa-ellipsis-v">
-                </i>
-            </button>
-        </article>
-    </main>
-</body>
+  <header class=" fixed top-0 left-0 bg-[#f5fdf7] w-full px-3 py-4 flex items-center justify-between shadow-md z-50">
+    <a onclick="history.back()">
+      <img src="https://img.icons8.com/ios-filled/24/1e40af/left.png" alt="Back Arrow"
+        class="w-10 h-10 group-hover:brightness-800 transition duration-200" />
+    </a>
+    <a href="index.html">
+      <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
+        <span>Apna</span>
+        <span class="text-[#0f6f61]">Course</span>
+      </h1>
+    </a>
+    <a href="Owner.html">
+      <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
+        src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
+    </a>
+  </header>
+ 
+<body class="bg-white">
+  <main class="max-w-md mx-auto p-3 space-y-4 mt-20">
+    <article tabindex="0" class="flex space-x-3 cursor-pointer" data-video-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" aria-label="Open full video: Fetch Google Sheet Data into Website PHP + API">
+      <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+        <video
+          aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API with a close-up of a blooming flower in a garden during daytime"
+          class="w-full h-full object-cover pointer-events-none"
+          muted
+          preload="metadata"
+          tabindex="-1"
+          playsinline
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded select-none"
+        >
+          12:31
+        </div>
+        <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600"></div>
+      </div>
+      <div class="flex flex-col justify-start">
+        <h3 class="text-sm font-bold leading-tight">
+          Fetch Google Sheet Data into Website | PHP + API
+        </h3>
+        <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+          <i class="fas fa-check-circle text-gray-700 text-[10px]"></i>
+          <span>Programming with Vishal</span>
+        </p>
+        <p class="text-xs text-gray-700 mt-0.5">29K views · 4 years ago</p>
+      </div>
+      <button class="ml-auto self-start text-gray-700 hover:text-black" aria-label="More options">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </article>
+    <article tabindex="0" class="flex space-x-3 cursor-pointer" data-video-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" aria-label="Open full video: Fetch Google Sheet Data into Website PHP + API">
+      <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+        <video
+          aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API with a close-up of a blooming flower in a garden during daytime"
+          class="w-full h-full object-cover pointer-events-none"
+          muted
+          preload="metadata"
+          tabindex="-1"
+          playsinline
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded select-none"
+        >
+          12:31
+        </div>
+        <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600"></div>
+      </div>
+      <div class="flex flex-col justify-start">
+        <h3 class="text-sm font-bold leading-tight">
+          Fetch Google Sheet Data into Website | PHP + API
+        </h3>
+        <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+          <i class="fas fa-check-circle text-gray-700 text-[10px]"></i>
+          <span>Programming with Vishal</span>
+        </p>
+        <p class="text-xs text-gray-700 mt-0.5">29K views · 4 years ago</p>
+      </div>
+      <button class="ml-auto self-start text-gray-700 hover:text-black" aria-label="More options">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </article>
+    <article tabindex="0" class="flex space-x-3 cursor-pointer" data-video-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" aria-label="Open full video: Fetch Google Sheet Data into Website PHP + API">
+      <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+        <video
+          aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API with a close-up of a blooming flower in a garden during daytime"
+          class="w-full h-full object-cover pointer-events-none"
+          muted
+          preload="metadata"
+          tabindex="-1"
+          playsinline
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded select-none"
+        >
+          12:31
+        </div>
+        <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600"></div>
+      </div>
+      <div class="flex flex-col justify-start">
+        <h3 class="text-sm font-bold leading-tight">
+          Fetch Google Sheet Data into Website | PHP + API
+        </h3>
+        <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+          <i class="fas fa-check-circle text-gray-700 text-[10px]"></i>
+          <span>Programming with Vishal</span>
+        </p>
+        <p class="text-xs text-gray-700 mt-0.5">29K views · 4 years ago</p>
+      </div>
+      <button class="ml-auto self-start text-gray-700 hover:text-black" aria-label="More options">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </article>
+    <article tabindex="0" class="flex space-x-3 cursor-pointer" data-video-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" aria-label="Open full video: Fetch Google Sheet Data into Website PHP + API">
+      <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+        <video
+          aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API with a close-up of a blooming flower in a garden during daytime"
+          class="w-full h-full object-cover pointer-events-none"
+          muted
+          preload="metadata"
+          tabindex="-1"
+          playsinline
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded select-none"
+        >
+          12:31
+        </div>
+        <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600"></div>
+      </div>
+      <div class="flex flex-col justify-start">
+        <h3 class="text-sm font-bold leading-tight">
+          Fetch Google Sheet Data into Website | PHP + API
+        </h3>
+        <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+          <i class="fas fa-check-circle text-gray-700 text-[10px]"></i>
+          <span>Programming with Vishal</span>
+        </p>
+        <p class="text-xs text-gray-700 mt-0.5">29K views · 4 years ago</p>
+      </div>
+      <button class="ml-auto self-start text-gray-700 hover:text-black" aria-label="More options">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </article>
+    <article tabindex="0" class="flex space-x-3 cursor-pointer" data-video-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" aria-label="Open full video: Fetch Google Sheet Data into Website PHP + API">
+      <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+        <video
+          aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API with a close-up of a blooming flower in a garden during daytime"
+          class="w-full h-full object-cover pointer-events-none"
+          muted
+          preload="metadata"
+          tabindex="-1"
+          playsinline
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded select-none"
+        >
+          12:31
+        </div>
+        <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600"></div>
+      </div>
+      <div class="flex flex-col justify-start">
+        <h3 class="text-sm font-bold leading-tight">
+          Fetch Google Sheet Data into Website | PHP + API
+        </h3>
+        <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+          <i class="fas fa-check-circle text-gray-700 text-[10px]"></i>
+          <span>Programming with Vishal</span>
+        </p>
+        <p class="text-xs text-gray-700 mt-0.5">29K views · 4 years ago</p>
+      </div>
+      <button class="ml-auto self-start text-gray-700 hover:text-black" aria-label="More options">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </article>
+    <article tabindex="0" class="flex space-x-3 cursor-pointer" data-video-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" aria-label="Open full video: Fetch Google Sheet Data into Website PHP + API">
+      <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+        <video
+          aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API with a close-up of a blooming flower in a garden during daytime"
+          class="w-full h-full object-cover pointer-events-none"
+          muted
+          preload="metadata"
+          tabindex="-1"
+          playsinline
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded select-none"
+        >
+          12:31
+        </div>
+        <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600"></div>
+      </div>
+      <div class="flex flex-col justify-start">
+        <h3 class="text-sm font-bold leading-tight">
+          Fetch Google Sheet Data into Website | PHP + API
+        </h3>
+        <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+          <i class="fas fa-check-circle text-gray-700 text-[10px]"></i>
+          <span>Programming with Vishal</span>
+        </p>
+        <p class="text-xs text-gray-700 mt-0.5">29K views · 4 years ago</p>
+      </div>
+      <button class="ml-auto self-start text-gray-700 hover:text-black" aria-label="More options">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </article>
+    <article tabindex="0" class="flex space-x-3 cursor-pointer" data-video-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" aria-label="Open full video: Fetch Google Sheet Data into Website PHP + API">
+      <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+        <video
+          aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API with a close-up of a blooming flower in a garden during daytime"
+          class="w-full h-full object-cover pointer-events-none"
+          muted
+          preload="metadata"
+          tabindex="-1"
+          playsinline
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+          class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded select-none"
+        >
+          12:31
+        </div>
+        <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600"></div>
+      </div>
+      <div class="flex flex-col justify-start">
+        <h3 class="text-sm font-bold leading-tight">
+          Fetch Google Sheet Data into Website | PHP + API
+        </h3>
+        <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+          <i class="fas fa-check-circle text-gray-700 text-[10px]"></i>
+          <span>Programming with Vishal</span>
+        </p>
+        <p class="text-xs text-gray-700 mt-0.5">29K views · 4 years ago</p>
+      </div>
+      <button class="ml-auto self-start text-gray-700 hover:text-black" aria-label="More options">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </article>
 
+  </main>
+
+  <!-- Modal -->
+  <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 hidden z-50">
+    <div class="relative w-full max-w-3xl rounded-lg overflow-hidden bg-black">
+      <button id="closeModalBtn" aria-label="Close video" class="absolute top-2 right-2 text-white text-3xl hover:text-red-600 z-10">&times;</button>
+      <video id="modalVideo" class="w-full h-auto" controls autoplay playsinline></video>
+    </div>
+  </div>
+
+  <script>
+    const articles = document.querySelectorAll('main article');
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    articles.forEach(article => {
+      article.addEventListener('click', () => {
+        const videoSrc = article.getAttribute('data-video-src');
+        if (videoSrc) {
+          modalVideo.src = videoSrc;
+          modalVideo.currentTime = 0;
+          modalVideo.play();
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          modalVideo.focus();
+        }
+      });
+      article.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          article.click();
+        }
+      });
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modalVideo.pause();
+      modalVideo.src = '';
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        closeModalBtn.click();
+      }
+    });
+
+    // Accessibility: close modal on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModalBtn.click();
+      }
+    });
+  </script> 
+</body>
 </html>

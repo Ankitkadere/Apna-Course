@@ -6,7 +6,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
-<body class="bg-[#f5fdf7] min-h-screen flex items-center justify-center  ">
+<body class="bg-[#f5fdf7]  max-w-lg mx-auto ">
   <div onclick="history.back()" class="flex items-center space-x-2 cursor-pointer group mb-4 absolute top-4 left-6">
   <img src="https://img.icons8.com/ios-filled/24/1e40af/left.png" alt="Back Arrow"
        class="w-5 h-5 group-hover:brightness-125 transition duration-200" />
@@ -15,12 +15,12 @@
   </h2>
 </div>
 
- <form id="search-form" class="w-full absolute top-16 left-0 max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
+ <form id="search-form" class=" max-w-lg mx-auto w-full absolute top-16 left-0 max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
     <label class="sr-only" for="search">Search courses by name</label>
     <div class="flex items-center border-2 border-[#1a1a1a] rounded-xl py-2 px-3 relative bg-[#f5fdf7]">
       <i class="fas fa-search text-[#1a1a1a] text-lg"></i>
       <input
-        class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]"
+        class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] w-full focus:outline-none bg-[#f5fdf7]"
         id="search"
         name="search"
         placeholder="Search Courses By Name"

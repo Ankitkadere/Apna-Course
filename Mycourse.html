@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Passcode Data Viewer</title> <link rel="icon" href="logo.jpg" type="image/jpeg" />
+  <title>Passcode Data Viewer</title>
+  <link rel="icon" href="logo.jpg" type="image/jpeg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet" />
@@ -51,20 +52,20 @@
     );
   </script>
 
-  <div class="max-w-5xl w-full mt-24">
+  <div class="max-w-5xl w-full mt-10">
     <center>
-      <i class="fas fa-user fa-8x top-20 text-green-900 drop-shadow-lg">
+      <i class="fas fa-user fa-7x top-20 text-gray-400 drop-shadow-lg">
       </i>
-      <h1 class="text-2xl font-bold mb-8 text-center">Student Login</h1>
+      <h1 class="text-lg font-bold mb-8 text-center">Student Login</h1>
     </center>
 
 
     <!-- Input + Dial Pad -->
     <div class=" absolute bottom-32 w-full bg-white p-4 rounded-lg shadow">
       <input id="filterInput" type="text" placeholder="ENTER => PASSCODE  "
-        class="text-center w-full  px-4 py-2 mb-4 text-xl rounded focus:outline-none" value="" readonly />
+        class="text-center w-full text-bold px-4 py-2 mb-4 text-xl rounded focus:outline-none" value="" readonly />
 
-      <div class="grid grid-cols-3 gap-2 text-xl font-semibold">
+      <div class="grid grid-cols-3 gap-1 text-xl font-semibold">
         <button class="bg-gray-200 p-2 rounded" data-value="1">1</button>
         <button class="bg-gray-200 p-2 rounded" data-value="2">2</button>
         <button class="bg-gray-200 p-2 rounded" data-value="3">3</button>
@@ -83,7 +84,7 @@
     <!-- Submit Button -->
     <div class="absolute bottom-16 mt-6 p-2 w-full ">
       <button id="submitBtn"
-        class="w-full bg-green-800 hover:bg-green-700 text-white text-lg font-bold px-4 py-2   rounded">
+        class="w-full bg-green-700 hover:bg-green-900 rounded-xl text-white text-lg font-bold px-8 py-2   rounded">
         Login
       </button>
     </div>

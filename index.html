@@ -12,13 +12,23 @@
   <style>
     body {
       font-family: "Inter", sans-serif;
-
     }
+        .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  
   </style>
 </head>
 
-<body class="bg-[#f5fdf7] min-h-screen flex flex-col text-sm">
-  <header class="px-4 py-4 flex items-center justify-between">
+<body class="bg-[#f5fdf7] min-h-screen flex flex-col text-sm  max-w-lg mx-auto">
+  <header class="px-3 py-4 flex items-center justify-between">
         <a href="index.html">
             <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
                 <span>Apna</span>
@@ -32,7 +42,7 @@
         </a>
     </header>
   <a href="Inputsuggestion.html">
-    <form id="search-form" class="w-full max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
+    <form id="search-form" class="w-full max-w-md px-3" role="search" aria-label="Search jobs or courses" novalidate>
       <label class="sr-only" for="search">Search courses by name</label>
       <div class="flex items-center border-2 border-[#1a1a1a] rounded-xl py-2 px-3 relative bg-[#f5fdf7]">
         <i class="fas fa-search text-[#1a1a1a] text-lg"></i>
@@ -64,7 +74,7 @@
         </p>
       </div>
     </div>
-    <div class="mt-3 flex space-x-3 overflow-x-auto pb-1">
+    <div class="mt-3 flex space-x-3 overflow-x-auto pb-1 hide-scrollbar">
       <div class="flex-shrink-0 bg-[#ffe9d9] rounded-xl p-3 flex items-center space-x-3 min-w-[220px]">
         <img alt="Icon of a briefcase in orange color with a plus sign on bottom right" class="w-14 h-14 rounded-lg"
           height="56" src="https://storage.googleapis.com/a1aa/image/84a2e4bb-5dbc-4dc9-25a1-d2e61e20fb97.jpg"

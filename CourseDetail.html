@@ -4,88 +4,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Course Details</title> <link rel="icon" href="logo.jpg" type="image/jpeg" />
+  <title>Course Details</title>
+  <link rel="icon" href="logo.jpg" type="image/jpeg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <style>
-        /* Smooth slide bottom to up transition */
-        #loginFormContainer {
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            will-change: transform, opacity;
-        }
-    </style>
+  /* Smooth slide bottom to up transition */
+  #loginFormContainer {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    will-change: transform, opacity;
+  }
+</style>
+
 <body class="bg-[#f5fdf7] mb-20">
-  <main class=" w-full mx-auto ">
-    <div onclick="history.back()" class="flex items-center space-x-2 cursor-pointer group p-4">
+  <header class="px-3 py-4 flex items-center justify-between shadow-md z-50">
+    <a onclick="history.back()">
       <img src="https://img.icons8.com/ios-filled/24/1e40af/left.png" alt="Back Arrow"
-        class="w-5 h-5 group-hover:brightness-125 transition duration-200" />
-      <h2 class="text-xl font-semibold text-[#1a1a1a] group-hover:underline">
-        Back
-      </h2>
-    </div>
+        class="w-10 h-10 group-hover:brightness-800 transition duration-200" />
+    </a>
+    <a href="index.html">
+      <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
+        <span>Apna</span>
+        <span class="text-[#0f6f61]">Course</span>
+      </h1>
+    </a>
+    <a href="Owner.html">
+      <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
+        src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
+    </a>
+  </header>
+  <main class=" w-full mx-auto ">
     <section id="course-detail" class="bg-white rounded-lg shadow p-1 space-y-6 p-4"></section>
     <br>
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+    <div onclick="closeLogin()" id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
     <div id="loginFormContainer"
-      class="fixed bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg p-6 max-w-md mx-auto z-[99999] opacity-0 opacity-0 translate-y-full pointer-events-none">
-      <form class="space-y-4">
-        <h2 class="text-2xl font-semibold text-gray-800 text-center">Buy Course</h2>
-        <div>
-          <label for="Full Name" class="block text-gray-700 font-medium mb-1">Full Name</label>
-          <input type="email" id="email" name="email" required
-            class="w-full px-6 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Mr. Ankit Kadere" />
-        </div>
-        <div>
-          <label for="Mobile Number" class="block text-gray-700 font-medium mb-1">Mobile Number</label>
-          <input type="tel" id="Number" name="Number" required
-            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="+91 123 456 7890" />
-        </div>
-        <div>
-          <label for="course" class="block text-gray-700 font-medium mb-1">Select Course</label>
-          <select id="course" name="course" required
-            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="" disabled selected>Select a course</option>
-            <option value="English">English</option>
-            <option value="DCA">DCA</option>
-            <option value="PGDCA">PGDCA</option>
-            <option value="Telly">Telly</option>
-          </select>
+      class="fixed bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg p-4 max-w-md mx-auto z-[99999] opacity-0 opacity-0 translate-y-full pointer-events-none">
+      <form id="entryForm" class="  mt-10 bg-white  space-y-2">
+        <h2 id="deletedtext" class="text-2xl font-semibold text-gray-800 text-center">Buy Course</h2>
+        <div id="dset">
+          <div>
+            <label for="Id" class="block text-gray-700 font-medium mb-1"> </label>
+            <input type="text" id="Id" name="Id" placeholder="ID"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div>
+            <label for="Passcode" class="block text-gray-700 font-medium mb-1"> </label>
+            <input type="text" id="Passcode" name="Passcode" placeholder="Passcode"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="Date" class="block text-gray-700 font-medium mb-1"> </label>
+              <input type="date" id="Date" name="Date"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div>
+              <label for="Time" class="block text-gray-700 font-medium mb-1"> </label>
+              <input type="time" id="Time" name="Time"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+          </div>
+
+          <div>
+            <label for="Name" class="block text-gray-700 font-medium mb-1">Full Name</label>
+            <input type="text" id="Name" name="Name" placeholder="Mr. Ankit Kadere"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div>
+            <label for="Number" class="block text-gray-700 font-medium mb-1">Mobile Number</label>
+            <input type="number" id="Number" name="Number" placeholder="+91 123 456 7890"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div>
+            <label for="Course" class="block text-gray-700 font-medium mb-1"> </label>
+            <input type="text" id="Course" name="Course" placeholder="Course"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="Price" class="block text-gray-700 font-medium mb-1"> </label>
+              <input type="text" id="Price" name="Price" placeholder="₹1000"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div>
+              <label for="Status" class="block text-gray-700 font-medium mb-1"> </label>
+              <input type="text" id="Status" name="Status" value="Confirmed" placeholder="Active / Pending"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="Start" class="block text-gray-700 font-medium mb-1"> </label>
+              <input onchange="updateEndDate()" type="date" id="Start" name="Start" placeholder="10:00 AM"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div>
+              <label for="End" class="block text-gray-700 font-medium mb-1"> </label>
+              <input type="date" id="End" name="End" placeholder="12:00 PM"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+          </div>
         </div>
         <br>
-        <div class="mt-4 flex">
-          <button type="button" id="closeLoginBtn"
-            class="w-40 mt-2 text-left text-gray-600 hover:text-gray-900 transition">
-            Cancel
-          </button>
-          <button type="submit" class="w-full bg-green-700 text-white py-2 rounded-md hover:bg-blue-700 transition">
+        <div id="buttonsets" class="mt-12 w-full flex justify-between items-center">
+          <button onclick="closeLogin()" type="button" id="closeBtn"
+            class="  hover:bg-blue-900 text-blue-700 font-semibold py-2 px-12 rounded-md text-left transition">Cancel</button>
+          <button type="submit" onclick="handleBooking()"
+            class="bg-green-700 w-full hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition">
             Book
           </button>
+
         </div>
       </form>
+
     </div>
   </main>
-<nav aria-label="Bottom navigation"
-  class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-center items-center py-0 z-50">
-  <button id="openLoginBtn"
-    class="w-full m-2 py-3 bg-green-700 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition text-sm font-semibold">
-    Booking
-  </button>
-</nav>
+  <nav onclick="buycourse()" aria-label="Bottom navigation"
+    class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-center items-center py-0 z-50">
+    <button id="openLoginBtn"
+      class="w-full m-2 py-3 bg-green-700 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition text-sm font-semibold">
+      Booking
+    </button>
+  </nav>
 
   <script>
     const courses = {
       "english-speaking": {
         title: "English Speaking Course",
         icon: "https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg",
-        iconAlt: "English Speaking course icon in blue",
-        description: "Improve your communication skills and fluency in English.Improve your communication skills and fluency in English.Improve your communication  ",
-        location: "Pune",
+        iconAlt: "English Speaking course",
+        description: "Improve your communication skills and fluency in English. Improve your communication skills and fluency in English. Improve your communication.",
+        location: "Online",
         fees: "Affordable Fees",
-        timings: "Flexible Timings",
-        level: "Beginner Friendly",
+        timings: "3 Months",
+        level: "Beginner",
+        price: "299.00",
         features: [
           { icon: "fas fa-chalkboard-teacher", text: "Online & Offline" },
           { badge: "B", text: "Beginner Friendly" },
@@ -108,11 +169,12 @@
           { name: "Ravi Patel", rating: 4, comment: "Good course with practical exercises." }
         ]
       },
+
       "telly": {
         title: "Telly Course",
         icon: "https://storage.googleapis.com/a1aa/image/8561ea4b-93eb-4e3f-1347-549169d41344.jpg",
         iconAlt: "Telly course icon",
-        description: "Accounting and financial management training.",
+        description: "Accounting and financial management training.Accounting and financial management training.Accounting and financial management training.",
         location: "Pune",
         fees: "Affordable Fees",
         timings: "Flexible Timings",
@@ -137,8 +199,127 @@
           { name: "Sneha Desai", rating: 5, comment: "Excellent training!" },
           { name: "Karan Mehta", rating: 4, comment: "Well structured course." }
         ]
+      },
+
+      "dca": {
+        title: "DCA Course",
+        icon: "https://storage.googleapis.com/a1aa/image/a4423603-46d5-43bf-1247-48de95e66fb4.jpg",
+        iconAlt: "DCA course icon",
+        description: "Diploma in Computer Applications for beginners.",
+        location: "Pune",
+        fees: "Affordable Fees",
+        timings: "Flexible Timings",
+        level: "Advanced Level",
+        features: [
+          { icon: "fas fa-graduation-cap", text: "Advanced Level" },
+          { badge: "A", text: "After 10th or 12th" },
+          { icon: "fas fa-clock", text: "Flexible Timings" }
+        ],
+        syllabus: [
+          "Fundamentals of Computer",
+          "MS Office (Word, Excel, PowerPoint)",
+          "Internet and Email",
+          "Basics of Programming",
+          "Database Management Systems",
+          "Project Work"
+        ],
+        instructors: [
+          { name: "Neha Verma", photo: "https://placehold.co/64x64/png?text=Neha+V", alt: "Neha Verma" }
+        ],
+        reviews: [
+          { name: "Amit Joshi", rating: 5, comment: "Great for beginners!" }
+        ]
+      },
+
+      "pgdca": {
+        title: "PGDCA Course",
+        icon: "https://storage.googleapis.com/a1aa/image/f41ee155-ce03-4dff-ffbc-871097d19bba.jpg",
+        iconAlt: "PGDCA course icon",
+        description: "Post Graduate Diploma in Computer Applications.",
+        location: "Pune",
+        fees: "Affordable Fees",
+        timings: "Flexible Timings",
+        level: "Advanced Level",
+        features: [
+          { icon: "fas fa-graduation-cap", text: "Advanced Level" },
+          { badge: "A", text: "After Graduation" },
+          { icon: "fas fa-clock", text: "Flexible Timings" }
+        ],
+        syllabus: [
+          "Computer Organization",
+          "Data Structures",
+          "Operating Systems",
+          "Web Technologies",
+          "Database Systems",
+          "Software Engineering"
+        ],
+        instructors: [
+          { name: "Sunil Agarwal", photo: "https://placehold.co/64x64/png?text=Sunil+A", alt: "Sunil Agarwal" }
+        ],
+        reviews: [
+          { name: "Priya Nair", rating: 5, comment: "Very detailed and useful!" }
+        ]
+      },
+
+      "11th-grade": {
+        title: "11th Grade Course",
+        icon: "https://storage.googleapis.com/a1aa/image/e19c4740-fb74-44b9-7e1f-5cf1a55c1440.jpg",
+        iconAlt: "11th grade course icon",
+        description: "Higher Secondary Education - 11th Grade.",
+        location: "Pune",
+        fees: "Affordable Fees",
+        timings: "Flexible Timings",
+        level: "High School",
+        features: [
+          { icon: "fas fa-school", text: "Regular Classes" },
+          { badge: "H", text: "High School" },
+          { icon: "fas fa-clock", text: "Flexible Timings" }
+        ],
+        syllabus: [
+          "Mathematics",
+          "Science",
+          "Commerce",
+          "Humanities",
+          "English & Hindi",
+          "Practical Labs"
+        ],
+        instructors: [
+          { name: "Rakesh Singh", photo: "https://placehold.co/64x64/png?text=Rakesh+S", alt: "Rakesh Singh" }
+        ],
+        reviews: [
+          { name: "Deepak More", rating: 4, comment: "Covers school curriculum well." }
+        ]
+      },
+
+      "12th-grade": {
+        title: "12th Grade Course",
+        icon: "https://storage.googleapis.com/a1aa/image/83567cdb-08d8-4d10-920c-e9479b024892.jpg",
+        iconAlt: "12th grade course icon",
+        description: "Higher Secondary Education - 12th Grade.",
+        location: "Pune",
+        fees: "Affordable Fees",
+        timings: "Flexible Timings",
+        level: "High School",
+        features: [
+          { icon: "fas fa-school", text: "Regular Classes" },
+          { badge: "H", text: "High School" },
+          { icon: "fas fa-clock", text: "Flexible Timings" }
+        ],
+        syllabus: [
+          "Mathematics",
+          "Physics / Chemistry / Biology",
+          "Accounts / Economics",
+          "English / Hindi",
+          "Board Exam Preparation",
+          "Practical Labs"
+        ],
+        instructors: [
+          { name: "Meena Gupta", photo: "https://placehold.co/64x64/png?text=Meena+G", alt: "Meena Gupta" }
+        ],
+        reviews: [
+          { name: "Shivani Yadav", rating: 5, comment: "Helped me top my board exams!" }
+        ]
       }
-      // Add more courses as needed...
     };
 
     function getCourseIdFromURL() {
@@ -230,6 +411,138 @@
         document.getElementById("course-detail").innerHTML = `<p class="text-red-600">Course not found.</p>`;
       }
     });
+
+    function updateEndDate() {
+      const startInput = document.getElementById("Start");
+      const endInput = document.getElementById("End");
+
+      if (!startInput.value) return;
+
+      const startDate = new Date(startInput.value);
+      startDate.setMonth(startDate.getMonth() + 1);
+
+      // Adjust for overflow (e.g., Jan 31 → Mar 2)
+      if (startDate.getDate() !== new Date(startInput.value).getDate()) {
+        startDate.setDate(0);
+      }
+
+      endInput.value = startDate.toISOString().split("T")[0];
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const startInput = document.getElementById("Start");
+      const today = new Date();
+      startInput.value = today.toISOString().split("T")[0];
+      updateEndDate();
+    });
+    const code = Math.floor(1000 + Math.random() * 9000);
+    const ID = Math.floor(100000 + Math.random() * 7000);
+    const courseId = new URLSearchParams(window.location.search).get("id");
+    const course = courses[courseId];
+    function buycourse() {
+
+
+      if (!course) {
+        alert("Invalid course selected.");
+        return;
+      }
+
+      document.getElementById("Passcode").value = code;
+      document.getElementById("Id").value = ID;
+      document.getElementById("Passcode").classList.add("hidden");
+      document.getElementById("Id").classList.add("hidden");
+      document.getElementById("Price").value = course.price;
+      document.getElementById("Course").value = course.title;
+      document.getElementById("Date").classList.add("hidden");
+      document.getElementById("Time").classList.add("hidden");
+      document.getElementById("Start").classList.add("hidden");
+      document.getElementById("End").classList.add("hidden");
+      document.getElementById("Price").classList.add("hidden");
+      document.getElementById("Course").classList.add("hidden");
+      document.getElementById("Status").classList.add("hidden");
+
+    }
+
+    function handleBooking() {
+      document.getElementById("dset").classList.add("hidden");
+      document.getElementById("buttonsets").classList.add("hidden");
+
+      setTimeout(() => {
+        document.getElementById('deletedtext').innerText = 'Processing...';
+        document.getElementById("dset").classList.add("hidden");
+        document.getElementById("buttonsets").classList.add("hidden");
+
+      }, 100);
+
+      setTimeout(() => {
+        document.getElementById("dset").classList.add("hidden");
+        document.getElementById("buttonsets").classList.add("hidden");
+
+        document.getElementById('deletedtext').innerHTML = `<p class="text-xl mt-2">Your Pass Code </p><h1 class="font-bold text-8xl text-green-700">${code}</h1><p class="text-xl mt-2">Completed</p>`;
+      }, 8000);
+
+      setTimeout(() => {
+        window.location.href = 'Mycourse.html';
+      }, 30000);
+
+    }
+
+
+    const form = document.getElementById("entryForm");
+    const container = document.getElementById("dataContainer");
+    const passcode = new URLSearchParams(window.location.search).get("passcode")?.trim();
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwdAgLXrfkDEEIOsTIjJcm6VwLuTCGH_zo3YKmv7fpvkNwnHFyGEUb2eVIF6iuHcb2h/exec";
+    let editing = false;
+
+
+
+    async function loadData() {
+      try {
+        const res = await fetch(scriptURL);
+        const data = await res.json();
+        document.getElementById("dset").classList.remove("hidden");
+        document.getElementById("loadercircle").style.display = "none";
+
+        if (passcode.length === 0) {
+          container.innerHTML = `<p class="text-center text-gray-600 text-lg">No data found for Passcode: <strong>${passcode}</strong></p>`;
+          return;
+        }
+
+        function formatDate(dateStr) {
+          if (!dateStr) return "N/A";
+          const date = new Date(dateStr);
+          const options = {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          };
+          return date.toLocaleDateString("en-IN", options);
+        }
+
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = `<p class="text-red-600 text-center">Failed to load data.</p>`;
+        document.getElementById("loadercircle").style.display = "none";
+      }
+    }
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = Object.fromEntries(new FormData(form));
+      formData.method = editing ? "update" : "create";
+
+      await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+
+
+      form.reset();
+      editing = false;
+      loadData();
+    };
+
+    loadData();
   </script>
 
   <script>
@@ -256,7 +569,6 @@
     closeBtn.addEventListener("click", closeLogin);
     overlay.addEventListener("click", closeLogin);
   </script>
-
 </body>
 
 </html>

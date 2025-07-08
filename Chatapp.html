@@ -16,16 +16,18 @@
 
 <body class="bg-[#f5fdf7]">
   <div id="chatView"></div>
-   <form id="chatForm" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-xl flex bg-green-700 rounded-full px-6 py-2 shadow-md">
-            <input id="userInput" class="flex-1 bg-transparent text-white placeholder-white focus:outline-none text-lg" placeholder="Type a message..." required />
-            <button class="bg-white text-[#7B4DD9] rounded-full p-2 ml-2" type="submit">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
+  <form id="chatForm"
+    class="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-xl flex bg-green-700 rounded-full px-6 py-2 shadow-md">
+    <input id="userInput" class="flex-1 bg-transparent text-white placeholder-white focus:outline-none text-lg"
+      placeholder="Type a message..." required />
+    <button class="bg-white text-[#7B4DD9] rounded-full p-2  " type="submit">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+  </form>
   <script>
     const scriptURL = "https://script.google.com/macros/s/AKfycbw3KluW1F_r9uPg7aabbDw5ptkJdXzdhPoMeCbrTHV_jGRF_K4Vz8UBnWyLb40Vugwc/exec";
     const chatContainer = document.getElementById("chatView");
- 
+
     function renderChatUI(userRow) {
       return `
         <div class="w-full flex flex-col space-y-3 p-4 mx-auto">
@@ -39,10 +41,8 @@
             <div class="ml-auto text-white font-bold px-3">...</div>
           </div>
           <div class="h-20"></div>
-
           <div id="messages" class="flex flex-col space-y-3 overflow-y-auto flex-1 mb-24 px-2"></div>
-
-       
+ 
         </div>
       `;
     }
@@ -63,14 +63,14 @@
       data.forEach(row => {
         if (row.UData) {
           messagesDiv.innerHTML += `
-            <div class="self-start bg-green-700 text-white rounded-3xl rounded-tr-none px-4 py-2 max-w-[80%] text-sm">
+            <div class="self-start bg-green-700 text-white  rounded-md px-4 py-2  text-lg">
               ${row.UData}
             </div>`;
         }
 
         if (row.OData) {
           messagesDiv.innerHTML += `
-            <div class="self-end bg-white text-green-800 rounded-2xl rounded-bl-none px-4 py-2 max-w-[80%] text-xs shadow">
+            <div class="self-end bg-white text-green-800  rounded-md px-4 py-2 text-lg shadow">
               ${row.OData}
             </div>`;
         }
@@ -110,5 +110,4 @@
     loadData(); // Initial load
   </script>
 </body>
-
 </html>
