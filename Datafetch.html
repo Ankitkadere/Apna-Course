@@ -15,6 +15,30 @@
         font-family: "Inter", sans-serif;
     }
 
+    .loader {
+        margin-top: 50%;
+        width: 50px;
+        padding: 8px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #076b18;
+        --_m:
+            conic-gradient(#0000 10%, #000),
+            linear-gradient(#000 0 0) content-box;
+        -webkit-mask: var(--_m);
+        mask: var(--_m);
+        -webkit-mask-composite: source-out;
+        mask-composite: subtract;
+        animation: l3 1s infinite linear;
+    }
+
+    @keyframes l3 {
+        to {
+            transform: rotate(1turn)
+        }
+    }
+
+
     /* Remove button default styles */
     .category-btn {
         background: #f3f4f6;
@@ -104,8 +128,9 @@
         <label class="sr-only" for="search">Search courses by name</label>
         <div class="flex items-center border-2 border-[#1a1a1a] rounded-xl py-2 px-3 relative bg-[#f5fdf7]">
             <i class="fas fa-search text-[#1a1a1a] text-lg"></i>
-            <input id="setuser" class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]"
-                id="search" name="search" placeholder="Search Courses By Name" type="search" autocomplete="on"
+            <input id="setuser"
+                class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]" id="search"
+                name="search" placeholder="Search Courses By Name" type="search" autocomplete="on"
                 aria-autocomplete="list" aria-controls="suggestions-list" aria-haspopup="listbox" aria-expanded="false"
                 role="combobox" aria-activedescendant="" oninput="filterSuggestions()"
                 onkeydown="handleKeyDown(event)" />
@@ -119,25 +144,107 @@
     </form>
 
 
-    <h1 class="text-am font-semibold text-center mb-4">Student;s Booking Details</h1>
+    <h1 class="text-am font-semibold text-center mb-4">Student's Booking Details</h1>
 
-    <div id="dataContainer" class="grid grid-cols-1 md:grid-cols-2    "></div>
- 
-    <form id="entryForm" class=" hidden max-w-xl mx-auto mt-10 bg-white p-6 shadow rounded space-y-4">
-        <h2 class="text-xl font-bold text-center">New / Update Booking</h2>
-        <input type="text" id="Id" name="Id" placeholder="ID" class="border p-2 w-full rounded" />
-        <input type="text" id="Passcode" name="Passcode" placeholder="Passcode" class="border p-2 w-full rounded" />
-        <input type="date" id="Date" name="Date" class="border p-2 w-full rounded" />
-        <input type="time" id="Time" name="Time" class="border p-2 w-full rounded" />
-        <input type="text" id="Name" name="Name" placeholder="Name" class="border p-2 w-full rounded" />
-        <input type="text" id="Number" name="Number" placeholder="Number" class="border p-2 w-full rounded" />
-        <input type="text" id="Course" name="Course" placeholder="Course" class="border p-2 w-full rounded" />
-        <input type="text" id="Price" name="Price" placeholder="Price" class="border p-2 w-full rounded" />
-        <input type="text" id="Status" name="Status" placeholder="Status" class="border p-2 w-full rounded" />
-        <input type="text" id="Start" name="Start" placeholder="Start" class="border p-2 w-full rounded" />
-        <input type="text" id="End" name="End" placeholder="End" class="border p-2 w-full rounded" />
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Save</button>
-    </form>
+    <div id="dataContainer" class="grid grid-cols-1 md:grid-cols-2">
+        <center>
+            <div id="loadercircle" class="loader"></div>
+        </center>
+    </div>
+    <div onclick="closeLogin()" id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+    <div id="loginFormContainer"
+        class="fixed bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg p-1 z-[99999] opacity-0 opacity-0 translate-y-full pointer-events-none">
+        <form id="entryForm" class="hidden mt-10 bg-white p-2  space-y-2">
+            <h2 id="deletedtext" class="text-2xl font-semibold text-gray-800 text-center">Update Booking</h2>
+            <div id="dset">
+                <div>
+                    <label for="Id" class="block text-gray-700 font-medium mb-1">Booking ID</label>
+                    <input type="text" id="Id" name="Id" placeholder="ID"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div>
+                    <label for="Passcode" class="block text-gray-700 font-medium mb-1">Passcode</label>
+                    <input type="text" id="Passcode" name="Passcode" placeholder="Passcode"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="Date" class="block text-gray-700 font-medium mb-1">Date</label>
+                        <input type="date" id="Date" name="Date"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="Time" class="block text-gray-700 font-medium mb-1">Time</label>
+                        <input type="time" id="Time" name="Time"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="Name" class="block text-gray-700 font-medium mb-1">Full Name</label>
+                    <input type="text" id="Name" name="Name" placeholder="Mr. Ankit Kadere"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div>
+                    <label for="Number" class="block text-gray-700 font-medium mb-1">Mobile Number</label>
+                    <input type="tel" id="Number" name="Number" placeholder="+91 123 456 7890"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div>
+                    <label for="Course" class="block text-gray-700 font-medium mb-1">Course</label>
+                    <input type="text" id="Course" name="Course" placeholder="Course"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="Price" class="block text-gray-700 font-medium mb-1">Price</label>
+                        <input type="text" id="Price" name="Price" placeholder="₹1000"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="Status" class="block text-gray-700 font-medium mb-1">Status</label>
+                        <input type="text" id="Status" name="Status" placeholder="Active / Pending"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="Start" class="block text-gray-700 font-medium mb-1">Start Time</label>
+                        <input type="text" id="Start" name="Start" placeholder="10:00 AM"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="End" class="block text-gray-700 font-medium mb-1">End Time</label>
+                        <input type="text" id="End" name="End" placeholder="12:00 PM"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                </div>
+            </div>
+          <br>   <div id="buttonsets" class="mt-12 w-full flex justify-between items-center">
+                <button onclick="closeLogin()" type="button" id="closeBtn"
+                    class="bg-blue-700 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition">Cancel</button>
+
+                <button onclick="deleteEntry()" type="submit" id="deletedata"
+                    class="bg-red-700 hover:bg-red-900 text-white font-semibold py-2 px-6 rounded-md transition">
+                    Delete
+                </button> <button onclick="setTimeout(() => {
+                window.location.reload();
+            }, 300);
+" type="submit" class="bg-green-700 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition">
+                    Save
+                </button>
+            </div>
+        </form>
+
+    </div>
+    </main>
+
 
     <script>
         const form = document.getElementById("entryForm");
@@ -150,13 +257,25 @@
             try {
                 const res = await fetch(scriptURL);
                 const data = await res.json();
-
+                document.getElementById("loadercircle").style.display = "none";
+                const filtered = data.filter(row => row.Passcode);
                 if (passcode.length === 0) {
                     container.innerHTML = `<p class="text-center text-gray-600 text-lg">No data found for Passcode: <strong>${passcode}</strong></p>`;
                     return;
                 }
 
-               data.forEach(row => {
+                function formatDate(dateStr) {
+                    if (!dateStr) return "N/A";
+                    const date = new Date(dateStr);
+                    const options = {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    };
+                    return date.toLocaleDateString("en-IN", options);
+                }
+
+                filtered.forEach(row => {
                     const card = document.createElement("div");
                     card.className = "  shadow-lg rounded-lg p-1";
                     card.innerHTML = `
@@ -164,7 +283,7 @@
   <section
     aria-label="Courses list"
     class="px-1 mt-2 max-w-lg mx-auto w-full "
-    id="courses-list"
+     onclick='editEntry(${JSON.stringify(row)})'
   > 
     <a
     
@@ -176,7 +295,8 @@
         role="button"
         tabindex="0"
       >
-        <div class="flex items-center space-x-1 mb-1">
+        <div class="flex justify-between items-center space-x-1 mb-1">
+             <div class="flex items-center space-x-1 mb-1">
           <img
             alt="English Speaking course icon in blue"
             class="w-5 h-5"
@@ -185,55 +305,41 @@
             width="20"
           />
           <h2
-            class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
+            class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-2x1 leading-tight"
           >
          ${row.Name}
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
-          <p class=" text-right text-am">${row.Price || "0"}</p>
+          </div>
+           <div>
+          <p class=" text-right text-am">${row.Price || "0"} .Rs</p>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
        
         </p>
         <div class="flex justify-between space-y-1 text-[#8a8a9f] text-xs mb-1">
           <div class="flex items-center space-x-1">
-            <i class="fas fa-phone text-xs"></i>
-            <span><b> Phone :</b>${row.Number || "N/A"}</span>
+            <i class="fas fa-mobile text-xs"></i>
+            <span><b> Phone : </b> ${row.Number || "N/A"}</span>
           </div>
           <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+            <i class="fas fa-book text-xs"></i>
             <span><b> Course : </b>${row.Course || "N/A"}</span>
           </div>
         </div>
           <div class="flex justify-between space-y-1 text-[#8a8a9f] text-xs mb-1">
           <div class="flex items-center space-x-1">
-            <i class="fas fa-phone text-xs"></i>
-            <span><b> Start :</b>${row.Start || "N/A"}</span>
+            <i class="fas fa-clock text-xs"></i>
+          <span><b>Start:</b> ${formatDate(row.Start) || "N/A"}</span>
           </div>
           <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
-            <span><b> End : </b>${row.End || "N/A"}</span>
+            <i class="fas fa-clock text-xs"></i>
+            <span><b> End : </b>${formatDate(row.End) || "N/A"}</span>
           </div>
-        </div>
-        <div class="flex justify-between space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-          <span
-            class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-          >
-            <i class="fas fa-chalkboard-teacher text-xs"></i>
-            <span <b> Price :<b/>${row.Time || "N/A"}+ ${row.Time}</span>
-          </span>
-          <span
-            class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-          >
-            <span
-              class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-              >B</span
-            >
-            <span  onclick="editEntry()">Edit</span> <span  onclick="deleteEntry(${row.Id})">Delete
         </div>
       </div>
     </a>
-    <!-- Repeat other courses as before -->
   </section> 
           `;
 
@@ -243,6 +349,7 @@
             } catch (err) {
                 console.error(err);
                 container.innerHTML = `<p class="text-red-600 text-center">Failed to load data.</p>`;
+                document.getElementById("loadercircle").style.display = "none";
             }
         }
 
@@ -260,7 +367,12 @@
             editing = false;
             loadData();
         };
+        const openBtn = document.getElementById("openLoginBtn");
+        const closeBtn = document.getElementById("closeLoginBtn");
+        const loginFormContainer = document.getElementById("loginFormContainer");
+        const overlay = document.getElementById("overlay");
         function editEntry(row) {
+            document.getElementById("dset").classList.remove("hidden");
             document.getElementById("entryForm").style.display = "block";
             for (const key in row) {
                 if (form.elements[key]) {
@@ -268,16 +380,15 @@
                 }
             }
             editing = true;
+            overlay.classList.remove("hidden");
+            loginFormContainer.style.opacity = "1";
+            loginFormContainer.style.transform = "translateY(0)";
+            loginFormContainer.style.pointerEvents = "auto";
         }
 
 
-        function deleteEntry(row) {
-         form.display = "block";
-            for (const key in row) {
-                if (form.elements[key]) {
-                    form.elements[key].value = row[key] ?? "";
-                }
-            }
+        function deleteEntry() {
+            document.getElementById("dset").classList.add("hidden");
             document.getElementById("Passcode").value = "";
             document.getElementById("Date").value = "";
             document.getElementById("Time").value = "";
@@ -289,9 +400,37 @@
             document.getElementById("Start").value = "";
             document.getElementById("End").value = "";
             editing = true;
+            document.getElementById("deletedtext").innerText = "Data Deleted";
+            document.getElementById("buttonsets").classList.add("hidden");
+            setTimeout(() => {
+                window.location.reload();
+            }, 300);
+
         }
 
         loadData();
+    </script>
+
+    <script>
+
+
+        function openLogin() {
+            overlay.classList.remove("hidden");
+            loginFormContainer.style.opacity = "1";
+            loginFormContainer.style.transform = "translateY(0)";
+            loginFormContainer.style.pointerEvents = "auto";
+        }
+
+        function closeLogin() {
+            loginFormContainer.style.opacity = "0";
+            loginFormContainer.style.transform = "translateY(100%)";
+            loginFormContainer.style.pointerEvents = "none";
+            overlay.classList.add("hidden");
+        }
+
+        openBtn.addEventListener("click", openLogin);
+        closeBtn.addEventListener("click", closeLogin);
+        overlay.addEventListener("click", closeLogin);
     </script>
     <script>
         const categoryButtons = document.querySelectorAll(".category-btn");

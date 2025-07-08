@@ -17,16 +17,19 @@
 </head>
 
 <body class="bg-[#f5fdf7] min-h-screen flex flex-col text-sm">
-  <div id="header"></div>
-  <script>
-    document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-    window.addEventListener("DOMContentLoaded", () =>
-      fetch("Header.html").then(r => r.text()).then(h => {
-        header.innerHTML = h;
-        document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-      })
-    );
-  </script>
+  <header class="px-4 py-4 flex items-center justify-between">
+        <a href="index.html">
+            <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
+                <span>Apna</span>
+                <span class="text-[#0f6f61]">Course</span>
+            </h1>
+        </a>
+        <a href="Owner.html">
+            <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+                class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
+                src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
+        </a>
+    </header>
   <a href="Inputsuggestion.html">
     <form id="search-form" class="w-full max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
       <label class="sr-only" for="search">Search courses by name</label>
@@ -45,7 +48,7 @@
       </div>
     </form>
   </a>
- 
+
   <section class="px-3 mt-4">
     <div class="flex items-center space-x-2">
       <img alt="Profile picture of a man with black hair and beard wearing a white shirt with yellow background"
@@ -87,30 +90,30 @@
       </div>
     </div>
   </section>
-<div id="courselist"></div>
+  <div id="courselist"></div>
 
-<script>
-  // Load CSS
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = "css/style.css";
-  document.head.appendChild(link);
+  <script>
+    // Load CSS
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "css/style.css";
+    document.head.appendChild(link);
 
-  // Load HTML and then JS
-  window.addEventListener("DOMContentLoaded", () => {
-    fetch("Courselist.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("courselist").innerHTML = html;
+    // Load HTML and then JS
+    window.addEventListener("DOMContentLoaded", () => {
+      fetch("Courselist.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("courselist").innerHTML = html;
 
-        // Now load the script after HTML is inserted
-        const script = document.createElement("script");
-        script.src = "script.js";
-        script.defer = true; // Optional, loads after parsing
-        document.body.appendChild(script);
-      });
-  });
-</script>
+          // Now load the script after HTML is inserted
+          const script = document.createElement("script");
+          script.src = "script.js";
+          script.defer = true; // Optional, loads after parsing
+          document.body.appendChild(script);
+        });
+    });
+  </script>
 
   <nav aria-label="Bottom navigation"
     class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-around items-center py-2 text-xs font-semibold text-[#8a8a9f] z-50"

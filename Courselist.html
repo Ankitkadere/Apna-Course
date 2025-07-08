@@ -1,21 +1,17 @@
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>Courses List with Filter and Search</title>
+  <title>Courses List </title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: "Inter", sans-serif;
     }
+
     /* Remove button default styles */
     .category-btn {
       background: transparent;
@@ -24,6 +20,7 @@
       cursor: pointer;
       transition: color 0.2s ease;
     }
+
     .category-btn:focus {
       outline-offset: 2px;
       outline: 2px solid #0f6f61;
@@ -31,8 +28,9 @@
     }
   </style>
 </head>
+
 <body class="bg-[#f5fdf7] ">
-      <div id="header"></div>
+  <div id="header"></div>
   <script>
     document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
     window.addEventListener("DOMContentLoaded", () =>
@@ -42,125 +40,58 @@
       })
     );
   </script>
-  <section
-    aria-label="Filter and search"
-    class="max-w-lg mx-auto px-4 mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-  >
-    <div
-      aria-label="Course categories"
-      class="flex items-center gap-2 justify-center overflow-hidden sm:justify-start"
-    >
-      <button
-        type="button"
-        data-filter="all"
-        class="category-btn flex items-center space-x-1 text-[#1a1a1a] text-xs font-semibold hover:text-[#0f6f61] focus:text-[#0f6f61] text-[#0f6f61] font-bold"
-        aria-pressed="true"
-      >
-        <i class="fas fa-th-large w-6 h-6 text-[#0f6f61]"></i>
-        <span>All</span>
-      </button>
-      <button
-        type="button"
-        data-filter="english-speaking"
-        class="category-btn flex items-center space-x-1 text-[#1a1a1a] text-xs font-semibold hover:text-[#0f6f61] focus:text-[#0f6f61]"
-        aria-pressed="false"
-      >
-        <img
-          alt="Icon representing English Speaking category with a speech bubble and book in teal color"
-          class="w-6 h-6"
-          height="24"
-          src="https://storage.googleapis.com/a1aa/image/de5a0356-9728-4e65-e302-b1d24e7468b2.jpg"
-          width="24"
-        />
-        <span>English </span>
-      </button>
-      <button
-        type="button"
-        data-filter="telly"
-        class="category-btn flex items-center space-x-1 text-[#1a1a1a] text-xs font-semibold hover:text-[#f97316] focus:text-[#f97316]"
-        aria-pressed="false"
-      >
-        <img
-          alt="Icon representing Accounting category with calculator and coins in orange color"
-          class="w-6 h-6"
-          height="24"
-          src="https://storage.googleapis.com/a1aa/image/0643da70-9a89-440a-73b3-17dd869bf968.jpg"
-          width="24"
-        />
-        <span>Accounting</span>
-      </button>
-      <button
-        type="button"
-        data-filter="dca"
-        class="category-btn flex items-center space-x-1 text-[#1a1a1a] text-xs font-semibold hover:text-[#14b8a6] focus:text-[#14b8a6]"
-        aria-pressed="false"
-      >
-        <img
-          alt="Icon representing Diploma in Computer Applications category with computer and code brackets in teal color"
-          class="w-6 h-6"
-          height="24"
-          src="https://storage.googleapis.com/a1aa/image/9000fe19-4f4f-4715-ce19-ce5b0cbed357.jpg"
-          width="24"
-        />
-        <span>DCA</span>
-      </button>
-      <button
-        type="button"
-        data-filter="pgdca"
-        class="category-btn flex items-center space-x-1 text-[#1a1a1a] text-xs font-semibold hover:text-[#8b5cf6] focus:text-[#8b5cf6]"
-        aria-pressed="false"
-      >
-        <img
-          alt="Icon representing Post Graduate Diploma in Computer Applications category with graduation cap and diploma in purple color"
-          class="w-6 h-6"
-          height="24"
-          src="https://storage.googleapis.com/a1aa/image/f6e36f4d-13ca-4a81-50b3-d51b5d17b7d4.jpg"
-          width="24"
-        />
-        <span>PGDCA</span>
-      </button>
-      <button
-        type="button"
-        data-filter="11th-grade"
-        class="category-btn flex items-center space-x-1 text-[#1a1a1a] text-xs font-semibold hover:text-[#22c55e] focus:text-[#22c55e]"
-        aria-pressed="false"
-      >
-        <img
-          alt="Icon representing 11th Grade category with school building and books in green color"
-          class="w-6 h-6"
-          height="24"
-          src="https://storage.googleapis.com/a1aa/image/e7c2f2b0-f5d0-4ed2-2cde-1afe6a6f3201.jpg"
-          width="24"
-        />
-        <span>11th Grade</span>
-      </button>
-      <button
-        type="button"
-        data-filter="12th-grade"
-        class="category-btn flex items-center space-x-1 text-[#1a1a1a] text-xs font-semibold hover:text-[#22c55e] focus:text-[#22c55e]"
-        aria-pressed="false"
-      >
-        <img
-          alt="Icon representing 12th Grade category with school building and books in green color"
-          class="w-6 h-6"
-          height="24"
-          src="https://storage.googleapis.com/a1aa/image/959809f6-4acc-426b-8cff-30960a2f8982.jpg"
-          width="24"
-        />
-        <span>12th Grade</span>
-      </button>
-    </div>
+  <section aria-label="Filter and search"
+    class=" flex overflow-x-auto scrollbar-none max-w-lg mx-auto px-4 mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ">
+ <div aria-label="Course categories" class="border-none flex flex-nowrap items-center gap-8 overflow-x-auto scrollbar-hide px-2" style="-webkit-overflow-scrolling: touch;">
+   <button aria-pressed="true" class="category-btn flex flex-col items-center text-[#0f6f61] text-xs font-bold flex-shrink-0" data-filter="all" type="button">
+    <img alt="Icon representing all course categories, large teal circle with white multiple squares grid symbol" class="w-12 h-12 mb-1 rounded-full object-cover" height="64" src="https://storage.googleapis.com/a1aa/image/647a1985-39a6-498f-856b-f668fe6ce1ab.jpg" width="64"/>
+    <span>
+     All
+    </span>
+   </button>
+   <button aria-pressed="false" class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#0f6f61] focus:text-[#0f6f61] flex-shrink-0" data-filter="english-speaking" type="button">
+    <img alt="Icon representing English courses, teal circle with white text 'Eng'" class="w-12 h-12 mb-1 rounded-full object-cover" height="48" src="https://storage.googleapis.com/a1aa/image/716df796-ac72-4e80-41b5-3fc19c4a8379.jpg" width="48"/>
+    <span>
+     English
+    </span>
+   </button>
+   <button aria-pressed="false" class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#f97316] focus:text-[#f97316] flex-shrink-0" data-filter="telly" type="button">
+    <img alt="Icon representing Accounting courses, orange circle with white text 'Acc'" class="w-12 h-12 mb-1 rounded-full object-cover" height="48" src="https://storage.googleapis.com/a1aa/image/ea8adbbb-5020-4cf9-6c47-6ba5a0581f6d.jpg" width="48"/>
+    <span>
+     Accounting
+    </span>
+   </button>
+   <button aria-pressed="false" class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#14b8a6] focus:text-[#14b8a6] flex-shrink-0" data-filter="dca" type="button">
+    <img alt="Icon representing DCA courses, teal circle with white text 'DCA'" class="w-12 h-12 mb-1 rounded-full object-cover" height="48" src="https://storage.googleapis.com/a1aa/image/8ceb7270-de63-4fdb-c0e3-09ce84e689a4.jpg" width="48"/>
+    <span>
+     DCA
+    </span>
+   </button>
+   <button aria-pressed="false" class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#8b5cf6] focus:text-[#8b5cf6] flex-shrink-0" data-filter="pgdca" type="button">
+    <img alt="Icon representing PGDCA courses, purple circle with white text 'PGD'" class="w-12 h-12 mb-1 rounded-full object-cover" height="48" src="https://storage.googleapis.com/a1aa/image/058ab65f-0b9f-410d-c568-28f460eba8e5.jpg" width="48"/>
+    <span>
+     PGDCA
+    </span>
+   </button>
+   <button aria-pressed="false" class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#22c55e] focus:text-[#22c55e] flex-shrink-0" data-filter="11th-grade" type="button">
+    <img alt="Icon representing 11th Grade courses, green circle with white text '11th'" class="w-12 h-12 mb-1 rounded-full object-cover" height="48" src="https://storage.googleapis.com/a1aa/image/b9ecc565-4b5d-40ea-89e1-14c344210cf1.jpg" width="48"/>
+    <span>
+     11th Grade
+    </span>
+   </button>
+   <button aria-pressed="false" class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#22c55e] focus:text-[#22c55e] flex-shrink-0" data-filter="12th-grade" type="button">
+    <img alt="Icon representing 12th Grade courses, green circle with white text '12th'" class="w-12 h-12 mb-1 rounded-full object-cover" height="48" src="https://storage.googleapis.com/a1aa/image/85f4550e-0d52-40ea-a064-68b164444ad2.jpg" width="48"/>
+    <span>
+     12th Grade
+    </span>
+   </button>
+  </div>
     <div class="w-full sm:w-48 hidden">
       <label for="search-input" class="sr-only">Search courses</label>
       <div class="relative text-gray-400 focus-within:text-gray-600">
-        <input
-          id="search-input"
-          type="search"
-          placeholder="Search courses..."
+        <input id="search-input" type="search" placeholder="Search courses..."
           class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-9 pr-3 text-xs placeholder-gray-400 focus:border-[#0f6f61] focus:outline-none focus:ring-1 focus:ring-[#0f6f61]"
-          autocomplete="off"
-          aria-label="Search courses by name"
-        />
+          autocomplete="off" aria-label="Search courses by name" />
         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2">
           <i class="fas fa-search text-xs"></i>
         </div>
@@ -168,35 +99,14 @@
     </div>
   </section>
 
-  <section
-    aria-label="Courses list"
-    class="px-1 mt-6 max-w-lg mx-auto w-full space-y-3 mb-20"
-    id="courses-list"
-  >
-    <a
-      data-category="english-speaking"
-      data-id="english-speaking"
-      href="CourseDetail.html?id=english-speaking"
-      role="button"
-      tabindex="0"
-      class="course-item block"
-    >
-      <div
-        class="border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
-        role="button"
-        tabindex="0"
-      >
+  <section aria-label="Courses list" class="px-1 mt-6 max-w-lg mx-auto w-full space-y-3 mb-20" id="courses-list">
+    <a data-category="english-speaking" data-id="english-speaking" href="CourseDetail.html?id=english-speaking"
+      role="button" tabindex="0" class="course-item block">
+      <div class="border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer" role="button" tabindex="0">
         <div class="flex items-center space-x-1 mb-1">
-          <img
-            alt="English Speaking course icon in blue"
-            class="w-5 h-5"
-            height="20"
-            src="https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg"
-            width="20"
-          />
-          <h2
-            class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
-          >
+          <img alt="English Speaking course icon in blue" class="w-5 h-5" height="20"
+            src="https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg" width="20" />
+          <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
             English Speaking Course
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
@@ -215,24 +125,16 @@
           </div>
         </div>
         <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-          <span
-            class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-          >
+          <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-chalkboard-teacher text-xs"></i>
             <span>Online &amp; Offline</span>
           </span>
-          <span
-            class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-          >
+          <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <span
-              class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-              >B</span
-            >
+              class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">B</span>
             <span>Beginner Friendly</span>
           </span>
-          <span
-            class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-          >
+          <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-clock text-xs"></i>
             <span>Flexible Timings</span>
           </span>
@@ -240,23 +142,12 @@
       </div>
     </a>
 
-    <div
-      data-category="telly"
-      class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
-      role="button"
-      tabindex="0"
-    >
+    <div data-category="telly" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
+      role="button" tabindex="0">
       <div class="flex items-center space-x-1 mb-1">
-        <img
-          alt="Telly course icon in orange"
-          class="w-5 h-5"
-          height="20"
-          src="https://storage.googleapis.com/a1aa/image/8561ea4b-93eb-4e3f-1347-549169d41344.jpg"
-          width="20"
-        />
-        <h2
-          class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
-        >
+        <img alt="Telly course icon in orange" class="w-5 h-5" height="20"
+          src="https://storage.googleapis.com/a1aa/image/8561ea4b-93eb-4e3f-1347-549169d41344.jpg" width="20" />
+        <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
           Telly Course
         </h2>
         <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
@@ -275,47 +166,28 @@
         </div>
       </div>
       <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-calculator text-xs"></i>
           <span>Practical Training</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <span
-            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-            >I</span
-          >
+            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">I</span>
           <span>Intermediate Level</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-clock text-xs"></i>
           <span>Flexible Timings</span>
         </span>
       </div>
     </div>
 
-    <div
-      data-category="dca"
-      class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
-      role="button"
-      tabindex="0"
-    >
+    <div data-category="dca" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
+      role="button" tabindex="0">
       <div class="flex items-center space-x-1 mb-1">
-        <img
-          alt="DCA course icon in teal"
-          class="w-5 h-5"
-          height="20"
-          src="https://storage.googleapis.com/a1aa/image/a4423603-46d5-43bf-1247-48de95e66fb4.jpg"
-          width="20"
-        />
-        <h2
-          class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
-        >
+        <img alt="DCA course icon in teal" class="w-5 h-5" height="20"
+          src="https://storage.googleapis.com/a1aa/image/a4423603-46d5-43bf-1247-48de95e66fb4.jpg" width="20" />
+        <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
           DCA Course
         </h2>
         <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
@@ -334,47 +206,28 @@
         </div>
       </div>
       <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-graduation-cap text-xs"></i>
           <span>Advanced Level</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <span
-            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-            >A</span
-          >
+            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">A</span>
           <span>After Graduation</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-clock text-xs"></i>
           <span>Flexible Timings</span>
         </span>
       </div>
     </div>
 
-    <div
-      data-category="pgdca"
-      class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
-      role="button"
-      tabindex="0"
-    >
+    <div data-category="pgdca" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
+      role="button" tabindex="0">
       <div class="flex items-center space-x-1 mb-1">
-        <img
-          alt="PGDCA course icon in purple"
-          class="w-5 h-5"
-          height="20"
-          src="https://storage.googleapis.com/a1aa/image/f41ee155-ce03-4dff-ffbc-871097d19bba.jpg"
-          width="20"
-        />
-        <h2
-          class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
-        >
+        <img alt="PGDCA course icon in purple" class="w-5 h-5" height="20"
+          src="https://storage.googleapis.com/a1aa/image/f41ee155-ce03-4dff-ffbc-871097d19bba.jpg" width="20" />
+        <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
           PGDCA Course
         </h2>
         <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
@@ -393,47 +246,28 @@
         </div>
       </div>
       <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-graduation-cap text-xs"></i>
           <span>Advanced Level</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <span
-            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-            >A</span
-          >
+            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">A</span>
           <span>After Graduation</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-clock text-xs"></i>
           <span>Flexible Timings</span>
         </span>
       </div>
     </div>
 
-    <div
-      data-category="11th-grade"
-      class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
-      role="button"
-      tabindex="0"
-    >
+    <div data-category="11th-grade" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
+      role="button" tabindex="0">
       <div class="flex items-center space-x-1 mb-1">
-        <img
-          alt="11th grade course icon in green"
-          class="w-5 h-5"
-          height="20"
-          src="https://storage.googleapis.com/a1aa/image/e19c4740-fb74-44b9-7e1f-5cf1a55c1440.jpg"
-          width="20"
-        />
-        <h2
-          class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
-        >
+        <img alt="11th grade course icon in green" class="w-5 h-5" height="20"
+          src="https://storage.googleapis.com/a1aa/image/e19c4740-fb74-44b9-7e1f-5cf1a55c1440.jpg" width="20" />
+        <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
           11th Grade Course
         </h2>
         <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
@@ -452,47 +286,28 @@
         </div>
       </div>
       <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-school text-xs"></i>
           <span>Regular Classes</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <span
-            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-            >H</span
-          >
+            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">H</span>
           <span>High School</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-clock text-xs"></i>
           <span>Flexible Timings</span>
         </span>
       </div>
     </div>
 
-    <div
-      data-category="12th-grade"
-      class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
-      role="button"
-      tabindex="0"
-    >
+    <div data-category="12th-grade" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
+      role="button" tabindex="0">
       <div class="flex items-center space-x-1 mb-1">
-        <img
-          alt="12th grade course icon in green"
-          class="w-5 h-5"
-          height="20"
-          src="https://storage.googleapis.com/a1aa/image/83567cdb-08d8-4d10-920c-e9479b024892.jpg"
-          width="20"
-        />
-        <h2
-          class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight"
-        >
+        <img alt="12th grade course icon in green" class="w-5 h-5" height="20"
+          src="https://storage.googleapis.com/a1aa/image/83567cdb-08d8-4d10-920c-e9479b024892.jpg" width="20" />
+        <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
           12th Grade Course
         </h2>
         <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
@@ -511,24 +326,16 @@
         </div>
       </div>
       <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-school text-xs"></i>
           <span>Regular Classes</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <span
-            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none"
-            >H</span
-          >
+            class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">H</span>
           <span>High School</span>
         </span>
-        <span
-          class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1"
-        >
+        <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
           <i class="fas fa-clock text-xs"></i>
           <span>Flexible Timings</span>
         </span>
@@ -547,7 +354,7 @@
     <a href="index.html" class="flex flex-col items-center  ">
       <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home Icon" class="w-6 h-6" />
       Home
-    
+
     </a>
 
     <!-- Course -->
@@ -556,7 +363,8 @@
       Course
       <span
         class="absolute -top-1 hidden right-3 bg-[#e11d48] text-white rounded-full text-[8px] font-bold w-4 h-4 flex items-center justify-center leading-none">1</span>
-     <div class="w-12 border-b-2 border-[#0f6f61] mt-1"></div> </a>
+      <div class="w-12 border-b-2 border-[#0f6f61] mt-1"></div>
+    </a>
 
     <!-- Job -->
     <a href="Job.html" class="flex flex-col items-center text-[#8a8a9f]">
@@ -626,4 +434,5 @@
     filterCourses();
   </script>
 </body>
+
 </html>

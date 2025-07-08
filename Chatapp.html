@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Chat UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f5fdf7]">
+  <div id="chatView"></div>
+   <form id="chatForm" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-xl flex bg-green-700 rounded-full px-6 py-2 shadow-md">
+            <input id="userInput" class="flex-1 bg-transparent text-white placeholder-white focus:outline-none text-lg" placeholder="Type a message..." required />
+            <button class="bg-white text-[#7B4DD9] rounded-full p-2 ml-2" type="submit">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbw3KluW1F_r9uPg7aabbDw5ptkJdXzdhPoMeCbrTHV_jGRF_K4Vz8UBnWyLb40Vugwc/exec";
+    const chatContainer = document.getElementById("chatView");
+ 
+    function renderChatUI(userRow) {
+      return `
+        <div class="w-full flex flex-col space-y-3 p-4 mx-auto">
+          <div class="flex items-center shadow-md fixed top-0 left-0 w-full bg-green-700 p-4 z-20">
+            <button onclick="history.back()" class="text-white text-lg"><i class="fas fa-arrow-left"></i></button>
+            <img src="https://storage.googleapis.com/a1aa/image/c5c69e0f-e246-467d-91a8-d665bd99eb70.jpg" class="w-10 h-10 rounded-full ml-2" />
+            <div class="ml-4">
+              <p class="text-white font-bold text-lg">${userRow.Name || "No Name"}</p>
+              <p class="text-white text-xs">${userRow.UPassocde || "No UPasscode"}</p>
+            </div>
+            <div class="ml-auto text-white font-bold px-3">...</div>
+          </div>
+          <div class="h-20"></div>
+
+          <div id="messages" class="flex flex-col space-y-3 overflow-y-auto flex-1 mb-24 px-2"></div>
+
+       
+        </div>
+      `;
+    }
+
+    async function loadData() {
+      const res = await fetch(scriptURL);
+      const data = await res.json();
+
+      if (data.length === 0) {
+        chatContainer.innerHTML = `<p class="text-center text-red-500 mt-10">No data found</p>`;
+        return;
+      }
+
+      // Use first row's name/passcode for top bar
+      chatContainer.innerHTML = renderChatUI(data[0]);
+      const messagesDiv = document.getElementById("messages");
+
+      data.forEach(row => {
+        if (row.UData) {
+          messagesDiv.innerHTML += `
+            <div class="self-start bg-green-700 text-white rounded-3xl rounded-tr-none px-4 py-2 max-w-[80%] text-sm">
+              ${row.UData}
+            </div>`;
+        }
+
+        if (row.OData) {
+          messagesDiv.innerHTML += `
+            <div class="self-end bg-white text-green-800 rounded-2xl rounded-bl-none px-4 py-2 max-w-[80%] text-xs shadow">
+              ${row.OData}
+            </div>`;
+        }
+      });
+
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    // Submit new message
+    document.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (!message) return;
+
+      const payload = {
+        OPasscode: "ALL", // optional or static since we're not filtering
+        UPassocde: user.UPassocde,
+        Name: user.Name,
+        UData: message,
+        OData: "" // for user message
+      };
+
+      const res = await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (res.ok) {
+        input.value = "";
+        loadData(); // refresh chat
+      }
+    });
+
+    loadData(); // Initial load
+  </script>
+</body>
+
+</html>

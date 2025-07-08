@@ -4,181 +4,294 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>
-        Video Lecture Series - Extra Small Full Width Flex Layout
+        YouTube Video List
     </title>
     <script src="https://cdn.tailwindcss.com">
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet" />
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        /* Custom scrollbar for light background */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #bbb;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f5fdf7;
         }
     </style>
 </head>
 
-<body class="bg-[#f5fdf7] p-1">
-      <div id="header"></div>
-  <script>
-    document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-    window.addEventListener("DOMContentLoaded", () =>
-      fetch("Header.html").then(r => r.text()).then(h => {
-        header.innerHTML = h;
-        document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-      })
-    );
-  </script>
-    <main class="w-full max-w-full mx-auto space-y-2 ">
-        <section class="p-4 flex bg-white rounded-lg shadow-md overflow-hidden w-full">
-            <div class="relative w-full h-32 p-1 bg-white">
-                <img alt="Video lecture thumbnail showing an instructor presenting slides with graphs and text on a digital whiteboard"
-                    class="w-full h-full bg-white object-cover" height="150"
-                    src="https://storage.googleapis.com/a1aa/image/adf9f93a-1bfa-4ac1-da1d-69bbed7c16c5.jpg"
-                    width="400" />
-                
-            </div>
-            <div class="w-full flex flex-col " style="display: flex;">
-                <h2 class="text-sm font-semibold text-gray-900 mb-0.5">
-                    Introduction to Physics  Physics  Physics 
-                </h2>
-                <p class="text-gray-700 text-[11px] mb-1">
-                    Basics of wave-particle duality and historical and 
-                </p>
-                <div class="flex items-center text-gray-600 text-[10px] space-x-2 mb-1">
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-user-circle text-xs">
-                        </i>
-                        <span>
-                            Dr. Jane Smith
-                        </span>
-                    </div>
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-clock text-xs">
-                        </i>
-                        <span>
-                            45m
-                        </span>
-                    </div>
+<body class="bg-[#f5fdf7] text-black font-sans">
+    <div id="header"></div>
+    <script>
+        document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
+        window.addEventListener("DOMContentLoaded", () =>
+            fetch("Header.html").then(r => r.text()).then(h => {
+                header.innerHTML = h;
+                document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
+            })
+        );
+    </script>
+    <main class="max-w-md mx-auto p-3 space-y-4">
+        <!-- Video 1 -->
+        <article class="flex space-x-3">
+            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+                <video aria-label="Video thumbnail showing Fetch Google Sheet Data into Website PHP + API"
+                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                        type="video/webm" />
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div
+                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
+                    12:31
                 </div>
-                <button
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1 rounded-md transition text-xs"
-                    type="button">
-                    Watch Now
-                </button>
-            </div>
-        </section>
-          <section class="p-1 flex bg-white rounded-lg shadow-md overflow-hidden w-full">
-            <div class="relative w-full h-32 p-1 bg-white">
-                <img alt="Video lecture thumbnail showing an instructor presenting slides with graphs and text on a digital whiteboard"
-                    class="w-full h-full bg-white object-cover" height="150"
-                    src="https://storage.googleapis.com/a1aa/image/adf9f93a-1bfa-4ac1-da1d-69bbed7c16c5.jpg"
-                    width="400" />
-                
-            </div>
-            <div class="w-full flex flex-col " style="display: flex;">
-                <h2 class="text-sm font-semibold text-gray-900 mb-0.5">
-                    Introduction to Physics  Physics  Physics 
-                </h2>
-                <p class="text-gray-700 text-[11px] mb-1">
-                    Basics of wave-particle duality and historical and 
-                </p>
-                <div class="flex items-center text-gray-600 text-[10px] space-x-2 mb-1">
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-user-circle text-xs">
-                        </i>
-                        <span>
-                            Dr. Jane Smith
-                        </span>
-                    </div>
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-clock text-xs">
-                        </i>
-                        <span>
-                            45m
-                        </span>
-                    </div>
+                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
                 </div>
-                <button
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1 rounded-md transition text-xs"
-                    type="button">
-                    Watch Now
-                </button>
             </div>
-        </section>  <section class="p-1 flex bg-white rounded-lg shadow-md overflow-hidden w-full">
-            <div class="relative w-full h-32 p-1 bg-white">
-                <img alt="Video lecture thumbnail showing an instructor presenting slides with graphs and text on a digital whiteboard"
-                    class="w-full h-full bg-white object-cover" height="150"
-                    src="https://storage.googleapis.com/a1aa/image/adf9f93a-1bfa-4ac1-da1d-69bbed7c16c5.jpg"
-                    width="400" />
-                
-            </div>
-            <div class="w-full flex flex-col " style="display: flex;">
-                <h2 class="text-sm font-semibold text-gray-900 mb-0.5">
-                    Introduction to Physics  Physics  Physics 
-                </h2>
-                <p class="text-gray-700 text-[11px] mb-1">
-                    Basics of wave-particle duality and historical and 
+            <div class="flex flex-col justify-start">
+                <h3 class="text-sm font-bold leading-tight">
+                    Fetch Google Sheet Data into Website | PHP + API
+                </h3>
+                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
+                    </i>
+                    <span>
+                        Programming with Vishal
+                    </span>
                 </p>
-                <div class="flex items-center text-gray-600 text-[10px] space-x-2 mb-1">
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-user-circle text-xs">
-                        </i>
-                        <span>
-                            Dr. Jane Smith
-                        </span>
-                    </div>
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-clock text-xs">
-                        </i>
-                        <span>
-                            45m
-                        </span>
-                    </div>
-                </div>
-                <button
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1 rounded-md transition text-xs"
-                    type="button">
-                    Watch Now
-                </button>
-            </div>
-        </section>  <section class="p-1 flex bg-white rounded-lg shadow-md overflow-hidden w-full">
-            <div class="relative w-full h-32 p-1 bg-white">
-                <img alt="Video lecture thumbnail showing an instructor presenting slides with graphs and text on a digital whiteboard"
-                    class="w-full h-full bg-white object-cover" height="150"
-                    src="https://storage.googleapis.com/a1aa/image/adf9f93a-1bfa-4ac1-da1d-69bbed7c16c5.jpg"
-                    width="400" />
-                
-            </div>
-            <div class="w-full flex flex-col " style="display: flex;">
-                <h2 class="text-sm font-semibold text-gray-900 mb-0.5">
-                    Introduction to Physics  Physics  Physics 
-                </h2>
-                <p class="text-gray-700 text-[11px] mb-1">
-                    Basics of wave-particle duality and historical and 
+                <p class="text-xs text-gray-700 mt-0.5">
+                    29K views · 4 years ago
                 </p>
-                <div class="flex items-center text-gray-600 text-[10px] space-x-2 mb-1">
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-user-circle text-xs">
-                        </i>
-                        <span>
-                            Dr. Jane Smith
-                        </span>
-                    </div>
-                    <div class="flex items-center space-x-1">
-                        <i class="fas fa-clock text-xs">
-                        </i>
-                        <span>
-                            45m
-                        </span>
-                    </div>
-                </div>
-                <button
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1 rounded-md transition text-xs"
-                    type="button">
-                    Watch Now
-                </button>
             </div>
-        </section>
+            <button class="ml-auto self-start text-gray-700 hover:text-black">
+                <i class="fas fa-ellipsis-v">
+                </i>
+            </button>
+        </article>
+        <!-- Video 2 -->
+        <article class="flex space-x-3">
+            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+                <video
+                    aria-label="Video thumbnail with tailwind css full course text and code snippet on black background"
+                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                        type="video/webm" />
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div
+                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
+                    2:43:34
+                </div>
+                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
+                </div>
+            </div>
+            <div class="flex flex-col justify-start">
+                <h3 class="text-sm font-normal leading-tight">
+                    Tailwind CSS (v4.0) Full Course | Build &amp; Deploy Portfolio Website | Learn ...
+                </h3>
+                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
+                    </i>
+                    <span>
+                        Learn Coding
+                    </span>
+                </p>
+                <p class="text-xs text-gray-700 mt-0.5">
+                    12K views · 4 months ago
+                </p>
+            </div>
+            <button class="ml-auto self-start text-gray-700 hover:text-black">
+                <i class="fas fa-ellipsis-v">
+                </i>
+            </button>
+        </article>
+        <!-- Video 3 -->
+        <article class="flex space-x-3">
+            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+                <video
+                    aria-label="Video thumbnail with TAILWIND CSS Full Course text and blue icon on dark blue background"
+                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                        type="video/webm" />
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div
+                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
+                    54:21
+                </div>
+                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
+                </div>
+            </div>
+            <div class="flex flex-col justify-start">
+                <h3 class="text-sm font-normal leading-tight">
+                    Tailwind CSS v4 Full Course 2025 | Master Tailwind in One Hour
+                </h3>
+                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
+                    </i>
+                    <span>
+                        JavaScript Mastery
+                    </span>
+                </p>
+                <p class="text-xs text-gray-700 mt-0.5">
+                    1M views · 4 months ago
+                </p>
+            </div>
+            <button class="ml-auto self-start text-gray-700 hover:text-black">
+                <i class="fas fa-ellipsis-v">
+                </i>
+            </button>
+        </article>
+        <!-- Video 4 (paused) -->
+        <article class="flex space-x-3 opacity-50">
+            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+                <video
+                    aria-label="Video thumbnail with Tailwind CSS 4 Complete Tutorial text and man portrait on blue background"
+                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                        type="video/webm" />
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div
+                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
+                    6:32:54
+                </div>
+                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
+                </div>
+            </div>
+            <div class="flex flex-col justify-start">
+                <h3 class="text-sm font-normal leading-tight">
+                    Tailwind CSS 4 Full Course with Project in Hindi | Complete Beginner to Ad...
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Code Step By Step
+                </p>
+                <p class="text-xs text-gray-500 mt-0.5">
+                    Download paused
+                </p>
+            </div>
+            <button class="ml-auto self-start text-gray-700 hover:text-black">
+                <i class="fas fa-ellipsis-v">
+                </i>
+            </button>
+        </article>
+        <!-- Video 5 -->
+        <article class="flex space-x-3">
+            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+                <video
+                    aria-label="Video thumbnail showing Baalveer Enter in Bhayanal Lok with superhero character in costume"
+                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                        type="video/webm" />
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div
+                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
+                    1:00:44
+                </div>
+                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
+                </div>
+            </div>
+            <div class="flex flex-col justify-start">
+                <h3 class="text-sm font-normal leading-tight">
+                    Baalveer Enter in Bhayanal Lok | Baalveer S6 | Ep - 12
+                </h3>
+                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
+                    </i>
+                    <span>
+                        Kalyan Films
+                    </span>
+                </p>
+                <p class="text-xs text-gray-700 mt-0.5">
+                    2.2M views · 7 months ago
+                </p>
+            </div>
+            <button class="ml-auto self-start text-gray-700 hover:text-black">
+                <i class="fas fa-ellipsis-v">
+                </i>
+            </button>
+        </article>
+        <!-- Video 6 -->
+        <article class="flex space-x-3">
+            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+                <video
+                    aria-label="Video thumbnail showing Baalveer proposing to Ananya with two people sitting and talking"
+                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                        type="video/webm" />
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div
+                    class="absolute bottom-1 left-1 bg-black bg-opacity-70 text-white text-xs font-semibold px-1 rounded">
+                    21:57
+                </div>
+                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
+                </div>
+            </div>
+            <div class="flex flex-col justify-start">
+                <h3 class="text-sm font-normal leading-tight">
+                    Baalveer ने Ananya को अंगूठी पहना कर किया Propose , मस्ती परी के उड़े हो...
+                </h3>
+                <p class="text-xs text-gray-700 flex items-center space-x-1 mt-1">
+                    <i class="fas fa-check-circle text-gray-700 text-[10px]">
+                    </i>
+                    <span>
+                        Bachpan Ke Superheroes
+                    </span>
+                </p>
+                <p class="text-xs text-gray-700 mt-0.5">
+                    186K views · 1 month ago
+                </p>
+            </div>
+            <button class="ml-auto self-start text-gray-700 hover:text-black">
+                <i class="fas fa-ellipsis-v">
+                </i>
+            </button>
+        </article>
+        <!-- Video 7 -->
+        <article class="flex space-x-3">
+            <div class="relative flex-shrink-0 rounded-lg overflow-hidden w-[168px] h-[94px]">
+                <video
+                    aria-label="Video thumbnail showing Baalveer की दुल्हन बनी with a woman in white dress and HD label"
+                    class="w-full h-full object-cover" controls="" muted="" preload="metadata" tabindex="-1">
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                        type="video/webm" />
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute bottom-0 left-0 h-1 w-14 bg-red-600">
+                </div>
+            </div>
+            <div class="flex flex-col justify-start">
+                <h3 class="text-sm font-normal leading-tight">
+                    "Baalveer की दुल्हन बनी
+                </h3>
+            </div>
+            <button class="ml-auto self-start text-gray-700 hover:text-black">
+                <i class="fas fa-ellipsis-v">
+                </i>
+            </button>
+        </article>
     </main>
 </body>
 
