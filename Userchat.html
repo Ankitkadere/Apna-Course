@@ -67,7 +67,7 @@
   <div id="chatView" class="flex flex-col h-screen">
 
     <!-- Header -->
-    <div class="flex items-center shadow-md bg-green-700 p-4">
+    <div class="flex items-center shadow-md bg-green-700 p-2">
       <button onclick="history.back()" class="text-white text-lg"><i class="fas fa-arrow-left"></i></button>
       <img src="https://storage.googleapis.com/a1aa/image/c5c69e0f-e246-467d-91a8-d665bd99eb70.jpg"
         class="w-10 h-10 rounded-full ml-2" />
@@ -86,14 +86,13 @@
     </div>
 
     <!-- Message Input Form -->
-    <form id="chatForm" class="     w-full max-w-xl flex bg-green-700 rounded-full px-4 py-2 shadow-md z-50">
-      <div class=" hidden"><input id="Ocode" class=" " type="text" name="OPasscode">
+    <form id="chatForm" class=" absolute bottom-1    w-full max-w-xl flex bg-green-700 rounded-full px-4 py-1 shadow-md z-50">
+      <div class=" hidden "><input id="Ocode" class=" " type="text" name="UPassocde">
         <input id="Uname" class=" " type="text" name="Username">
         <input id="Odata" class=" " type="text" name="UData">
-        <input id="Ucode" class=" " type="text" name="UPassocde">
+        <input id="Ucode" class=" " type="text" name="OPasscode">
         <input id="Tname" class=" " type="text" name="Name">
       </div>
-
       <input type="text" id="userInput" name="OData"
         class="flex-1 bg-transparent text-white placeholder-white focus:outline-none text-lg"
         placeholder="Type a message..." required />
@@ -109,14 +108,11 @@
   <script>
     const ownerpasscode = new URLSearchParams(window.location.search).get("ownerpasscode")?.trim();
     const userpasscode = new URLSearchParams(window.location.search).get("userpasscode")?.trim();
-    const course = new URLSearchParams(window.location.search).get("course")?.trim();
     const userchatname = new URLSearchParams(window.location.search).get("userchatname")?.trim();
     const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get("username") || "";
-    const Upass = document.getElementById("Ucode").value = userpasscode;
+    const username = urlParams.get("username") || "Apna Course";
+    const Upass = document.getElementById("Ucode").value = "505050";
     const Opass = document.getElementById("Ocode").value = ownerpasscode;
-    document.getElementById("Tname").value = userchatname;
-    document.getElementById("Uname").value = username;
 
     function checkInput() {
       const input = document.getElementById("userInput");
@@ -211,25 +207,25 @@
       const messagesDiv = document.getElementById("messages");
       messagesDiv.innerHTML = ""; // Clear old messages
 
-      const filtered = data.filter(row => row.OPasscode == ownerpasscode && row.UPassocde == userpasscode);
-
+      const filtered = data.filter(row => row.OPasscode == Upass || row.UPassocde == Opass);
+ 
       filtered.forEach(row => {
-        document.getElementById("chatName").innerText = row.Name;
-        if (row.UData) {
+
+        if (row.OData) {
           messagesDiv.innerHTML += `
             <div class="flex items-start gap-2">
               <img src="https://storage.googleapis.com/a1aa/image/c5c69e0f-e246-467d-91a8-d665bd99eb70.jpg" class="w-8 h-8 rounded-full" />
               <div class="bg-green-700 text-white rounded-md px-4 py-2 max-w-[75%] break-words">
-                ${row.UData}
+                ${row.OData}
               </div>
             </div>`;
         }
 
-        if (row.OData) {
+        if (row.UData) {
           messagesDiv.innerHTML += `
             <div class="flex justify-end items-end gap-2">
               <div class="bg-white text-green-800 rounded-md px-4 py-2 max-w-[75%] break-words shadow">
-                ${row.OData}
+                ${row.UData}
               </div>
               <img src="https://i.pravatar.cc/150?img=12" class="w-8 h-8 rounded-full" />
             </div>`;
@@ -254,8 +250,8 @@
       if (!message) return;
 
       const payload = {
-        OPasscode: a, // optional or static since we're not filtering
-        UPassocde: b,
+        OPasscode: b, // optional or static since we're not filtering
+        UPassocde: a,
         Name: c,
         UData: message,
         OData: "" // for user message
@@ -290,7 +286,7 @@
     });
 
     // Load data periodically
-    setInterval(loadData, 10); // every 3 seconds
+    setInterval(loadData, 50); // every 3 seconds
 
     loadData(); // Initial call</script>
 </body>

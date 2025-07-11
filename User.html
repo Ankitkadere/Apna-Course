@@ -189,7 +189,7 @@
                 const res = await fetch(scriptURL);
                 const data = await res.json();
 
-                const filtered = data.filter(row => row.Passcode?.toString().trim() === passcode || row.Number?.toString().trim() == passcode ||  && row.Status.trim() === "Confirm".trim());
+                const filtered = data.filter(row => row.Passcode?.toString().trim() === passcode || row.Number?.toString().trim() == passcode  && row.Status.trim() === "Confirm".trim());
                 container.innerHTML = "";
 
                 if (filtered.length === 0) {
