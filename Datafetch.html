@@ -3,12 +3,11 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Google Sheet CRUD</title> <link rel="icon" href="logo.jpg" type="image/jpeg" />
+    <title>Teacher : Apna Course</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg" />
     <script src="https://cdn.tailwindcss.com"></script>
-  
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-
 </head>
 <style>
     body {
@@ -112,28 +111,30 @@
     }
 </style>
 
-<body class="bg-[#f5fdf7]">
+<body class="bg-[#f5fdf7] w-full">
     <div id="header"></div>
     <script>
-        document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-        window.addEventListener("DOMContentLoaded", () =>
-            fetch("Header.html").then(r => r.text()).then(h => {
-                header.innerHTML = h;
-                document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-            })
-        );
+        const headerCSS = document.createElement("link");
+        headerCSS.rel = "stylesheet";
+        headerCSS.href = "Header.css";
+        document.head.appendChild(headerCSS);
+        fetch("Header.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("header").innerHTML = html;
+                const headerJS = document.createElement("script");
+                headerJS.src = "Header.js";
+                document.body.appendChild(headerJS);
+            });
     </script>
-
     <form id="search-form" class="w-full max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
         <label class="sr-only" for="search">Search courses by name</label>
         <div class="flex items-center border-2 border-[#1a1a1a] rounded-xl py-2 px-3 relative bg-[#f5fdf7]">
             <i class="fas fa-search text-[#1a1a1a] text-lg"></i>
-            <input id="setuser"
-                class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]" id="search"
-                name="search" placeholder="Search Courses By Name" type="search" autocomplete="on"
+            <input class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]"
+                id="findsearch" name="search" placeholder="Search Courses By Name" type="search" autocomplete="on"
                 aria-autocomplete="list" aria-controls="suggestions-list" aria-haspopup="listbox" aria-expanded="false"
-                role="combobox" aria-activedescendant="" oninput="filterSuggestions()"
-                onkeydown="handleKeyDown(event)" />
+                role="combobox" aria-activedescendant="" oninput="" onchange="" />
             <button aria-label="Voice search" class="text-[#0f6f61] text-xl ml-3" type="button">
                 <i class="fas fa-microphone"></i>
             </button>
@@ -142,25 +143,47 @@
             </ul>
         </div>
     </form>
-
-
-    <h1 class="text-am font-semibold text-center mb-4">Student's Booking Details</h1>
-
-    <div id="dataContainer" class="grid grid-cols-1 md:grid-cols-2">
+    <h1 id="aws" class="text-am font-semibold text-center mb-4">Student's Booking Details</h1>
+    <div id="dataContainer" class="grid grid-cols-1">
         <center>
             <div id="loadercircle" class="loader"></div>
         </center>
     </div>
     <div onclick="closeLogin()" id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
     <div id="loginFormContainer"
-        class="fixed bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg p-1 z-[99999] opacity-0 opacity-0 translate-y-full pointer-events-none">
-        <form id="entryForm" class="hidden mt-10 bg-white p-2  space-y-2">
-            <h2 id="deletedtext" class="text-2xl font-semibold text-gray-800 text-center">Update Booking</h2>
-            <div id="dset">
+        class="fixed h-full w-full top-0 left-0 right-0 bg-[#f5fdf7]  shadow-lg p-1 z-[99999] opacity-0 opacity-0 translate-y-full pointer-events-none">
+        <header class="px-3 py-4 flex items-center bg-[#f5fdf7] justify-between">
+            <div>
+                <a href="index.html">
+                    <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
+                        <span>Apna</span>
+                        <span class="text-[#0f6f61]">Course</span>
+                    </h1>
+                </a>
+            </div>
+            <div class=" flex ">
+                <a id="Chat">
+                  <svg class="w-8 h-8 text-gray-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+    <path d="M18 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3.546l3.2 3.659a1 1 0 0 0 1.506 0L13.454 14H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-8 10H5a1 1 0 0 1 0-2h5a1 1 0 1 1 0 2Zm5-4H5a1 1 0 0 1 0-2h10a1 1 0 1 1 0 2Z"/>
+</svg>
+                </a>
+                <a href="Owner.html" class="pl-4">
+                    <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+                        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
+                        src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg"
+                        width="32" />
+                </a>
+            </div>
+
+        </header>
+        <form id="entryForm"
+            class="fixed bottom-1 left-0 right-0 mx-auto max-w-md bg-[#f5fdf7] p-6 space-y-4 rounded-lg shadow-lg z-50">
+            <div id="dset" class="space-y-4">
                 <div>
-                    <label for="Id" class="block text-gray-700 font-medium mb-1">Booking ID</label>
+                    <label for="Id" class="hidden block text-gray-700 font-medium mb-1">Booking ID</label>
                     <input type="text" id="Id" name="Id" placeholder="ID"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        class="hidden w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
 
                 <div>
@@ -171,14 +194,14 @@
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label for="Date" class="block text-gray-700 font-medium mb-1">Date</label>
+                        <label for="Date" class="hidden text-gray-700 font-medium mb-1">Date</label>
                         <input type="date" id="Date" name="Date"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            class="hidden w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                     <div>
-                        <label for="Time" class="block text-gray-700 font-medium mb-1">Time</label>
+                        <label for="Time" class="hidden block text-gray-700 font-medium mb-1">Time</label>
                         <input type="time" id="Time" name="Time"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            class="hidden w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                 </div>
 
@@ -196,8 +219,23 @@
 
                 <div>
                     <label for="Course" class="block text-gray-700 font-medium mb-1">Course</label>
-                    <input type="text" id="Course" name="Course" placeholder="Course"
+                    <input list="courseList" id="Course" name="Course" placeholder="Enter or Select a Course"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                    <datalist id="courseList">
+                        <option value="English Speaking">
+                        <option value="Telly">
+                        <option value="DCA">
+                        <option value="PGDCA">
+                        <option value="Basic Computer">
+                        <option value="Typing Hindi">
+                        <option value="Typing English">
+                        <option value="Web Development">
+                        <option value="App Development">
+                        <option value="11th Grade">
+                        <option value="12th Grade">
+                    </datalist>
+
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
@@ -208,81 +246,102 @@
                     </div>
                     <div>
                         <label for="Status" class="block text-gray-700 font-medium mb-1">Status</label>
-                        <input type="text" id="Status" name="Status" placeholder="Active / Pending"
+                        <input list="statusList" id="Status" name="Status" placeholder="Enter or Select Status"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                        <datalist id="statusList">
+                            <option value="Confirm">
+                            <option value="Pending">
+                            <option value="Rejected">
+                        </datalist>
+
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label for="Start" class="block text-gray-700 font-medium mb-1">Start Time</label>
-                        <input type="text" id="Start" name="Start" placeholder="10:00 AM"
+                        <input type="date" id="Start" name="Start" placeholder="10:00 AM"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                     <div>
                         <label for="End" class="block text-gray-700 font-medium mb-1">End Time</label>
-                        <input type="text" id="End" name="End" placeholder="12:00 PM"
+                        <input type="date" id="End" name="End" placeholder="12:00 PM"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                 </div>
             </div>
-          <br>   <div id="buttonsets" class="mt-12 w-full flex justify-between items-center">
-                <button onclick="closeLogin()" type="button" id="closeBtn"
-                    class="bg-blue-700 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition">Cancel</button>
 
+            <div id="buttonsets" class="flex justify-between items-center pt-4 border-t border-gray-300">
                 <button onclick="deleteEntry()" type="submit" id="deletedata"
-                    class="bg-red-700 hover:bg-red-900 text-white font-semibold py-2 px-6 rounded-md transition">
+                    class="bg-red-700 hover:bg-red-900 text-white font-semibold py-2 px-6 rounded-md transition focus:outline-none focus:ring-2 focus:ring-red-600">
                     Delete
-                </button> <button onclick="setTimeout(() => {
-                window.location.reload();
-            }, 300);
-" type="submit" class="bg-green-700 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition">
+                </button>
+                <button onclick="closeLogin()" type="button" id="closeBtn"
+                    class="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-md transition focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Cancel
+                </button>
+                <button onclick="setTimeout(() => { window.location.reload(); }, 300);" type="submit"
+                    class="bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-6 rounded-md transition focus:outline-none focus:ring-2 focus:ring-green-600">
                     Save
                 </button>
             </div>
         </form>
-
     </div>
     </main>
+</body>
+<script>
 
+    const form = document.getElementById("entryForm");
+    const container = document.getElementById("dataContainer");
+    const passcode = new URLSearchParams(window.location.search).get("passcode")?.trim();
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwdAgLXrfkDEEIOsTIjJcm6VwLuTCGH_zo3YKmv7fpvkNwnHFyGEUb2eVIF6iuHcb2h/exec";
+    let editing = false;
 
-    <script>
-        const form = document.getElementById("entryForm");
-        const container = document.getElementById("dataContainer");
-        const passcode = new URLSearchParams(window.location.search).get("passcode")?.trim();
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwdAgLXrfkDEEIOsTIjJcm6VwLuTCGH_zo3YKmv7fpvkNwnHFyGEUb2eVIF6iuHcb2h/exec";
-        let editing = false;
+    async function loadData() {
+        try {
+            const res = await fetch(scriptURL);
+            const data = await res.json();
+            document.getElementById("loadercircle").style.display = "none";
+            const stud = document.getElementById("findsearch").value.trim();
+            const filtered = data.filter(row => passcode == "505050" && row.Passcode );
+            if (passcode.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-600 text-lg">No data found for Passcode: <strong>${passcode}</strong></p>`;
+                return;
+            }
+            document.getElementById("Chat").onclick = function () {
+                const ownerpasscode = new URLSearchParams(window.location.search).get("passcode")?.trim();
+                const userpasscode = document.getElementById("Passcode").value.trim(); // ✅ From form field
+                const userchatname = document.getElementById("Name").value.trim(); // ✅ From form field
 
-        async function loadData() {
-            try {
-                const res = await fetch(scriptURL);
-                const data = await res.json();
-                document.getElementById("loadercircle").style.display = "none";
-                const filtered = data.filter(row => row.Passcode);
-                if (passcode.length === 0) {
-                    container.innerHTML = `<p class="text-center text-gray-600 text-lg">No data found for Passcode: <strong>${passcode}</strong></p>`;
-                    return;
+                if (ownerpasscode && userpasscode) {
+                    window.location.href = `Chatapp.html?ownerpasscode=${encodeURIComponent(ownerpasscode)}&userpasscode=${encodeURIComponent(userpasscode)}&userchatname=${encodeURIComponent(userchatname)}`;
+                } else {
+                    alert("Missing passcodes");
                 }
+            };
 
-                function formatDate(dateStr) {
-                    if (!dateStr) return "N/A";
-                    const date = new Date(dateStr);
-                    const options = {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric"
-                    };
-                    return date.toLocaleDateString("en-IN", options);
-                }
 
-                filtered.forEach(row => {
-                    const card = document.createElement("div");
-                    card.className = "  shadow-lg rounded-lg p-1";
-                    card.innerHTML = `
+
+            function formatDate(dateStr) {
+                if (!dateStr) return "N/A";
+                const date = new Date(dateStr);
+                const options = {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                };
+                return date.toLocaleDateString("en-IN", options);
+            }
+
+            filtered.forEach(row => {
+                const card = document.createElement("div");
+                card.className = "  shadow-lg rounded-lg p-1";
+                card.innerHTML = `
  
   <section
     aria-label="Courses list"
-    class="px-1 mt-2 max-w-lg mx-auto w-full "
+    class="px-1 mt-2 w-full "
      onclick='editEntry(${JSON.stringify(row)})'
   > 
     <a
@@ -297,22 +356,20 @@
       >
         <div class="flex justify-between items-center space-x-1 mb-1">
              <div class="flex items-center space-x-1 mb-1">
-          <img
-            alt="English Speaking course icon in blue"
-            class="w-5 h-5"
-            height="20"
-            src="https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg"
-            width="20"
-          />
+           <h2
+            class="font-bold text-white bg-green-700 truncate max-w-[calc(100%-20px)] px-2 text-2x1 leading-tight"
+          >
+         ${row.Passcode}
+          </h2>
           <h2
-            class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-2x1 leading-tight"
+            class="font-semibold text-[#1a1a1a] bg-truncate max-w-[calc(100%-20px)] text-2x1 leading-tight"
           >
          ${row.Name}
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
           </div>
            <div>
-          <p class=" text-right text-am">${row.Price || "0"} .Rs</p>
+                <p class=" text-right text-green-700 font-semibold text-am">${row.Price || "0"} .Rs</p>
           </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
@@ -343,149 +400,153 @@
   </section> 
           `;
 
-                    container.appendChild(card);
-                });
-
-            } catch (err) {
-                console.error(err);
-                container.innerHTML = `<p class="text-red-600 text-center">Failed to load data.</p>`;
-                document.getElementById("loadercircle").style.display = "none";
-            }
-        }
-
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const formData = Object.fromEntries(new FormData(form));
-            formData.method = editing ? "update" : "create";
-
-            await fetch(scriptURL, {
-                method: "POST",
-                body: JSON.stringify(formData),
+                container.appendChild(card);
             });
 
-            form.reset();
-            editing = false;
-            loadData();
-        };
-        const openBtn = document.getElementById("openLoginBtn");
-        const closeBtn = document.getElementById("closeLoginBtn");
-        const loginFormContainer = document.getElementById("loginFormContainer");
-        const overlay = document.getElementById("overlay");
-        function editEntry(row) {
-            document.getElementById("dset").classList.remove("hidden");
-            document.getElementById("entryForm").style.display = "block";
-            for (const key in row) {
-                if (form.elements[key]) {
-                    form.elements[key].value = row[key] ?? "";
-                }
-            }
-            editing = true;
-            overlay.classList.remove("hidden");
-            loginFormContainer.style.opacity = "1";
-            loginFormContainer.style.transform = "translateY(0)";
-            loginFormContainer.style.pointerEvents = "auto";
+        } catch (err) {
+            console.error(err);
+            container.innerHTML = `<p class="text-red-600 text-center">Failed to load data.</p>`;
+            document.getElementById("loadercircle").style.display = "none";
         }
+    }
 
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const formData = Object.fromEntries(new FormData(form));
+        formData.method = editing ? "update" : "create";
 
-        function deleteEntry() {
-            document.getElementById("dset").classList.add("hidden");
-            document.getElementById("Passcode").value = "";
-            document.getElementById("Date").value = "";
-            document.getElementById("Time").value = "";
-            document.getElementById("Name").value = "";
-            document.getElementById("Number").value = "";
-            document.getElementById("Course").value = "";
-            document.getElementById("Price").value = "";
-            document.getElementById("Status").value = "";
-            document.getElementById("Start").value = "";
-            document.getElementById("End").value = "";
-            editing = true;
-            document.getElementById("deletedtext").innerText = "Data Deleted";
-            document.getElementById("buttonsets").classList.add("hidden");
-            setTimeout(() => {
-                window.location.reload();
-            }, 300);
-
-        }
-
-        loadData();
-    </script>
-
-    <script>
-
-
-        function openLogin() {
-            overlay.classList.remove("hidden");
-            loginFormContainer.style.opacity = "1";
-            loginFormContainer.style.transform = "translateY(0)";
-            loginFormContainer.style.pointerEvents = "auto";
-        }
-
-        function closeLogin() {
-            loginFormContainer.style.opacity = "0";
-            loginFormContainer.style.transform = "translateY(100%)";
-            loginFormContainer.style.pointerEvents = "none";
-            overlay.classList.add("hidden");
-        }
-
-        openBtn.addEventListener("click", openLogin);
-        closeBtn.addEventListener("click", closeLogin);
-        overlay.addEventListener("click", closeLogin);
-    </script>
-    <script>
-        const categoryButtons = document.querySelectorAll(".category-btn");
-        const courses = document.querySelectorAll(".course-item");
-        const noMoreCoursesText = document.querySelector("center h2");
-        const searchInput = document.getElementById("search-input");
-
-        let currentCategory = "all";
-
-        function filterCourses() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
-            let anyVisible = false;
-
-            courses.forEach((course) => {
-                const courseCategory = course.dataset.category;
-                const courseName = course.querySelector("h2").textContent.toLowerCase();
-
-                const matchesCategory =
-                    currentCategory === "all" || courseCategory === currentCategory;
-                const matchesSearch = courseName.includes(searchTerm);
-
-                if (matchesCategory && matchesSearch) {
-                    course.style.display = "block";
-                    anyVisible = true;
-                } else {
-                    course.style.display = "none";
-                }
-            });
-
-            noMoreCoursesText.style.display = anyVisible ? "none" : "block";
-        }
-
-        categoryButtons.forEach((btn) => {
-            btn.addEventListener("click", () => {
-                // Remove active styles and aria-pressed
-                categoryButtons.forEach((b) => {
-                    b.classList.remove("text-[#0f6f61]", "font-bold");
-                    b.setAttribute("aria-pressed", "false");
-                });
-                // Add active styles and aria-pressed to clicked
-                btn.classList.add("text-[#0f6f61]", "font-bold");
-                btn.setAttribute("aria-pressed", "true");
-
-                currentCategory = btn.getAttribute("data-filter");
-                filterCourses();
-            });
+        await fetch(scriptURL, {
+            method: "POST",
+            body: JSON.stringify(formData),
         });
 
-        searchInput.addEventListener("input", () => {
+        form.reset();
+        editing = false;
+        loadData();
+    };
+    const openBtn = document.getElementById("openLoginBtn");
+    const closeBtn = document.getElementById("closeLoginBtn");
+    const loginFormContainer = document.getElementById("loginFormContainer");
+    const overlay = document.getElementById("overlay");
+    function editEntry(row) {
+        document.getElementById("dset").classList.remove("hidden");
+        document.getElementById("entryForm").style.display = "block";
+        for (const key in row) {
+            if (form.elements[key]) {
+                form.elements[key].value = row[key] ?? "";
+            }
+        }
+        editing = true;
+        overlay.classList.remove("hidden");
+        loginFormContainer.style.opacity = "1";
+        loginFormContainer.style.transform = "translateY(0)";
+        loginFormContainer.style.pointerEvents = "auto";
+    }
+
+
+    function deleteEntry() {
+        document.getElementById("dset").classList.add("hidden");
+        document.getElementById("Passcode").value = "";
+        document.getElementById("Date").value = "";
+        document.getElementById("Time").value = "";
+        document.getElementById("Name").value = "";
+        document.getElementById("Number").value = "";
+        document.getElementById("Course").value = "";
+        document.getElementById("Price").value = "";
+        document.getElementById("Status").value = "";
+        document.getElementById("Start").value = "";
+        document.getElementById("End").value = "";
+        editing = true;
+        document.getElementById("deletedtext").innerText = "Proccesing...";
+        document.getElementById("buttonsets").classList.add("hidden");
+        setTimeout(() => {
+            document.getElementById("deletedtext").innerText = "Data Deleted";
+        }, 3000);
+        setTimeout(() => {
+            window.location.reload();
+        }, 5000);
+
+    }
+
+    loadData();
+
+</script>
+
+<script>
+
+
+    function openLogin() {
+        overlay.classList.remove("hidden");
+        loginFormContainer.style.opacity = "1";
+        loginFormContainer.style.transform = "translateY(0)";
+        loginFormContainer.style.pointerEvents = "auto";
+    }
+
+    function closeLogin() {
+        loginFormContainer.style.opacity = "0";
+        loginFormContainer.style.transform = "translateY(100%)";
+        loginFormContainer.style.pointerEvents = "none";
+        overlay.classList.add("hidden");
+    }
+
+    openBtn.addEventListener("click", openLogin);
+    closeBtn.addEventListener("click", closeLogin);
+    overlay.addEventListener("click", closeLogin);
+</script>
+<script>
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const courses = document.querySelectorAll(".course-item");
+    const noMoreCoursesText = document.querySelector("center h2");
+    const searchInput = document.getElementById("search-input");
+
+    let currentCategory = "all";
+
+    function filterCourses() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        let anyVisible = false;
+
+        courses.forEach((course) => {
+            const courseCategory = course.dataset.category;
+            const courseName = course.querySelector("h2").textContent.toLowerCase();
+
+            const matchesCategory =
+                currentCategory === "all" || courseCategory === currentCategory;
+            const matchesSearch = courseName.includes(searchTerm);
+
+            if (matchesCategory && matchesSearch) {
+                course.style.display = "block";
+                anyVisible = true;
+            } else {
+                course.style.display = "none";
+            }
+        });
+
+        noMoreCoursesText.style.display = anyVisible ? "none" : "block";
+    }
+
+    categoryButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            // Remove active styles and aria-pressed
+            categoryButtons.forEach((b) => {
+                b.classList.remove("text-[#0f6f61]", "font-bold");
+                b.setAttribute("aria-pressed", "false");
+            });
+            // Add active styles and aria-pressed to clicked
+            btn.classList.add("text-[#0f6f61]", "font-bold");
+            btn.setAttribute("aria-pressed", "true");
+
+            currentCategory = btn.getAttribute("data-filter");
             filterCourses();
         });
+    });
 
-        // Initialize: show all courses by default and no category selected initially
+    searchInput.addEventListener("input", () => {
         filterCourses();
-    </script>
+    });
+
+    // Initialize: show all courses by default and no category selected initially
+    filterCourses();
+</script>
 </body>
 
 </html>

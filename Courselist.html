@@ -42,15 +42,26 @@
 </head>
 
 <body class="bg-[#f5fdf7] ">
-  <div id="header" class=" max-w-lg mx-auto"></div>
+  <div id="header"></div> <!-- Header will load here -->
+
   <script>
-    document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-    window.addEventListener("DOMContentLoaded", () =>
-      fetch("Header.html").then(r => r.text()).then(h => {
-        header.innerHTML = h;
-        document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-      })
-    );
+    // Load Header CSS (optional)
+    const headerCSS = document.createElement("link");
+    headerCSS.rel = "stylesheet";
+    headerCSS.href = "Header.css"; // Remove this if not using a separate CSS file
+    document.head.appendChild(headerCSS);
+
+    // Load Header HTML
+    fetch("Header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header").innerHTML = html;
+
+        // Load Header JS (optional)
+        const headerJS = document.createElement("script");
+        headerJS.src = "Header.js"; // Remove this if not using a separate JS file
+        document.body.appendChild(headerJS);
+      });
   </script>
   <section aria-label="Filter and search"
     class=" flex overflow-x-auto scrollbar-none scrollbar-hide max-w-lg mx-auto px-4 mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ">
@@ -58,8 +69,8 @@
       class="overflow-auto scrollbar-hide  overflow-auto hide-scrollbar border-none flex flex-nowrap items-center gap-8 overflow-x-auto scrollbar-hide px-2"
       style="-webkit-overflow-scrolling: touch;">
       <button aria-pressed="true"
-        class="category-btn flex flex-col items-center text-[#0f6f61] text-xs font-bold flex-shrink-0 outline-none" data-filter="all"
-        type="button">
+        class="category-btn flex flex-col items-center text-[#0f6f61] text-xs font-bold flex-shrink-0 outline-none"
+        data-filter="all" type="button">
         <img alt="Icon representing all course categories, large teal circle with white multiple squares grid symbol"
           class="w-12 h-12 mb-1 rounded-full object-cover" height="64"
           src="https://storage.googleapis.com/a1aa/image/647a1985-39a6-498f-856b-f668fe6ce1ab.jpg" width="64" />

@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Passcode Data Viewer</title> <link rel="icon" href="logo.jpg" type="image/jpeg" />
+  <title>Passcode Data Viewer</title>
+  <link rel="icon" href="logo.jpg" type="image/jpeg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .loader {
@@ -38,23 +39,26 @@
 </head>
 
 <body class="bg-[#f5fdf7] min-h-screen flex flex-col ">
-  <div id="header"></div>
-  <script>
-    document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-    window.addEventListener("DOMContentLoaded", () =>
-      fetch("Header.html").then(r => r.text()).then(h => {
-        header.innerHTML = h;
-        document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-      })
-    );
-  </script>
+  <header class="px-3 py-4 flex items-center justify-between">
+    <a href="">
+      <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
+        <span>Apna</span>
+        <span class="text-[#0f6f61]">Course</span>
+      </h1>
+    </a>
+    <a href="Owner.html">
+      <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
+        src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
+    </a>
+  </header>
   <div class="max-w-5xl w-full mt-24">
     <center>
-     <img alt="Profile picture of a young man with short hair wearing a blue shirt"
-                class="w-28 h-28 rounded-full border-2 border-[#0f6f61]" height="32"
-                src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
-    <h1 class="text-2xl font-bold mb-6 text-center">Owner Login</h1>
-</center>
+      <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+        class="w-28 h-28 rounded-full border-2 border-[#0f6f61]" height="32"
+        src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
+      <h1 id="headtilttle" class="text-2xl font-bold mb-6 text-center">Owner Login</h1>
+    </center>
     <!-- Input + Dial Pad -->
     <div class="absolute bottom-20 w-full bg-white p-4 rounded-lg shadow">
       <input id="filterInput" type="text" placeholder="ENTER => PASSCODE  "
@@ -84,7 +88,7 @@
       </button>
     </div>
   </div>
- 
+
   <script>
     const filterInput = document.getElementById("filterInput");
     const buttons = document.querySelectorAll("[data-value]");
@@ -113,11 +117,26 @@
 
     submitBtn.addEventListener("click", () => {
       if (input.trim() === "") {
-        alert("Please enter a passcode");
+        const headtilttle = document.getElementById("headtilttle").innerText = "Please Fill Passocde"
+        headtilttle.style.textcolor = "red";
         return;
       }
-      // Redirect to File 2 with passcode
-      window.location.href = `Datafetch.html?passcode=${encodeURIComponent(input.trim())}`;
+      if (filterInput.value.length === 6) {
+        window.location.href = `Datafetch.html?passcode=${encodeURIComponent(input.trim())}`;
+      }
+      else if (filterInput.value.length === 4) { window.location.href = `User.html?passcode=${encodeURIComponent(input.trim())}`; }
+      else if (filterInput.value.length === 10) { window.location.href = `User.html?passcode=${encodeURIComponent(input.trim())}`; }
+
+      else {
+        const headtilttle = document.getElementById("headtilttle").innerText = "Try Again"
+        headtilttle.style.color = "red";
+      }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        handleSubmit();
+      }
     });
   </script>
 </body>

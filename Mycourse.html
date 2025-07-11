@@ -41,16 +41,19 @@
 </head>
 
 <body class="bg-[#f5fdf7] min-h-screen flex flex-col ">
-  <div id="header"></div>
-  <script>
-    document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-    window.addEventListener("DOMContentLoaded", () =>
-      fetch("Header.html").then(r => r.text()).then(h => {
-        header.innerHTML = h;
-        document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-      })
-    );
-  </script>
+  <header class="px-3 py-4 flex items-center justify-between">
+        <a href="">
+            <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
+                <span>Apna</span>
+                <span class="text-[#0f6f61]">Course</span>
+            </h1>
+        </a>
+        <a href="Owner.html">
+            <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+                class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
+                src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
+        </a>
+    </header>
 
   <div class="max-w-5xl w-full mt-10">
     <center>
@@ -99,8 +102,7 @@
       Home
 
     </a>
-
-    <!-- Course -->
+ 
     <a href="Courselist.html" class="flex flex-col items-center relative text-[#8a8a9f]">
       <img src="https://img.icons8.com/ios-filled/50/000000/open-book--v1.png" alt="Course Icon" class="w-5 h-5 mb-1" />
       Course

@@ -89,11 +89,12 @@
     <form id="chatForm" class="     w-full max-w-xl flex bg-green-700 rounded-full px-4 py-2 shadow-md z-50">
       <div class=" hidden"><input id="Ocode" class=" " type="text" name="OPasscode">
         <input id="Uname" class=" " type="text" name="Username">
-        <input id="Odata" class=" " type="text" name="OData">
+        <input id="Odata" class=" " type="text" name="UData">
         <input id="Ucode" class=" " type="text" name="UPassocde">
         <input id="Tname" class=" " type="text" name="Name">
       </div>
-      <input type="text" id="userInput" name="UData"
+
+      <input type="text" id="userInput" name="OData"
         class="flex-1 bg-transparent text-white placeholder-white focus:outline-none text-lg"
         placeholder="Type a message..." required />
 
@@ -108,12 +109,14 @@
   <script>
     const ownerpasscode = new URLSearchParams(window.location.search).get("ownerpasscode")?.trim();
     const userpasscode = new URLSearchParams(window.location.search).get("userpasscode")?.trim();
+    const course = new URLSearchParams(window.location.search).get("course")?.trim();
     const userchatname = new URLSearchParams(window.location.search).get("userchatname")?.trim();
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get("username") || "";
     const Upass = document.getElementById("Ucode").value = userpasscode;
     const Opass = document.getElementById("Ocode").value = ownerpasscode;
- 
+    document.getElementById("Tname").value = userchatname;
+    document.getElementById("Uname").value = username;
 
     function checkInput() {
       const input = document.getElementById("userInput");
@@ -208,10 +211,10 @@
       const messagesDiv = document.getElementById("messages");
       messagesDiv.innerHTML = ""; // Clear old messages
 
-      const filtered = data.filter(row => row.OPasscode == ownerpasscode || row.UPassocde == userpasscode);
+      const filtered = data.filter(row => row.OPasscode == ownerpasscode && row.UPassocde == userpasscode);
 
       filtered.forEach(row => {
-       
+        document.getElementById("chatName").innerText = row.Name;
         if (row.UData) {
           messagesDiv.innerHTML += `
             <div class="flex items-start gap-2">

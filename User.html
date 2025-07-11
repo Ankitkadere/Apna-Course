@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Google Sheet CRUD</title>
+    <title>Student : Apna Course</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg" />
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
@@ -110,23 +109,35 @@
     }
 </style>
 
-<body class="bg-[#f5fdf7]">
-    <div id="header"></div>
+<body class="bg-[#f5fdf7] w-full">
+
+    <div id="header"></div> <!-- Header will load here -->
+
     <script>
-        document.head.innerHTML += `<link rel="stylesheet" href="css/style.css">`;
-        window.addEventListener("DOMContentLoaded", () =>
-            fetch("Header.html").then(r => r.text()).then(h => {
-                header.innerHTML = h;
-                document.body.appendChild(Object.assign(document.createElement("script"), { src: "script.js" }));
-            })
-        );
+        // Load Header CSS (optional)
+        const headerCSS = document.createElement("link");
+        headerCSS.rel = "stylesheet";
+        headerCSS.href = "Header.css"; // Remove this if not using a separate CSS file
+        document.head.appendChild(headerCSS);
+
+        // Load Header HTML
+        fetch("Header.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("header").innerHTML = html;
+
+                // Load Header JS (optional)
+                const headerJS = document.createElement("script");
+                headerJS.src = "Header.js"; // Remove this if not using a separate JS file
+                document.body.appendChild(headerJS);
+            });
     </script>
 
     <form id="search-form" class="w-full max-w-md px-4" role="search" aria-label="Search jobs or courses" novalidate>
         <label class="sr-only" for="search">Search courses by name</label>
         <div class="flex items-center border-2 border-[#1a1a1a] rounded-xl py-2 px-3 relative bg-[#f5fdf7]">
             <i class="fas fa-search text-[#1a1a1a] text-lg"></i>
-            <input id="setuser"
+            <input id="setuser" onchange="ssetdearch()"
                 class="flex-grow ml-3 text-base placeholder:text-[#1a1a1a] focus:outline-none bg-[#f5fdf7]" id="search"
                 name="search" placeholder="Search Courses By Name" type="search" autocomplete="on"
                 aria-autocomplete="list" aria-controls="suggestions-list" aria-haspopup="listbox" aria-expanded="false"
@@ -140,7 +151,6 @@
             </ul>
         </div>
     </form>
-
 
     <h1 class="text-am font-semibold text-center mb-4">Student's Booking Details</h1>
 
@@ -168,17 +178,18 @@
 
     <script>
         const form = document.getElementById("entryForm");
+        const find = document.getElementById("setuser").value.trim();
         const container = document.getElementById("dataContainer");
         const passcode = new URLSearchParams(window.location.search).get("passcode")?.trim();
+        const number = new URLSearchParams(window.location.search).get("number")?.trim();
         const scriptURL = "https://script.google.com/macros/s/AKfycbwdAgLXrfkDEEIOsTIjJcm6VwLuTCGH_zo3YKmv7fpvkNwnHFyGEUb2eVIF6iuHcb2h/exec";
         let editing = false;
-
         async function loadData() {
             try {
                 const res = await fetch(scriptURL);
                 const data = await res.json();
 
-                const filtered = data.filter(row => row.Passcode?.toString().trim() === passcode);
+                const filtered = data.filter(row => row.Passcode?.toString().trim() === passcode || row.Number?.toString().trim() == passcode ||  && row.Status.trim() === "Confirm".trim());
                 container.innerHTML = "";
 
                 if (filtered.length === 0) {
@@ -205,7 +216,7 @@
     class="px-1 mt-2 max-w-lg mx-auto w-full "
     id="courses-list"
   > 
- <a href="Lecture.html?course=${encodeURIComponent(row.Course)}" class="course-item block" data-category="${row.Course.toLowerCase().replace(/\s+/g, '-')}">
+ <a href="Lecture.html?course=${encodeURIComponent(row.Course)}&passcode=${encodeURIComponent(row.Passcode)}&name=${encodeURIComponent(row.Name)}" class="course-item block" data-category="${row.Course.toLowerCase().replace(/\s+/g, '-')}">
 
       <div
         class="border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
@@ -214,22 +225,20 @@
       >
         <div class="flex justify-between items-center space-x-1 mb-1">
              <div class="flex items-center space-x-1 mb-1">
-          <img
-            alt="English Speaking course icon in blue"
-            class="w-5 h-5"
-            height="20"
-            src="https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg"
-            width="20"
-          />
+           <h2
+            class="font-bold text-white bg-green-700 truncate max-w-[calc(100%-20px)] px-2 text-2x1 leading-tight"
+          >
+         ${row.Passcode}
+          </h2>
           <h2
-            class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-2x1 leading-tight"
+            class="font-semibold text-[#1a1a1a] bg-truncate max-w-[calc(100%-20px)] text-2x1 leading-tight"
           >
          ${row.Name}
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
           </div>
            <div>
-          <p class=" text-right text-am">${row.Price || "0"} .Rs</p>
+                <p class=" text-right text-green-700 font-bold text-am">${row.Price || "0"} .Rs</p>
           </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
@@ -316,6 +325,8 @@
         }
 
         loadData();
+
+
     </script>
     <script>
         const categoryButtons = document.querySelectorAll(".category-btn");
