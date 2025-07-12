@@ -16,19 +16,27 @@
 </style>
 
 <body class="bg-[#f5fdf7]">
-  <header class="px-3 py-4 flex items-center justify-between">
-    <a href="">
-      <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
-        <span>Apna</span>
-        <span class="text-[#0f6f61]">Course</span>
-      </h1>
-    </a>
-    <a href="Owner.html">
-      <img alt="Profile picture of a young man with short hair wearing a blue shirt"
-        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
-        src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
-    </a>
-  </header>
+  <div id="header"></div> <!-- Header will load here -->
+
+  <script>
+    // Load Header CSS (optional)
+    const headerCSS = document.createElement("link");
+    headerCSS.rel = "stylesheet";
+    headerCSS.href = "Header.css"; // Remove this if not using a separate CSS file
+    document.head.appendChild(headerCSS);
+
+    // Load Header HTML
+    fetch("Header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header").innerHTML = html;
+
+        // Load Header JS (optional)
+        const headerJS = document.createElement("script");
+        headerJS.src = "Header.js"; // Remove this if not using a separate JS file
+        document.body.appendChild(headerJS);
+      });
+  </script>
   <center>
     <h2>Not Available</h2>
   </center>
@@ -40,7 +48,6 @@
     <a href="index.html" class="flex flex-col items-center  ">
       <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home Icon" class="w-6 h-6" />
       Home
-
     </a>
 
     <!-- Course -->
@@ -60,8 +67,8 @@
 
     <!-- My -->
     <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
-      <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="My Profile Icon" class="w-5 h-5 mb-1" />
-      Me
+      <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" alt="Game Icon" class="w-5 h-5 mb-1" />
+      Quiz
     </a>
 
   </nav>

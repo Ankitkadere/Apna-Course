@@ -162,17 +162,17 @@
                     </h1>
                 </a>
             </div>
-            <div class=" flex ">
+            <div class=" flex gap-2">
                 <a id="Chat">
-                  <svg class="w-8 h-8 text-gray-700 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-    <path d="M18 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3.546l3.2 3.659a1 1 0 0 0 1.506 0L13.454 14H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-8 10H5a1 1 0 0 1 0-2h5a1 1 0 1 1 0 2Zm5-4H5a1 1 0 0 1 0-2h10a1 1 0 1 1 0 2Z"/>
-</svg>
+                    <svg class="w-8 h-8 text-green-700 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 18">
+                        <path
+                            d="M18 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3.546l3.2 3.659a1 1 0 0 0 1.506 0L13.454 14H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-8 10H5a1 1 0 0 1 0-2h5a1 1 0 1 1 0 2Zm5-4H5a1 1 0 0 1 0-2h10a1 1 0 1 1 0 2Z" />
+                    </svg>
                 </a>
                 <a href="Owner.html" class="pl-4">
                     <img alt="Profile picture of a young man with short hair wearing a blue shirt"
-                        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
-                        src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg"
-                        width="32" />
+                        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32" src="User.jpg" width="32" />
                 </a>
             </div>
 
@@ -304,7 +304,7 @@
             const data = await res.json();
             document.getElementById("loadercircle").style.display = "none";
             const stud = document.getElementById("findsearch").value.trim();
-            const filtered = data.filter(row => passcode == "505050" && row.Passcode );
+            const filtered = data.filter(row => passcode == "505050" && row.Passcode);
             if (passcode.length === 0) {
                 container.innerHTML = `<p class="text-center text-gray-600 text-lg">No data found for Passcode: <strong>${passcode}</strong></p>`;
                 return;

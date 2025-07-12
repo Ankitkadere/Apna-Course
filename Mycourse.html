@@ -2,96 +2,246 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Passcode Data Viewer</title>
-  <link rel="icon" href="logo.jpg" type="image/jpeg" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Apna Course</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet" />
-  <style>
-    .loader {
-      position: absolute;
-      border: 16px solid #f3f3f3;
-      border-top: 16px solid #3498db;
-      border-radius: 50%;
-      width: 620px;
-      height: 620px;
-      animation: spin 2s linear infinite;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    #filterInput {
-      font-size: 22px;
-    }
-
-    .grid {
-      z-index: -1;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20%;
+  }
+</style>
 
-<body class="bg-[#f5fdf7] min-h-screen flex flex-col ">
-  <header class="px-3 py-4 flex items-center justify-between">
-        <a href="">
-            <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
-                <span>Apna</span>
-                <span class="text-[#0f6f61]">Course</span>
-            </h1>
-        </a>
-        <a href="Owner.html">
-            <img alt="Profile picture of a young man with short hair wearing a blue shirt"
-                class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32"
-                src="https://storage.googleapis.com/a1aa/image/287f339a-c47c-4ebd-60f5-a84f76df5664.jpg" width="32" />
-        </a>
-    </header>
+<body class="bg-[#f5fdf7]">
+  <div id="header"></div> <!-- Header will load here -->
 
-  <div class="max-w-5xl w-full mt-10">
-    <center>
-      <i class="fas fa-user fa-7x top-20 text-gray-400 drop-shadow-lg">
-      </i>
-      <h1 class="text-lg font-bold mb-8 text-center">Student Login</h1>
-    </center>
+  <script>
+    // Load Header CSS (optional)
+    const headerCSS = document.createElement("link");
+    headerCSS.rel = "stylesheet";
+    headerCSS.href = "Header.css"; // Remove this if not using a separate CSS file
+    document.head.appendChild(headerCSS);
 
+    // Load Header HTML
+    fetch("Header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header").innerHTML = html;
 
-    <!-- Input + Dial Pad -->
-    <div class=" absolute bottom-32 w-full bg-white p-4 rounded-lg shadow">
-      <input id="filterInput" type="text" placeholder="ENTER => PASSCODE  "
-        class="text-center w-full text-bold px-4 py-2 mb-4 text-xl rounded focus:outline-none" value="" readonly />
+        // Load Header JS (optional)
+        const headerJS = document.createElement("script");
+        headerJS.src = "Header.js"; // Remove this if not using a separate JS file
+        document.body.appendChild(headerJS);
+      });
+  </script>
+  <center>
 
-      <div class="grid grid-cols-3 gap-1 text-xl font-semibold">
-        <button class="bg-gray-200 p-2 rounded" data-value="1">1</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="2">2</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="3">3</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="4">4</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="5">5</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="6">6</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="7">7</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="8">8</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="9">9</button>
-        <button id="clearBtn" class="bg-red-200 p-2 rounded text-red-700">C</button>
-        <button class="bg-gray-200 p-2 rounded" data-value="0">0</button>
-        <button id="deleteBtn" class="bg-yellow-200 p-2 rounded text-yellow-800">⌫</button>
-      </div>
-    </div>
+    <body class="bg-gradient-to-b from-indigo-50 to-white min-h-screen flex items-center justify-center p-4">
+      <main class="bg-[#f5fdf7] rounded-lg max-w-xl w-full p-6 sm:p-10">
+        <h1 class="text-3xl font-extrabold text-indigo-700 mb-6 text-center">
+           Quiz Game
+        </h1>
+        <section id="quiz-container" class="space-y-6">
+          <div id="question-container" class="text-gray-800 text-xl font-semibold min-h-[80px] leading-snug">
+            Loading question...
+          </div>
+          <div id="answers-container" class="grid grid-cols-1 gap-4"></div>
+        </section>
+        <div class="mt-8 flex justify-between items-center">
+           <div class="text-gray-600 font-bold" id="score-display">
+            Score: 0 / 0
+          </div>
+          <button id="next-btn" disabled
+            class="bg-indigo-600 text-white px-5 py-2 rounded-md font-extrabold hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition">
+            Next Question <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+         
+        </div>
+      </main>
 
-    <!-- Submit Button -->
-    <div class="absolute bottom-16 mt-6 p-2 w-full ">
-      <button id="submitBtn"
-        class="w-full bg-green-700 hover:bg-green-900 rounded-xl text-white text-lg font-bold px-8 py-2   rounded">
-        Login
-      </button>
-    </div>
-  </div>
+      <script>
+        const quizContainer = document.getElementById('quiz-container');
+        const questionContainer = document.getElementById('question-container');
+        const answersContainer = document.getElementById('answers-container');
+        const nextBtn = document.getElementById('next-btn');
+        const scoreDisplay = document.getElementById('score-display');
+
+        let questions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const totalQuestions = 10;
+
+        // Decode HTML entities
+        function decodeHTML(html) {
+          const txt = document.createElement('textarea');
+          txt.innerHTML = html;
+          return txt.value;
+        }
+
+        // Shuffle array
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        }
+
+        // Fetch short questions from Open Trivia DB (General Knowledge)
+        // Filter questions with short length (question length <= 80 chars, answers <= 20 chars)
+        async function fetchShortQuestions() {
+          const url = 'https://opentdb.com/api.php?amount=50&category=9&type=multiple';
+          try {
+            const res = await fetch(url);
+            const data = await res.json();
+            if (data.response_code !== 0) throw new Error('Failed to fetch questions');
+
+            // Filter for short questions and answers
+            const filtered = data.results.filter(q => {
+              const questionText = decodeHTML(q.question);
+              const correctAnswer = decodeHTML(q.correct_answer);
+              const incorrectAnswers = q.incorrect_answers.map(ans => decodeHTML(ans));
+              const allAnswers = [correctAnswer, ...incorrectAnswers];
+              return (
+                questionText.length <= 80 &&
+                allAnswers.every(ans => ans.length <= 20) &&
+                (questionText.toLowerCase().includes('india') || questionText.toLowerCase().includes('indian') || allAnswers.some(a => a.toLowerCase().includes('india') || a.toLowerCase().includes('indian')))
+              );
+            });
+
+            if (filtered.length >= totalQuestions) {
+              return filtered.slice(0, totalQuestions);
+            } else {
+              // fallback: take short questions regardless of India mention
+              const shortQuestions = data.results.filter(q => {
+                const questionText = decodeHTML(q.question);
+                const correctAnswer = decodeHTML(q.correct_answer);
+                const incorrectAnswers = q.incorrect_answers.map(ans => decodeHTML(ans));
+                const allAnswers = [correctAnswer, ...incorrectAnswers];
+                return questionText.length <= 80 && allAnswers.every(ans => ans.length <= 20);
+              });
+              return shortQuestions.slice(0, totalQuestions);
+            }
+          } catch (error) {
+            console.error('Error fetching questions:', error);
+            return [];
+          }
+        }
+
+        function clearStatus() {
+          Array.from(answersContainer.children).forEach((btn) => {
+            btn.disabled = false;
+            btn.classList.remove('bg-green-700', 'bg-red-200', 'border-green-900', 'border-red-500', 'text-black', 'text-black');
+          });
+        }
+
+        function displayQuestion() {
+          clearStatus();
+          const currentQ = questions[currentQuestionIndex];
+          questionContainer.textContent = decodeHTML(currentQ.question);
+
+          const answers = [...currentQ.incorrect_answers, currentQ.correct_answer];
+          shuffleArray(answers);
+
+          answersContainer.innerHTML = '';
+          answers.forEach((answer) => {
+            const btn = document.createElement('button');
+            btn.className =
+              'w-full text-left px-4 py-3 border border-indigo-300 rounded-md hover:bg-indigo-100 transition font-medium text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500';
+            btn.textContent = decodeHTML(answer);
+            btn.setAttribute('data-answer', answer);
+            btn.addEventListener('click', selectAnswer);
+            answersContainer.appendChild(btn);
+          });
+
+          nextBtn.disabled = true;
+        }
+
+        function selectAnswer(e) {
+          const selectedBtn = e.currentTarget;
+          const selectedAnswer = selectedBtn.getAttribute('data-answer');
+          const currentQ = questions[currentQuestionIndex];
+
+          Array.from(answersContainer.children).forEach((btn) => (btn.disabled = true));
+
+          if (selectedAnswer === currentQ.correct_answer) {
+            selectedBtn.classList.add('bg-green-200', 'border-green-500', 'text-green-900');
+            score++;
+          } else {
+            selectedBtn.classList.add('bg-red-200', 'border-red-500', 'text-red-900');
+            Array.from(answersContainer.children).forEach((btn) => {
+              if (btn.getAttribute('data-answer') === currentQ.correct_answer) {
+                btn.classList.add('bg-green-200', 'border-green-500', 'text-green-900');
+              }
+            });
+          }
+
+          scoreDisplay.textContent = `Score: ${score} / ${currentQuestionIndex + 1}`;
+          nextBtn.disabled = false;
+        }
+
+        function showResults() {
+          quizContainer.innerHTML = `
+        <div class="text-center space-y-4">
+          <img
+            src="https://placehold.co/150x150/png?text=🏆"
+            alt="Trophy icon representing achievement and success in Indian General Knowledge Quiz"
+            class="mx-auto mb-4"
+          />
+          <h2 class="text-2xl font-extrabold text-indigo-700">Quiz Completed!</h2>
+          <p class="text-lg text-gray-700">Your final score is:</p>
+          <p class="text-4xl font-bold text-indigo-600">${score} / ${totalQuestions}</p>
+          <button
+            id="restart-btn"
+            class="mt-6 bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition"
+          >
+            Restart Quiz
+          </button>
+        </div>
+      `;
+
+          document.getElementById('restart-btn').addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            score = 0;
+            scoreDisplay.textContent = `Score: 0 / 0`;
+            loadQuiz();
+          });
+        }
+
+        nextBtn.addEventListener('click', () => {
+          currentQuestionIndex++;
+          if (currentQuestionIndex < questions.length) {
+            displayQuestion();
+            scoreDisplay.textContent = `Score: ${score} / ${currentQuestionIndex}`;
+          } else {
+            showResults();
+          }
+        });
+
+        async function loadQuiz() {
+          questionContainer.textContent = 'Loading question...';
+          answersContainer.innerHTML = '';
+          nextBtn.disabled = true;
+          questions = await fetchShortQuestions();
+          if (questions.length === 0) {
+            questionContainer.textContent = 'Failed to load questions. Please try again later.';
+            return;
+          }
+          displayQuestion();
+          scoreDisplay.textContent = `Score: 0 / 0`;
+        }
+
+        loadQuiz();
+      </script>
+    </body>
+  </center>
+
   <nav aria-label="Bottom navigation"
     class="fixed bottom-0 left-0 right-0 border-t border-[#d9d9d9] bg-white flex justify-around items-center py-2 text-xs font-semibold text-[#8a8a9f] z-50"
     role="navigation">
@@ -102,7 +252,7 @@
       Home
 
     </a>
- 
+
     <a href="Courselist.html" class="flex flex-col items-center relative text-[#8a8a9f]">
       <img src="https://img.icons8.com/ios-filled/50/000000/open-book--v1.png" alt="Course Icon" class="w-5 h-5 mb-1" />
       Course
@@ -117,48 +267,13 @@
     </a>
 
     <!-- My -->
-    <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
-      <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="My Profile Icon" class="w-5 h-5 mb-1" />
-      Me
-      <div class="w-12 border-b-2 border-[#0f6f61] mt-1"></div>
+     <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
+      <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" alt="Game Icon" class="w-5 h-5 mb-1" />
+      Quiz
+        <div class="w-12 border-b-2 border-[#0f6f61] mt-1"></div>
     </a>
 
   </nav>
-  <script>
-    const filterInput = document.getElementById("filterInput");
-    const buttons = document.querySelectorAll("[data-value]");
-    const clearBtn = document.getElementById("clearBtn");
-    const deleteBtn = document.getElementById("deleteBtn");
-    const submitBtn = document.getElementById("submitBtn");
-
-    let input = "";
-
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        input += btn.dataset.value;
-        filterInput.value = input;
-      });
-    });
-
-    clearBtn.addEventListener("click", () => {
-      input = "";
-      filterInput.value = "";
-    });
-
-    deleteBtn.addEventListener("click", () => {
-      input = input.slice(0, -1);
-      filterInput.value = input;
-    });
-
-    submitBtn.addEventListener("click", () => {
-      if (input.trim() === "") {
-        alert("Please enter a passcode");
-        return;
-      }
-      // Redirect to File 2 with passcode
-      window.location.href = `User.html?passcode=${encodeURIComponent(input.trim())}`;
-    });
-  </script>
 </body>
 
 </html>

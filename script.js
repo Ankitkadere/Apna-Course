@@ -1,3 +1,44 @@
+
+const categoryButtons = document.querySelectorAll(".category-btn");
+const coursessearch = document.querySelectorAll(".course-item");
+const noMoreCoursesText = document.querySelector("center h2");
+
+function filterCourses(category) {
+  let anyVisible = false;
+  coursessearch.forEach((course) => {
+    if (category === "all" || course.dataset.category === category) {
+      course.style.display = "block";
+      anyVisible = true;
+    } else {
+      course.style.display = "none";
+    }
+  });
+  noMoreCoursesText.style.display = anyVisible ? "none" : "block";
+}
+
+categoryButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // Remove active styles and aria-pressed
+    categoryButtons.forEach((b) => {
+      b.classList.remove("text-[#0f6f61]", "font-bold");
+      b.setAttribute("aria-pressed", "false");
+    });
+    // Add active styles and aria-pressed to clicked
+    btn.classList.add("text-[#0f6f61]", "font-bold");
+    btn.setAttribute("aria-pressed", "true");
+
+    const filter = btn.getAttribute("data-filter");
+    filterCourses(filter);
+  });
+});
+
+// Initialize: show all courses by default and no active category
+// Show all courses and no category selected initially
+filterCourses("all");
+
+
+
+
 const courses = ["English Speaking", "Telly", "DCA", "PGDCA", "11th", "12th"];
 const input = document.getElementById("search");
 const suggestionsList = document.getElementById("suggestions-list");
@@ -101,40 +142,3 @@ document.addEventListener("click", (e) => {
 });
 
 // Course list by search
-
-const categoryButtons = document.querySelectorAll(".category-btn");
-const coursessearch = document.querySelectorAll(".course-item");
-const noMoreCoursesText = document.querySelector("center h2");
-
-function filterCourses(category) {
-  let anyVisible = false;
-  coursessearch.forEach((course) => {
-    if (category === "all" || course.dataset.category === category) {
-      course.style.display = "block";
-      anyVisible = true;
-    } else {
-      course.style.display = "none";
-    }
-  });
-  noMoreCoursesText.style.display = anyVisible ? "none" : "block";
-}
-
-categoryButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // Remove active styles and aria-pressed
-    categoryButtons.forEach((b) => {
-      b.classList.remove("text-[#0f6f61]", "font-bold");
-      b.setAttribute("aria-pressed", "false");
-    });
-    // Add active styles and aria-pressed to clicked
-    btn.classList.add("text-[#0f6f61]", "font-bold");
-    btn.setAttribute("aria-pressed", "true");
-
-    const filter = btn.getAttribute("data-filter");
-    filterCourses(filter);
-  });
-});
-
-// Initialize: show all courses by default and no active category
-// Show all courses and no category selected initially
-filterCourses("all");

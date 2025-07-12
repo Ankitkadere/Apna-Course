@@ -67,26 +67,29 @@
   <div id="chatView" class="flex flex-col h-screen">
 
     <!-- Header -->
-    <div class="flex items-center w-full shadow-md fixed top-0 bg-green-700 p-2">
+    <div class="flex items-center w-full fixed top-0 shadow-md fixed top-0 bg-green-700 p-2">
       <button onclick="history.back()" class="text-white text-lg"><i class="fas fa-arrow-left"></i></button>
-      <img src="https://storage.googleapis.com/a1aa/image/c5c69e0f-e246-467d-91a8-d665bd99eb70.jpg"
-        class="w-10 h-10 rounded-full ml-2" />
+      <img src="User.jpg" class="w-10 h-10 rounded-full ml-2" />
       <div class="ml-4">
         <p class="text-white font-bold text-lg" id="chatName">Apna Couse</p>
         <p class="text-white text-xs" id="chatCode">Apna Course</p>
       </div>
       <div class="ml-auto text-white font-bold px-3"><i class="fas fa-ellipsis-v"></i></div>
     </div>
-
+    <br><br><br><br><br>
     <!-- Messages Area -->
+ 
     <div id="messages" class="flex-1 overflow-y-auto p-4 mb-4 space-y-3">
+  
+ 
       <center>
         <div class="loader"></div>
       </center>
     </div>
-
+    
     <!-- Message Input Form -->
-    <form id="chatForm" class=" fixed bottom-0    w-full max-w-xl flex bg-green-700 rounded-full px-4 py-2 shadow-md z-50">
+    <form id="chatForm"
+      class=" fixed bottom-0  w-full max-w-xl flex bg-green-700 rounded-full px-4 py-2 shadow-md z-50">
       <div class=" hidden"><input id="Ocode" class=" " type="text" name="OPasscode">
         <input id="Uname" class=" " type="text" name="Username">
         <input id="Odata" class=" " type="text" name="OData">
@@ -113,7 +116,7 @@
     const username = urlParams.get("username") || "";
     const Upass = document.getElementById("Ucode").value = userpasscode;
     const Opass = document.getElementById("Ocode").value = ownerpasscode;
- 
+
 
     function checkInput() {
       const input = document.getElementById("userInput");
@@ -211,7 +214,7 @@
       const filtered = data.filter(row => row.OPasscode == ownerpasscode || row.UPassocde == userpasscode);
 
       filtered.forEach(row => {
-       
+
         if (row.UData) {
           messagesDiv.innerHTML += `
             <div class="flex items-start gap-2">
@@ -228,16 +231,18 @@
               <div class="bg-white text-green-800 rounded-md px-4 py-2 max-w-[75%] break-words shadow">
                 ${row.OData}
               </div>
-              <img src="https://i.pravatar.cc/150?img=12" class="w-8 h-8 rounded-full" />
+              <img src="User.jpg"  class="w-8 h-8 rounded-full" />
             </div>`;
         }
       });
 
       // 👇 Auto scroll to bottom after rendering
+
+
+
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
     }
-
-
 
     // Submit new message
     document.addEventListener("submit", async (e) => {
@@ -271,12 +276,6 @@
       }
     });
 
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        ;
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-      }, 300);
-    });
 
     // Auto-submit on Enter
     document.getElementById("userInput").addEventListener("keydown", function (event) {
