@@ -1,0 +1,20 @@
+{
+  "short_name": "Apna Course",
+  "name": "Apna Course Learning ",
+  "icons": [
+    {
+      "src": "fav.jpg",
+      "type": "image/jpeg/jpg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "fav.jpg",
+      "type": "image/jpeg/jpg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}
