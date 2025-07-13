@@ -34,52 +34,25 @@
 
 <body class="bg-[#f5fdf7] min-h-screen flex flex-col text-sm  max-w-lg mx-auto">
   <header class="px-3 py-4 flex items-center justify-between">
-    <a href="">
-      <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
-        <span>Apna</span>
-        <span class="text-green-700">Course</span>
-      </h1>
-    </a>
-    <a>
+    <div>
+      <a href="">
+        <h1 class="text-xl font-extrabold text-[#1a1a1a] leading-none">
+          <span>Apna</span>
+          <span class="text-green-700">Course</span>
+        </h1>
+      </a>
+    </div>
+    <div class="flex gap-4">
+      <span class="fa-stack fa-2x1">
+        <i class="fas fa-mobile-alt fa-stack-2x"></i>
+        <i class="fas fa-arrow-down fa-stack-1x"></i>
+      </span>
 
-      <body>
-
-        <!-- Optional custom install button -->
-        <button id="installBtn" style="display: none;">Install App</button>
-        <script>
-          // Register the service worker
-          if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('src/sw.js')
-              .then(() => console.log('Service Worker registered'));
-          }
-
-          // Handle custom install button
-          let deferredPrompt;
-          const installBtn = document.getElementById('installBtn');
-
-          window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'block';
-
-            installBtn.addEventListener('click', () => {
-              deferredPrompt.prompt();
-              deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                  console.log('User accepted the install prompt');
-                }
-                deferredPrompt = null;
-                installBtn.style.display = 'none';
-              });
-            });
-          });
-        </script>
-      </body>
-    </a>
-    <a href="Owner.html">
-      <img alt="Profile picture of a young man with short hair wearing a blue shirt"
-        class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32" src="User.jpg" width="32" />
-    </a>
+      <a href="Owner.html">
+        <img alt="Profile picture of a young man with short hair wearing a blue shirt"
+          class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32" src="User.jpg" width="32" />
+      </a>
+    </div>
   </header>
   <a href="Inputsuggestion.html">
     <form id="search-form" class="w-full  px-3" role="search" aria-label="Search jobs or courses" novalidate>
@@ -287,6 +260,47 @@
         input.setAttribute("aria-activedescendant", "");
       }
     });
+  </script>
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Stop automatic prompt
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').style.display = 'inline-block';
+
+      document.getElementById('installBtn').addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted A2HS');
+            }
+            deferredPrompt = null;
+          });
+        }
+      });
+    });
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+
+    self.addEventListener('install', (event) => {
+      console.log('Service Worker installing.');
+      self.skipWaiting();
+    });
+
+    self.addEventListener('activate', (event) => {
+      console.log('Service Worker activated.');
+    });
+
+    self.addEventListener('fetch', function (event) {
+      event.respondWith(fetch(event.request));
+    });
+
   </script>
 </body>
 

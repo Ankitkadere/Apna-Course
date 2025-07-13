@@ -1,19 +1,19 @@
 {
   "short_name": "Apna Course",
-  "name": "Apna Course Learning ",
+  "name": "Apna Course Learning App",
   "icons": [
     {
       "src": "fav.jpg",
-      "type": "image/jpeg/jpg",
+      "type": "image/jpeg",
       "sizes": "192x192"
     },
     {
       "src": "fav.jpg",
-      "type": "image/jpeg/jpg",
+      "type": "image/jpeg",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "index.html",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"
