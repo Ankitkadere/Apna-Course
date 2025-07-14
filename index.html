@@ -6,9 +6,11 @@
   <title>Apna Course : Learning</title>
   <meta name="theme-color" content="#ffffff" />
   <meta name="description" content="Apna Course Learning App" />
-  <link rel="manifest" href="src/manifest.json" />
   <link rel="apple-touch-icon" href="fav.jpg" />
-  <link rel="icon" href="fav.jpg" type="image/jpeg/jpg" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="fav.jpg" type="image/jpeg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 </head>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
@@ -43,7 +45,10 @@
       </a>
     </div>
     <div class="flex gap-4">
-      <span class="fa-stack fa-2x1">
+       <button id="installBtn" style="  padding:2px; background:#007bff; color:white; border:none; border-radius:5px;">  App</button>
+
+      <span class="fa-stack fa-3x1 mt-0">
+       
         <i class="fas fa-mobile-alt fa-stack-2x"></i>
         <i class="fas fa-arrow-down fa-stack-1x"></i>
       </span>
@@ -73,6 +78,47 @@
     </form>
   </a>
 
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block';
+
+    installBtn.addEventListener('click', () => {
+      installBtn.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker registered:', reg))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+
+  self.addEventListener("install", function (event) {
+  console.log("Service Worker installing.");
+});
+
+self.addEventListener("fetch", function (event) {
+  // You can handle caching if you want here
+});
+
+</script>
   <section class="px-3 mt-4">
     <div class="flex items-center space-x-2">
       <img alt="Profile picture of a man with black hair and beard wearing a white shirt with yellow background"
@@ -82,7 +128,7 @@
           Complete your pending tasks
         </p>
         <p class="text-[#8a8a9f] leading-tight">
-          Increase your chances of getting calls from teachers
+          Increase your chances of connect with teachers
         </p>
       </div>
     </div>
@@ -93,7 +139,7 @@
           width="56" />
         <div>
           <p class="text-[#1a1a1a] mb-0.5 leading-tight">
-            Recently started a new course ? Add it!
+             Started a new course ? Add it !
           </p>
           <button class="bg-[#0f6f61] text-white font-semibold rounded-md px-3 py-1.5 text-sm" type="button">
             Add Course
@@ -261,47 +307,7 @@
       }
     });
   </script>
-  <script>
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Stop automatic prompt
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('installBtn').style.display = 'inline-block';
-
-      document.getElementById('installBtn').addEventListener('click', () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('User accepted A2HS');
-            }
-            deferredPrompt = null;
-          });
-        }
-      });
-    });
-
-    // Register service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-
-    self.addEventListener('install', (event) => {
-      console.log('Service Worker installing.');
-      self.skipWaiting();
-    });
-
-    self.addEventListener('activate', (event) => {
-      console.log('Service Worker activated.');
-    });
-
-    self.addEventListener('fetch', function (event) {
-      event.respondWith(fetch(event.request));
-    });
-
-  </script>
+ 
 </body>
 
 </html>
