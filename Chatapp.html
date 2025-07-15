@@ -5,8 +5,9 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>Chat | Apna Course</title>
+  <meta name="theme-color" content="#15803d" />
     <link rel="apple-touch-icon" href="fav.jpg" />
-  <link rel="icon" href="fav.jpg" type="image/jpeg/jpg" />
+  <link rel="icon" href="fav.jpg" type="image/jpeg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <style>
@@ -132,7 +133,6 @@
 
       const form = e.target;
       const formData = Object.fromEntries(new FormData(form));
-
       // UI feedback
       document.getElementById("submitbutton").classList.add("hidden");
       document.getElementById("loader").classList.remove("hidden");
@@ -142,12 +142,10 @@
           method: "POST",
           body: JSON.stringify(formData),
         });
-
         const result = await res.text(); // If your script returns a message
         document.getElementById("userInput").value = "";
 
       } catch (err) {
-
         console.error(err);
       } finally {
         document.getElementById("submitbutton").classList.remove("hidden");
@@ -159,11 +157,7 @@
       const input = document.getElementById("userInput");
       if (input) input.focus();
     });
-
-
     const chatContainer = document.getElementById("chatView");
-
-
     function renderChatUI(row) {
       return `
         <div class="w-full flex flex-col fixed overflow-x-auto bg-red-899 space-y-3 bottom-20">
@@ -239,9 +233,6 @@
       });
 
       // 👇 Auto scroll to bottom after rendering
-
-
-
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
     }
@@ -254,7 +245,6 @@
       const c = document.getElementById("Tname").value.trim();
       const d = document.getElementById("userInput").value.trim();
       const message = input.value.trim();
-      alert(userpasscode + "/" + ownerpasscode);
       if (!message) return;
 
       const payload = {
@@ -272,8 +262,6 @@
       });
 
       if (res.ok) {
-
-
         loadData(); // refresh chat
       }
     });
@@ -288,7 +276,7 @@
     });
 
     // Load data periodically
-    setInterval(loadData, 10); // every 3 seconds
+    setInterval(loadData, 50); // every 3 seconds
 
     loadData(); // Initial call</script>
 </body>
