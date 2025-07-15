@@ -56,20 +56,19 @@
       </a>
     </div>
     <div class="flex gap-4">
-      <button id="installBtn" style="display:none; text-color: bg-green-700"> <span class="fa-stack fa-3x1 mt-0">
+      <button id="mobileapp" style="display:none; text-color: bg-green-700"> <span class="fa-stack fa-3x1 mt-0">
           <i class="fas fa-mobile-alt fa-stack-2x text-green-700"></i>
 
           <i class="fas fa-arrow-down fa-stack-1x text-green-700"></i>
         </span></button>
-
-
-
       <a href="Owner.html">
         <img alt="Profile picture of a young man with short hair wearing a blue shirt"
           class="w-8 h-8 rounded-full border-2 border-[#0f6f61]" height="32" src="User.jpg" width="32" />
       </a>
     </div>
   </header>
+
+
   <a href="Inputsuggestion.html">
     <form id="search-form" class="w-full  px-3" role="search" aria-label="Search jobs or courses" novalidate>
       <label class="sr-only" for="search">Search courses by name</label>
@@ -92,14 +91,19 @@
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
+    const installbox = document.getElementById('appDownload');
+        const installmobile = document.getElementById('mobileapp');
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       installBtn.style.display = 'block';
-
+      installbox.style.display = 'block';
+        installbox.style.display = 'block';
       installBtn.addEventListener('click', () => {
         installBtn.style.display = 'none';
+        installbox.style.display = 'none';
+          installbox.style.display = 'none';
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
@@ -320,5 +324,24 @@
   </script>
 
 </body>
+<section onclick="document.getElementById('appDownload').style.display='none'" style="display: none;" id="appDownload"
+  style="z-index: 99999999999999999%;"
+  class="fixed w-full z-50 top-0 left-0 bg-black/60 flex items-center justify-center min-h-screen transition-opacity">
+  <div class="w-80 bg-white rounded-xl p-6 flex flex-col items-center shadow-lg">
+    <p class="text-green-700 font-semibold text-lg mb-3" style="font-family: 'Montserrat', sans-serif;">
+      Install App
+    </p>
+    <img alt="App Logo" src="fav.jpg" width="90" height="90" class="mb-3 rounded-full" />
+    <p class="text-gray-500 text-sm mb-6 text-center" style="font-family: 'Montserrat', sans-serif;">
+      Get the full experience by installing the Apna Course Learning App on your device.
+    </p>
+    <button id="installBtn" onclick="document.getElementById('appDownload').style.display='none'"
+      class="bg-green-800 text-white rounded-full w-40 py-2 text-sm font-extrabold hover:bg-green-700 transition-colors"
+      style="font-family: 'Montserrat', sans-serif;">
+      Install Now
+    </button>
+    
+  </div>
+</section>
 
 </html>
