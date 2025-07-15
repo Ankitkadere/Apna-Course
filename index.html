@@ -10,11 +10,23 @@
   <link rel="icon" href="fav.jpg" type="image/jpeg" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js"></script>
 </head>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function (OneSignal) {
+    await OneSignal.init({
+      appId: "3fa7f09b-cf8a-43dd-9ec7-8defe4142b00",
+      notifyButton: {
+        enable: true
+      }
+    });
+  });
+</script>
 <style>
   body {
     font-family: "Inter", sans-serif;
@@ -44,13 +56,13 @@
       </a>
     </div>
     <div class="flex gap-4">
-       <button id="installBtn" style="display:none; text-color: bg-green-700"> <span class="fa-stack fa-3x1 mt-0">
-      <i class="fas fa-mobile-alt fa-stack-2x text-green-700"></i>
+      <button id="installBtn" style="display:none; text-color: bg-green-700"> <span class="fa-stack fa-3x1 mt-0">
+          <i class="fas fa-mobile-alt fa-stack-2x text-green-700"></i>
 
-        <i class="fas fa-arrow-down fa-stack-1x text-green-700"></i>
-      </span></button>
+          <i class="fas fa-arrow-down fa-stack-1x text-green-700"></i>
+        </span></button>
 
-      
+
 
       <a href="Owner.html">
         <img alt="Profile picture of a young man with short hair wearing a blue shirt"
@@ -77,47 +89,47 @@
     </form>
   </a>
 
-<script>
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'block';
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'block';
 
-    installBtn.addEventListener('click', () => {
-      installBtn.style.display = 'none';
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        deferredPrompt = null;
+      installBtn.addEventListener('click', () => {
+        installBtn.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
       });
     });
-  });
 
-  // Register service worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('Service Worker registered:', reg))
-        .catch(err => console.error('Service Worker registration failed:', err));
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('Service Worker registered:', reg))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+    }
+
+    self.addEventListener("install", function (event) {
+      console.log("Service Worker installing.");
     });
-  }
 
-  self.addEventListener("install", function (event) {
-  console.log("Service Worker installing.");
-});
+    self.addEventListener("fetch", function (event) {
+      // You can handle caching if you want here
+    });
 
-self.addEventListener("fetch", function (event) {
-  // You can handle caching if you want here
-});
-
-</script>
+  </script>
   <section class="px-3 mt-4">
     <div class="flex items-center space-x-2  ">
       <img alt="Profile picture of a man with black hair and beard wearing a white shirt with yellow background"
@@ -138,7 +150,7 @@ self.addEventListener("fetch", function (event) {
           width="56" />
         <div>
           <p class="text-[#1a1a1a] mb-0.5 leading-tight">
-             Started a new course ? Add it !
+            Started a new course ? Add it !
           </p>
           <button class="bg-[#0f6f61] text-white font-semibold rounded-md px-3 py-1.5 text-sm" type="button">
             Add Course
@@ -306,7 +318,7 @@ self.addEventListener("fetch", function (event) {
       }
     });
   </script>
- 
+
 </body>
 
 </html>
