@@ -72,8 +72,7 @@
       <button aria-pressed="true"
         class="category-btn flex flex-col items-center text-[#0f6f61] text-xs font-bold flex-shrink-0 outline-none border-none"
         data-filter="all" type="button">
-        <img alt=" All"
-          class="w-12 h-12 mb-1 rounded-full object-cover" height="64"
+        <img alt=" All" class="w-12 h-12 mb-1 rounded-full object-cover" height="64"
           src="https://storage.googleapis.com/a1aa/image/647a1985-39a6-498f-856b-f668fe6ce1ab.jpg" width="64" />
         <span>
           All
@@ -82,7 +81,7 @@
       <button aria-pressed="false"
         class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#0f6f61] focus:text-[#0f6f61] flex-shrink-0"
         data-filter="english-speaking" type="button">
-        <img alt="Icon representing English courses, teal circle with white text 'Eng'"
+        <img alt="English"
           class="w-12 h-12 mb-1 rounded-full object-cover" height="48"
           src="https://storage.googleapis.com/a1aa/image/716df796-ac72-4e80-41b5-3fc19c4a8379.jpg" width="48" />
         <span>
@@ -92,7 +91,7 @@
       <button aria-pressed="false"
         class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#f97316] focus:text-[#f97316] flex-shrink-0"
         data-filter="telly" type="button">
-        <img alt="Icon representing Accounting courses, orange circle with white text 'Acc'"
+        <img alt=" Accounting'"
           class="w-12 h-12 mb-1 rounded-full object-cover" height="48"
           src="https://storage.googleapis.com/a1aa/image/ea8adbbb-5020-4cf9-6c47-6ba5a0581f6d.jpg" width="48" />
         <span>
@@ -102,7 +101,7 @@
       <button aria-pressed="false"
         class="category-btn flex flex-col items-center text-[#1a1a1a] text-xs font-semibold hover:text-[#14b8a6] focus:text-[#14b8a6] flex-shrink-0"
         data-filter="dca" type="button">
-        <img alt="Icon representing DCA courses, teal circle with white text 'DCA'"
+        <img alt="DCA"
           class="w-12 h-12 mb-1 rounded-full object-cover" height="48"
           src="https://storage.googleapis.com/a1aa/image/8ceb7270-de63-4fdb-c0e3-09ce84e689a4.jpg" width="48" />
         <span>
@@ -157,31 +156,39 @@
     <a data-category="english-speaking" data-id="english-speaking" href="CourseDetail.html?id=english-speaking"
       role="button" tabindex="0" class="course-item block">
       <div class="border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer" role="button" tabindex="0">
-        <div class="flex items-center space-x-1 mb-1">
-          <img alt="English Speaking course icon in blue" class="w-5 h-5" height="20"
-            src="https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg" width="20" />
-          <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
-            English Speaking Course
-          </h2>
-          <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+        <div class="flex items-center justify-between space-x-1 mb-1">
+          <div class="flex gap-2 items-center">
+            <img alt="English Speaking course icon in blue" class="w-5 h-5" height="20"
+              src="https://storage.googleapis.com/a1aa/image/35caddb2-0088-4304-13f7-80a6fcb0b810.jpg" width="20" />
+            <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
+              English Speaking
+            </h2>
+            <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+          </div>
+          <div>
+            <b
+              class="items-center font-semibold text-green-700 truncate max-w-[calc(100%-20px)] mb-2 text-sm leading-tight">
+              199 .Rs
+            </b>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
-          Improve your communication skills and fluency in English.
+          Improve communication skills & fluency in English.
         </p>
-        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1">
-          <div class="flex items-center space-x-1">
+        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1 ml-1">
+          <div class="flex items-center space-x-1 gap-2">
             <i class="fas fa-map-marker-alt text-xs"></i>
-            <span>Pune</span>
+            <span> Online</span>
           </div>
-          <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+          <div class="flex items-center space-x-1 gap-2">
+            <i class="fas fa-rupee-sign text-xs"></i>
             <span>Affordable Fees</span>
           </div>
         </div>
-        <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
+        <div class="flex space-x-1 text-[#8a8a9f] -webkit-overflow-scrolling text-[10px] font-semibold">
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-chalkboard-teacher text-xs"></i>
-            <span>Online &amp; Offline</span>
+            <span>Online</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <span
@@ -199,28 +206,36 @@
       class="course-item block">
       <div data-category="telly" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
         role="button" tabindex="0">
-        <div class="flex items-center space-x-1 mb-1">
-          <img alt="Telly course icon in orange" class="w-5 h-5" height="20"
-            src="https://storage.googleapis.com/a1aa/image/8561ea4b-93eb-4e3f-1347-549169d41344.jpg" width="20" />
-          <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
-            Telly Course
-          </h2>
-          <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+        <div class="flex items-center justify-between space-x-1 mb-1">
+          <div class="flex gap-2 items-center">
+            <img alt="Telly course icon in orange" class="w-5 h-5" height="20"
+              src="https://storage.googleapis.com/a1aa/image/8561ea4b-93eb-4e3f-1347-549169d41344.jpg" width="20" />
+            <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
+              Telly Course
+            </h2>
+            <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+          </div>
+          <div>
+            <b
+              class="items-center font-semibold text-green-700 truncate max-w-[calc(100%-20px)] mb-2 text-sm leading-tight">
+              499 .Rs
+            </b>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
           Accounting and financial management training.
         </p>
-        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1">
-          <div class="flex items-center space-x-1">
+        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1 ml-1">
+          <div class="flex items-center space-x-1 gap-2">
             <i class="fas fa-map-marker-alt text-xs"></i>
-            <span>Pune</span>
+            <span> Online & Offline</span>
           </div>
-          <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+          <div class="flex items-center space-x-1 gap-2">
+            <i class="fas fa-rupee-sign text-xs"></i>
             <span>Affordable Fees</span>
           </div>
         </div>
-        <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
+        <div class="flex space-x-1 text-[#8a8a9f] overflow-x-auto -webkit-overflow-scrolling text-[10px] font-semibold">
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-calculator text-xs"></i>
             <span>Practical Training</span>
@@ -228,11 +243,11 @@
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <span
               class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">I</span>
-            <span>Intermediate Level</span>
+            <span>Intermediate</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-clock text-xs"></i>
-            <span>Flexible Timings</span>
+            <span>Flexible Time</span>
           </span>
         </div>
       </div>
@@ -242,36 +257,44 @@
 
       <div data-category="dca" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
         role="button" tabindex="0">
-        <div class="flex items-center space-x-1 mb-1">
+        <div class="flex items-center justify-between space-x-1 mb-1">
+          <div class="flex gap-2 items-center">
           <img alt="DCA course icon in teal" class="w-5 h-5" height="20"
             src="https://storage.googleapis.com/a1aa/image/a4423603-46d5-43bf-1247-48de95e66fb4.jpg" width="20" />
           <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
             DCA Course
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+          </div>
+          <div>
+            <b
+              class="items-center font-semibold text-green-700 truncate max-w-[calc(100%-20px)] mb-2 text-sm leading-tight">
+              1,699 .Rs
+            </b>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
           Diploma in Computer Applications for beginners.
         </p>
-        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1">
-          <div class="flex items-center space-x-1">
+          <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1 ml-1">
+          <div class="flex items-center space-x-1 gap-2">
             <i class="fas fa-map-marker-alt text-xs"></i>
-            <span>Pune</span>
+            <span> Online & Offline</span>
           </div>
-          <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+          <div class="flex items-center space-x-1 gap-2">
+            <i class="fas fa-rupee-sign text-xs"></i>
             <span>Affordable Fees</span>
           </div>
         </div>
         <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-graduation-cap text-xs"></i>
-            <span>Advanced Level</span>
+            <span>Cirtificate</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <span
               class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">A</span>
-            <span>After Graduation</span>
+            <span>Advanced</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-clock text-xs"></i>
@@ -285,36 +308,44 @@
 
       <div data-category="pgdca" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
         role="button" tabindex="0">
-        <div class="flex items-center space-x-1 mb-1">
+        <div class="flex items-center space-x-1 justify-between mb-1">
+            <div class="flex gap-2 items-center">
           <img alt="PGDCA course icon in purple" class="w-5 h-5" height="20"
             src="https://storage.googleapis.com/a1aa/image/f41ee155-ce03-4dff-ffbc-871097d19bba.jpg" width="20" />
           <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
             PGDCA Course
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+          </div>
+           <div>
+            <b
+              class="items-center font-semibold text-green-700 truncate max-w-[calc(100%-20px)] mb-2 text-sm leading-tight">
+              1,899 .Rs
+            </b>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
           Post Graduate Diploma in Computer Applications.
         </p>
-        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1">
-          <div class="flex items-center space-x-1">
+            <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1 ml-1">
+          <div class="flex items-center space-x-1 gap-2">
             <i class="fas fa-map-marker-alt text-xs"></i>
-            <span>Pune</span>
+            <span> Online & Offline</span>
           </div>
-          <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+          <div class="flex items-center space-x-1 gap-2">
+            <i class="fas fa-rupee-sign text-xs"></i>
             <span>Affordable Fees</span>
           </div>
         </div>
         <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-graduation-cap text-xs"></i>
-            <span>Advanced Level</span>
+            <span>Cirtificate</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <span
               class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">A</span>
-            <span>After Graduation</span>
+            <span>Advanced</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-clock text-xs"></i>
@@ -328,24 +359,32 @@
 
       <div data-category="11th-grade" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
         role="button" tabindex="0">
-        <div class="flex items-center space-x-1 mb-1">
+        <div class="flex items-center justify-between space-x-1 mb-1">
+           <div class="flex gap-2 items-center">
           <img alt="11th grade course icon in green" class="w-5 h-5" height="20"
             src="https://storage.googleapis.com/a1aa/image/e19c4740-fb74-44b9-7e1f-5cf1a55c1440.jpg" width="20" />
           <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
             11th Grade Course
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+          </div>
+          <div>
+            <b
+              class="items-center font-semibold text-green-700 truncate max-w-[calc(100%-20px)] mb-2 text-sm leading-tight">
+              299 .Rs
+            </b>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
           Higher Secondary Education - 11th Grade.
         </p>
-        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1">
-          <div class="flex items-center space-x-1">
+        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1 ml-1">
+          <div class="flex items-center space-x-1 gap-2">
             <i class="fas fa-map-marker-alt text-xs"></i>
-            <span>Pune</span>
+            <span> Online & Offline</span>
           </div>
-          <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+          <div class="flex items-center space-x-1 gap-2">
+            <i class="fas fa-rupee-sign text-xs"></i>
             <span>Affordable Fees</span>
           </div>
         </div>
@@ -357,7 +396,7 @@
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <span
               class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">H</span>
-            <span>High School</span>
+            <span>IMP. Q&A</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-clock text-xs"></i>
@@ -371,28 +410,36 @@
 
       <div data-category="12th-grade" class="course-item border border-[#d9d9d9] rounded-xl p-3 bg-white cursor-pointer"
         role="button" tabindex="0">
-        <div class="flex items-center space-x-1 mb-1">
+        <div class="flex items-center justify-between space-x-1 mb-1">
+            <div class="flex gap-2 items-center">
           <img alt="12th grade course icon in green" class="w-5 h-5" height="20"
             src="https://storage.googleapis.com/a1aa/image/83567cdb-08d8-4d10-920c-e9479b024892.jpg" width="20" />
           <h2 class="font-semibold text-[#1a1a1a] truncate max-w-[calc(100%-20px)] text-sm leading-tight">
             12th Grade Course
           </h2>
           <i class="fas fa-chevron-right text-[#0f6f61] ml-auto text-xs"></i>
+          </div>
+            <div>
+            <b
+              class="items-center font-semibold text-green-700 truncate max-w-[calc(100%-20px)] mb-2 text-sm leading-tight">
+              299 .Rs
+            </b>
+          </div>
         </div>
         <p class="text-[#8a8a9f] text-xs mb-1 leading-tight">
           Higher Secondary Education - 12th Grade.
         </p>
-        <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1">
-          <div class="flex items-center space-x-1">
+       <div class="flex flex-col space-y-1 text-[#8a8a9f] text-xs mb-1 ml-1">
+          <div class="flex items-center space-x-1 gap-2">
             <i class="fas fa-map-marker-alt text-xs"></i>
-            <span>Pune</span>
+            <span> Online & Offline</span>
           </div>
-          <div class="flex items-center space-x-1">
-            <i class="fas fa-money-bill-wave text-xs"></i>
+          <div class="flex items-center space-x-1 gap-2">
+            <i class="fas fa-rupee-sign text-xs"></i>
             <span>Affordable Fees</span>
           </div>
         </div>
-        <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
+     <div class="flex space-x-1 text-[#8a8a9f] text-[10px] font-semibold">
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-school text-xs"></i>
             <span>Regular Classes</span>
@@ -400,7 +447,7 @@
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <span
               class="border border-[#8a8a9f] rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold leading-none">H</span>
-            <span>High School</span>
+            <span>IMP. Q&A</span>
           </span>
           <span class="bg-[#f3f2f7] rounded-md px-1.5 py-0.5 flex items-center space-x-1">
             <i class="fas fa-clock text-xs"></i>
@@ -440,7 +487,7 @@
     </a>
 
     <!-- My -->
- <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
+    <a href="Mycourse.html" class="flex flex-col items-center text-[#8a8a9f]">
       <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" alt="Game Icon" class="w-5 h-5 mb-1" />
       Quiz
     </a>
