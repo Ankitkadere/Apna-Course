@@ -70,16 +70,26 @@
 
   <section style="display: none ;" id="appDownload" style="z-index: 99999999999999999%;"
     class="fixed w-full z-50 top-0 left-0 bg-black/60 flex items-center justify-center min-h-screen transition-opacity">
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 bg-white rounded-xl p-6 flex flex-col items-center shadow-l">
+    <div
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 bg-white rounded-xl p-6 flex flex-col items-center shadow-l">
       <img alt="App Logo" src="fav.jpg" width="90" height="90" class="mb-3 rounded-full" />
       <p id="installStatus" class="text-green-700 font-semibold text-lg mb-3"
         style="font-family: 'Montserrat', sans-serif;">
         Processing...
       </p>
+      <audio id="audioPlayer" class="hidden" src="bell.wav"></audio>
+
       <script>
         const statusText = document.getElementById("installStatus");
         setTimeout(() => {
           statusText.innerText = "Installed";
+
+          const audio = document.getElementById("audioPlayer");
+          audio.play().catch(err => {
+              statusText.innerText = "Completed";
+            console.error(err);
+          });
+
         }, 10000); // after 5 seconds
       </script>
     </div>
