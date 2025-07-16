@@ -494,12 +494,19 @@
         document.getElementById("dset").classList.add("hidden");
         document.getElementById("buttonsets").classList.add("hidden");
         document.getElementById('deletedtext').innerHTML = `<p class="text-xl mt-2">Your Pass Code </p><h1 class="font-bold text-8xl text-green-700">${code}</h1><p class="text-xl mt-2">Completed</p>`;
-          const audio = document.getElementById("audioPlayer");
-          audio.play().catch(err => {
-            console.error(err);
-          });
-      }, 8000);
+        const audio = document.getElementById("audioPlayer");
+        audio.play().catch(err => {
+          console.error(err);
+        });
 
+        const utterance = new SpeechSynthesisUtterance(${ code });
+        utterance.lang = "en-hi"; // Change to "hi-IN" or other for different languages
+        utterance.rate = 0.6; // Speed (0.1 to 10), 1 is normal
+        utterance.pitch = 2; // Pitch (0 to 2), 1 is default
+        window.speechSynthesis.cancel(); // Cancel previous speech
+        window.speechSynthesis.speak(utterance);
+
+      }, 8000);
       setTimeout(() => {
         window.location.href = 'Owner.html';
       }, 30000);
