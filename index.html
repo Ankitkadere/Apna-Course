@@ -56,96 +56,99 @@
       </a>
     </div>
     <div class="flex gap-4">
-  <!-- Notification Bell Audio -->
-<audio id="notificationBell" class="hidden" src="bell.mp3" preload="auto"></audio>
+      <!-- Notification Bell Audio -->
+      <audio id="notificationBell" class="hidden" src="bell.mp3" preload="auto"></audio>
 
-<!-- Mobile App Trigger Button -->
-<button id="mobileapp" class="text-green-700">
-  <span class="fa-stack fa-3x1 mt-0">
-    <i class="fas fa-mobile-alt fa-stack-2x text-green-700"></i>
-    <i class="fas fa-arrow-down fa-stack-1x text-green-700"></i>
-  </span>
-</button>
+      <!-- Mobile App Trigger Button -->
+      <button id="mobileapp" class="text-green-700">
+        <span class="fa-stack fa-3x1 mt-0">
+          <i class="fas fa-mobile-alt fa-stack-2x text-green-700"></i>
+          <i class="fas fa-arrow-down fa-stack-1x text-green-700"></i>
+        </span>
+      </button>
 
-<!-- Install Popup Section -->
-<section onclick="document.getElementById('appDownload').style.display='none'"
-  id="appDownload"
-  style="display: none; z-index: 999999999;"
-  class="fixed w-full z-50 top-0 left-0 bg-black/60 flex items-center justify-center min-h-screen transition-opacity">
+      <!-- Install Popup Section -->
+      <section onclick="document.getElementById('appDownload').style.display='none'" id="appDownload"
+        style="display: none; z-index: 999999999;"
+        class="fixed w-full z-50 top-0 left-0 bg-black/60 flex items-center justify-center min-h-screen transition-opacity">
 
-  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 bg-white rounded-xl p-6 flex flex-col items-center shadow-lg" onclick="event.stopPropagation()">
-    <p class="text-green-700 font-semibold text-lg mb-3" style="font-family: 'Montserrat', sans-serif;">
-      Install App
-    </p>
-    <img alt="App Logo" src="fav.jpg" width="90" height="90" class="mb-3 rounded-full" />
-    <p class="text-gray-500 text-sm mb-6 text-center" style="font-family: 'Montserrat', sans-serif;">
-      Get the full experience by installing the Apna Course Learning App on your device.
-    </p>
-    <button id="installBtn"
-      class="bg-green-800 text-white rounded-full w-40 py-2 text-sm font-extrabold hover:bg-green-700 transition-colors"
-      style="font-family: 'Montserrat', sans-serif; display: none;">
-      Install Now
-    </button>
-  </div>
-</section>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 bg-white rounded-xl p-6 flex flex-col items-center shadow-lg"
+          onclick="event.stopPropagation()">
+          <p class="text-green-700 font-semibold text-lg mb-3" style="font-family: 'Montserrat', sans-serif;">
+            Install App
+          </p>
+          <img alt="App Logo" src="fav.jpg" width="90" height="90" class="mb-3 rounded-full" />
+          <p class="text-gray-500 text-sm mb-6 text-center" style="font-family: 'Montserrat', sans-serif;">
+            Get the full experience by installing the Apna Course Learning App on your device.
+          </p>
+          <button id="installBtn"
+            class="bg-green-800 text-white rounded-full w-40 py-2 text-sm font-extrabold hover:bg-green-700 transition-colors"
+            style="font-family: 'Montserrat', sans-serif; display: none;">
+            Install Now
+          </button>
+        </div>
+      </section>
 
-<script>
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-  const installBox = document.getElementById('appDownload');
-  const installMobile = document.getElementById('mobileapp');
-  const bell = document.getElementById('notificationBell');
+      <script>
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        const installBox = document.getElementById('appDownload');
+        const installMobile = document.getElementById('mobileapp');
+        const bell = document.getElementById('notificationBell');
 
-  // Show prompt manually
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
+        // Show prompt manually
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          deferredPrompt = e;
 
-    // Show install UI
-    installBtn.style.display = 'block';
-    installBox.style.display = 'block';
+          // Show install UI
+          installMobile.classList.remove('hidden');
+          installBtn.style.display = 'block';
+          installBox.style.display = 'block';
 
-    // Play bell sound
-    if (bell) {
-      bell.currentTime = 0;
-      bell.play();
-    }
+          // Play bell sound
+          if (bell) {
+            bell.currentTime = 0;
+            bell.play();
+          }
 
-    // Install click
-    installBtn.addEventListener('click', () => {
-      installBtn.style.display = 'none';
-      installBox.style.display = 'none';
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          console.log(choiceResult.outcome === 'accepted'
-            ? 'User accepted the install prompt'
-            : 'User dismissed the install prompt');
-          deferredPrompt = null;
+          // Install click
+          installBtn.addEventListener('click', () => {
+            installBtn.style.display = 'none';
+            installBox.style.display = 'none';
+            installMobile.classList.add("hidden");
+            if (deferredPrompt) {
+              deferredPrompt.prompt();
+              deferredPrompt.userChoice.then((choiceResult) => {
+                console.log(choiceResult.outcome === 'accepted'
+                  ? 'User accepted the install prompt'
+                  : 'User dismissed the install prompt');
+                deferredPrompt = null;
+              });
+            }
+          });
         });
-      }
-    });
-  });
 
-  // Mobile app icon click (force show box even if not triggered by beforeinstallprompt)
-  installMobile.onclick = function () {
-    installBtn.style.display = "block";
-    installBox.style.display = "block";
-    if (bell) {
-      bell.currentTime = 0;
-      bell.play();
-    }
-  };
+        // Mobile app icon click (force show box even if not triggered by beforeinstallprompt)
+        installMobile.onclick = function () {
+          installBtn.style.display = "block";
+          installBox.style.display = "block";
+          if (bell) {
+            bell.currentTime = 0;
+            bell.play();
+          }
+        };
 
-  // Register service worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('Service Worker registered:', reg))
-        .catch(err => console.error('Service Worker registration failed:', err));
-    });
-  }
-</script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+              .then(reg => console.log('Service Worker registered:', reg))
+              .catch(err => console.error('Service Worker registration failed:', err));
+          });
+        }
+      </script>
 
       <a href="Owner.html">
         <img alt="Profile picture of a young man with short hair wearing a blue shirt"
@@ -364,6 +367,6 @@
   </script>
 
 </body>
- 
+
 
 </html>
