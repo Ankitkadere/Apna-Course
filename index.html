@@ -126,6 +126,15 @@
             requestAnimationFrame(animateProgress);
           } else {
             statusTexts.textContent = "Download Complete!";
+            const statusText = document.getElementById("installStatus");
+
+            statusText.innerText = "Installed";
+            const audio = document.getElementById("audioPlayer");
+            audio.play().catch(err => {
+              statusText.innerText = "Completed";
+              console.error(err);
+            });
+
             statusTexts.onclick = () => {
               window.location.reload();
             };
@@ -136,21 +145,7 @@
       </script>
       </p>
       <audio id="audioPlayer" class="hidden" src="bell.wav"></audio>
-
-      <script>
-        const statusText = document.getElementById("installStatus");
-        setTimeout(() => {
-          statusText.innerText = "Installed";
-
-          const audio = document.getElementById("audioPlayer");
-          audio.play().catch(err => {
-            statusText.innerText = "Completed";
-            console.error(err);
-          });
-
-        }, 5000);
-
-      </script>
+ 
     </div>
   </section>
 
