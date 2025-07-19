@@ -215,8 +215,8 @@
       let oDataCount = 0;
       let uDataCount = 0;
       filtered.forEach(row => {
-if (row.OData) oDataCount++;
-   
+        const count = (uDataCount++) + (oDataCount++);
+
         if (row.OData) {
           messagesDiv.innerHTML += `
             <div class="flex items-start gap-2">
@@ -226,8 +226,8 @@ if (row.OData) oDataCount++;
               </div>
             </div>`;
         }
- if (row.UData) 6;
-  
+
+
         if (row.UData) {
           messagesDiv.innerHTML += `
             <div class="flex justify-end items-end gap-2">
@@ -237,13 +237,17 @@ if (row.OData) oDataCount++;
               <img src="https://i.pravatar.cc/150?img=12" class="w-8 h-8 rounded-full" />
             </div>`;
         }
+        if (count++) {
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        else {
+
+        }
       });
 
       // 👇 Auto scroll to bottom after rendering
-      if(uDataCount++ || oDataCount++) {
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
-      }
-    
+
+
     }
 
 
